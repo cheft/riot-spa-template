@@ -2,10 +2,10 @@ tag = '
     <h3>{title}</h3>
     <ul>
         <li each="{items}">
-            <label class="{completed: done}"></label>
-            <input type="checkbox" __checked="{done}" onclick="{parent.toggle}">
-            <span onclick="{parent.edited}" style="display: {!edited}">{title}</span>
-            <input value="{title}" onenter="{parent.update}" type="{hidden: !edited}"/>
+            <a href="javascript:void 0" onclick={parent.remove}> x </a>
+            <label class="{completed: done}">
+                <input type="checkbox" __checked="{done}" onclick="{parent.toggle}">{title}
+            </label>
         </li>
     </ul>
     <form onsubmit="{add}">
@@ -14,24 +14,27 @@ tag = '
     </form>
 '
 
-riot.tag 'todo', tag, (opts) ->
-    @disabled = true
-    @items = opts.items || []
-    @title = opts.title
+riot.tag 'todo', tag, () ->
+    @title = 'TEST'
+    @todo = new Data [title: 'test']
 
-    @add = (e) ->
-        return unless @text
-        @items.push title: @text, edited: false
+    @list = ->
+        @items = @todo.data
         @text = @input.value = ""
+
+    @add = (e) =>
+        return unless @text
+        @todo.set title: @text
+        @list()
 
     @edit = (e) -> @text = e.target.value
 
-    @edited = (e, a) ->
-        console.log e, a, 111
-
-    @update = (e, a) ->
-        console.log e, a, 222
-
-    @toggle = (e) -> 
+    @toggle = (e) ->
         e.item.done = !e.item.done
         true
+
+    @remove = (e) =>
+        @todo.unset e.item.id
+        @list()
+
+    @list()

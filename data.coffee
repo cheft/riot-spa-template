@@ -2,39 +2,55 @@ class Data
 
 	constructor: (opts) ->
 		if @is opts, 'Array'
-			res = {}
-			id = 0
-			for opt in opts
-				opt.id = id++ unless opt.id
-				res[opt.id] = opt
-			@data = res
+			@ids = {}
+			for opt, i in opts
+				opt.id = i unless opt.id
+				@ids[opt.id] = i
+			@data = opts
 		else
-			@data = {}
-			id = if opts and opts.id then opts.id else '1'
-			@data[id] = opts
+			@data = opts || {}
 
 	is: (v, type) -> toString.apply(v) is "[object #{type}]"
 
 	get: (key) ->
-		return new Data(@data[key]) if @size() > 1
-		@json()[key]
+		return new Data(@data[@ids[key]]) if @is @data, 'Array'
+		@data[key]
 
-	size: ->
-		c = 0
-		for i of @data
-			c++
-		c
+	set: (opts) ->
+		if @is @data, 'Array'
+			if opts.id and @data[@ids[opts.id]]
+				@data[@ids[opts.id]] = opts
+			else
+				opts.id || opts.id = @data.length
+				@ids[opts.id] = @data.length
+				@data.push opts
+		else
+			@data[p] = opts[p] for p of opts
+		@
 
-	json: ->
-		res = []
-		for i of @data
-			if @size() is 1
-				return @data[i]
-			res.push @data[i]
-		res
+	unset: (key) ->
+		if @is @data, 'Array'
+			res = []
+			ids = {}
+			for d, i in @data
+				continue if d.id + '' is key + ''
+				res.push d
+				ids[d.id] = i
+			@data = res
+			@ids = ids
+		else
+			delete @data[key]
+		@
 
-model = new Data [
-	{id: '1', age: 12}
-	{id: 'w', age: 10}
-]
+	clear: ->
+		@ids = {}
+		if @is @data 'Array' then @data = [] else @data = {}
+		@
 
+	fetch: (opts) ->
+
+	save: (opts) ->
+
+	destroy: (opts) ->
+
+	sync: ->
