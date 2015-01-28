@@ -1,5 +1,10 @@
-/* Riot 2.0.1, @license MIT, (c) 2015 Muut Inc. + contributors */
-var riot = { version: 'v2.0.1' } ; 'use strict';
+/* Riot 2.0.5, @license MIT, (c) 2015 Muut Inc. + contributors */
+
+;(function() {
+
+var riot = { version: 'v2.0.5' }
+
+'use strict'
 
 riot.observable = function(el) {
   var callbacks = {}
@@ -139,8 +144,8 @@ riot._tmpl = (function() {
   var cache = {},
 
       // find variable names
-      re_vars = /("|').+?[^\\]\1|\.\w*|\w*:|\b(?:this|true|false|null|new|typeof|Number|String|Object|Array|Math|Date)\b|([a-z_]\w*)/gi
-              // [ 1            ][ 2  ][ 3 ][ 4                                                                         ][ 5       ]
+      re_vars = /("|').+?[^\\]\1|\.\w*|\w*:|\b(?:this|true|false|null|undefined|new|typeof|Number|String|Object|Array|Math|Date|JSON)\b|([a-z_]\w*)/gi
+              // [ 1            ][ 2  ][ 3 ][ 4                                                                                        ][ 5       ]
               // 1. skip quoted strings: "a b", 'a b', 'a \'b\''
               // 2. skip object properties: .name
               // 3. skip object literals: name:
@@ -255,6 +260,7 @@ riot._tmpl = (function() {
   }
 
 })()
+
 ;(function(riot, doc) {
 
   var tmpl = riot._tmpl,
@@ -291,7 +297,10 @@ riot._tmpl = (function() {
 
 
   function mkdom(tmpl) {
-    var el = doc.createElement('div')
+    var tag_name = tmpl.trim().slice(1, 3).toLowerCase(),
+        root_tag = /td|th/.test(tag_name) ? 'tr' : tag_name == 'tr' ? 'tbody' : 'div'
+        el = doc.createElement(root_tag)
+
     el.innerHTML = tmpl
     return el
   }
@@ -542,7 +551,6 @@ riot._tmpl = (function() {
         els = val.split(/\s+in\s+/),
         rendered = [],
         checksum,
-        root,
         keys
 
 
@@ -668,3 +676,17 @@ riot._tmpl = (function() {
 
 })(riot, document)
 
+
+// support CommonJS
+if (typeof exports === 'object')
+  module.exports = riot
+
+// support AMD
+else if (typeof define === 'function' && define.amd)
+  define(function() { return riot })
+
+// support browser
+else
+  this.riot = riot
+
+})();

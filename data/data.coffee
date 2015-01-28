@@ -54,3 +54,5 @@ class Data
 	destroy: (opts) ->
 
 	sync: ->
+
+window.Data = Data
