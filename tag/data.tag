@@ -1,11 +1,11 @@
 <data>
-    <div></div>
+    <span></span>
 
     if @opts.url
         ajax
             # async: false
             url: @opts.url
             success: (data) =>
-                @value = JSON.parse data
-                @trigger('ajax')
+                @result = JSON.parse data
+                @trigger('list')
 </data>

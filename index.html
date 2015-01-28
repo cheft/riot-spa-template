@@ -12,17 +12,17 @@
     <![endif]-->
 </head>
 <body>
-    <data id="schema1" url="data/schema.json" />
-    <data id="data1" url="data/data.json" />
-    <grid schema="#schema1" data="#data1" />
-
+    <div id="context"></div>
     <script src="js/riot.js"></script>
     <script src="js/ajax.min.js"></script>
+    <script src="data/util.js"></script>
     <script src="tag/data.js"></script>
     <script src="tag/grid.js"></script>
+    <script src="tag/item.js"></script>
+    <script src="modules/user-mgr.js"></script>
 
     <script type="text/javascript">
-        riot.mount('grid');
+        riot.mountTo(document.getElementById('context'), 'user-mgr');
     </script>
 </body>
 </html>
