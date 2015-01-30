@@ -1,4 +1,4 @@
-riot.tag('data', '<span></span>', function(opts) {if (this.opts.url) {
+riot.tag('store', '<span></span>', function(opts) {if (this.opts.url) {
   ajax({
     url: this.opts.url,
     success: (function(_this) {

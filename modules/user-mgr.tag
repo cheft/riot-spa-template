@@ -1,9 +1,8 @@
 <user-mgr>
-    <div id="data_area"></div>
     <div id="grid_area"></div>
 
     grid = riot.mountTo @grid_area, 'grid',
-        schema: [
+        columns: [
             {column: 'username',label: '用户名'}
             {column: 'name',label: '姓名'}
             {column: 'card',label: '身份证号'}
@@ -11,11 +10,24 @@
             {column: 'age'}
         ]
 
-    data = riot.mountTo @data_area, 'data',  url: 'data/data.json'
+        operates: [
+            {operate: 'show', label: '查看', icon: ''}
+            {operate: 'edit', label: '编辑', icon: ''}
+            {operate: 'remove', label: '删除', icon: ''}
+        ]
 
-    riot.observable data
-    data.on 'list', =>
-        grid.data = data.result
+        data: [
+            {age: 16, card: "88xx88xx", name: "cheft", sex: "男", username: "赵子龙"}
+            {age: 33, card: "77xx88xx", name: "song", sex: "男", username: "关云长"}
+            {age: 16, card: "88xx88xx", name: "cheft", sex: "男", username: "诸葛孔明"}
+            {age: 33, card: "77xx88xx", name: "song", sex: "男", username: "张翼德"}
+        ]
+
+        # store: 'data/data.json'
+
+    grid.on 'remove', (id) ->
+        console.log id
+        grid.data.splice id, 1
         grid.update()
 
 </user-mgr>
