@@ -385,9 +385,13 @@ riot._tmpl = (function() {
       // show / hide / if
       } else if (/^(show|hide|if)$/.test(attr_name)) {
         remAttr(attr_name)
-        if (attr_name == 'hide') value = !value
-        dom.style.display = value ? '' : 'none'
-
+        // :TODO
+        if (attr_name == 'if' && !value) {
+          dom.parentNode.removeChild(dom)
+        } else {
+          if (attr_name == 'hide') value = !value
+          dom.style.display = value ? '' : 'none'
+        }
       // normal attribute
       } else {
         if (expr.bool) {
