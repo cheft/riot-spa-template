@@ -1,4 +1,4 @@
-riot.tag('user-add', '<div id="cform_area"></div>', function(opts) {var cform;
+riot.tag('user-add', '<div id="cform_area"></div> <div id="buttons_area"></div>', function(opts) {var buttons, cform;
 
 cform = riot.mountTo(this.cform_area, 'cform', {
   col: 4,
@@ -22,8 +22,7 @@ cform = riot.mountTo(this.cform_area, 'cform', {
       label: '年龄'
     }, {
       name: 'card',
-      label: '身份证',
-      type: 'file'
+      label: '身份证'
     }, {
       name: 'phone',
       label: '手机'
@@ -34,7 +33,7 @@ cform = riot.mountTo(this.cform_area, 'cform', {
       name: 'name',
       label: '姓名'
     }, {
-      name: 'backBank',
+      name: 'bankCard',
       label: '银行卡号',
       span: 3
     }, {
@@ -55,6 +54,53 @@ cform = riot.mountTo(this.cform_area, 'cform', {
       rows: 6
     }
   ]
+});
+
+buttons = riot.mountTo(this.buttons_area, 'buttons', {
+  position: 'right',
+  buttons: [
+    {
+      operate: 'reset',
+      label: '重置',
+      icon: 'glyphicon glyphicon-eye-open',
+      style: 'gray'
+    }, {
+      operate: 'set',
+      label: '设值',
+      icon: 'glyphicon glyphicon-edit',
+      style: 'success'
+    }, {
+      operate: 'get',
+      label: '取值',
+      icon: 'glyphicon glyphicon-trash',
+      style: 'info'
+    }
+  ]
+});
+
+buttons.on('reset', function() {
+  return cform.reset();
+});
+
+buttons.on('set', function() {
+  return cform.setData({
+    username: 'cheft',
+    password: '111111',
+    email: 'cn.cheft@gmail.com',
+    age: 16,
+    sex: '男',
+    url: "http://cheft.cn",
+    qq: '7720829',
+    name: 'cheft',
+    phone: '18616818688',
+    address: 'China ShenZhen',
+    "native": '火星',
+    card: '99999999'
+  });
+});
+
+buttons.on('get', function() {
+  return alert(JSON.stringify(cform.getData()));
 });
 
 });

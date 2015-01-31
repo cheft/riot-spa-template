@@ -13,13 +13,13 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse" id="menu">
           <ul class="nav navbar-nav">
             <li>
-                <a href="javascript: void 0" onclick={route} id="user-add">Form</a>
+                <a href="javascript: void 0" onclick={start} id="user-add">Form</a>
             </li>
             <li>
-                <a href="javascript: void 0" onclick={route} id="user-list">Table</a>
+                <a href="javascript: void 0" onclick={start} id="user-list">Table</a>
             </li>
             <li>
-                <a href="javascript: void 0" onclick={route} id="todo">Custom</a>
+                <a href="javascript: void 0" onclick={start} id="todo">Custom</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -38,6 +38,6 @@
     riot.route.exec (op) -> route(op)
 
     riot.route('user-add') unless location.hash
-    @route = (e) -> riot.route e.target.id
+    @start = (e) -> riot.route e.target.id
 
 </app>

@@ -18,12 +18,12 @@
         </ul>
         <form onsubmit="{add}">
             <input name="input" onkeyup="{edit}" class="form-group form-control">
-            <button class="btn btn-success" __disabled="{!text}"> 添加 <i className='glyphicon glyphicon-plus' />第&nbsp; {items.length + 1} 个</button>
+            <button class="btn btn-success" __disabled="{!text}"> 添加 第&nbsp; {items.length + 1} 个</button>
         </form>
     </div>
 
     @title = '任务列表'
-    @todo = new Data [title: 'test']
+    @todo = new Data [title: '学习 Riot.js 框架']
 
     @list = ->
         @items = @todo.data
