@@ -10,14 +10,12 @@
 ## 运行
 任意容器
 
-## demo
-    http://riot.cheft.cn
+## [demo](http://riot.cheft.cn)
 
 ## code
 
 ### form
 
-    ```js
     cform = riot.mountTo @cform_area, 'cform',
         col: 4
         # hiddenLabel: true
@@ -37,11 +35,9 @@
             {name: 'address', label: '地址', type: 'textarea', span: 2, rows: 6}
             {name: 'native', label: '籍贯',  type: 'textarea',  span: 2, rows: 6}
         ]
-    ```
 
 ### table
 
-    ```js
     ctable = riot.mountTo @ctable_area, 'ctable',
         columns: [
             {column: 'username',label: '用户名'}
@@ -58,11 +54,9 @@
         ]
 
         store: 'data/data.json'
-    ```
 
 ### button
 
-    ```js
     buttons = riot.mountTo @buttons_area, 'buttons',
         position: 'center'  # center right left|none
         buttons: [
@@ -70,4 +64,3 @@
             {operate: 'set', label: '设值', icon: 'glyphicon glyphicon-edit', style: 'success'}
             {operate: 'get', label: '取值', icon: 'glyphicon glyphicon-trash', style: 'info'}
         ]
-    ```
