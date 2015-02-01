@@ -23,7 +23,7 @@
         ]
 
     buttons = riot.mountTo @buttons_area, 'buttons',
-        position: 'right'
+        position: 'center'  # center right left|none
         buttons: [
             {operate: 'reset', label: '重置', icon: 'glyphicon glyphicon-eye-open', style: 'gray'}
             {operate: 'set', label: '设值', icon: 'glyphicon glyphicon-edit', style: 'success'}
@@ -45,7 +45,7 @@
             phone: '18616818688'
             address: 'China ShenZhen'
             native: '火星'
-            # bankCard: '8888888'
+            bankCard: '8888888'
             card: '99999999'
 
     buttons.on 'get', ->

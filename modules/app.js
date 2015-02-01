@@ -15,12 +15,12 @@ riot.route.exec(function(op) {
   return route(op);
 });
 
-if (!location.hash) {
-  riot.route('user-add');
-}
-
 this.start = function(e) {
   return riot.route(e.target.id);
 };
+
+if (!location.hash) {
+  riot.route('user-add');
+}
 
 });

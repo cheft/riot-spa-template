@@ -37,7 +37,7 @@
     riot.route (op) -> route(op)
     riot.route.exec (op) -> route(op)
 
-    riot.route('user-add') unless location.hash
     @start = (e) -> riot.route e.target.id
+    riot.route('user-add') unless location.hash
 
 </app>

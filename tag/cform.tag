@@ -20,7 +20,11 @@
         data
 
     @setData = (data) =>
-        @form.querySelector("input[name=#{name}]").value = value for name, value of data
-        @form.querySelector("textarea[name=#{name}]").value = value for name, value of data
+        for name, value of data
+            input = @form.querySelector("input[name=#{name}]")
+            input.value = value if input
+
+            textarea = @form.querySelector("textarea[name=#{name}]")
+            textarea.innerHTML = value if textarea
 
 </cform>

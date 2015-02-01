@@ -57,7 +57,7 @@ cform = riot.mountTo(this.cform_area, 'cform', {
 });
 
 buttons = riot.mountTo(this.buttons_area, 'buttons', {
-  position: 'right',
+  position: 'center',
   buttons: [
     {
       operate: 'reset',
@@ -95,6 +95,7 @@ buttons.on('set', function() {
     phone: '18616818688',
     address: 'China ShenZhen',
     "native": '火星',
+    bankCard: '8888888',
     card: '99999999'
   });
 });

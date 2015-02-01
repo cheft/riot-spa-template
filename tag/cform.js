@@ -22,15 +22,20 @@ this.getData = (function(_this) {
 
 this.setData = (function(_this) {
   return function(data) {
-    var name, value, _results;
-    for (name in data) {
-      value = data[name];
-      _this.form.querySelector("input[name=" + name + "]").value = value;
-    }
+    var input, name, textarea, value, _results;
     _results = [];
     for (name in data) {
       value = data[name];
-      _results.push(_this.form.querySelector("textarea[name=" + name + "]").value = value);
+      input = _this.form.querySelector("input[name=" + name + "]");
+      if (input) {
+        input.value = value;
+      }
+      textarea = _this.form.querySelector("textarea[name=" + name + "]");
+      if (textarea) {
+        _results.push(textarea.innerHTML = value);
+      } else {
+        _results.push(void 0);
+      }
     }
     return _results;
   };
