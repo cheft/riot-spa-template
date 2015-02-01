@@ -63,7 +63,7 @@ buttons = riot.mountTo(this.buttons_area, 'buttons', {
       operate: 'reset',
       label: '重置',
       icon: 'glyphicon glyphicon-eye-open',
-      style: 'gray'
+      style: 'danger'
     }, {
       operate: 'set',
       label: '设值',
