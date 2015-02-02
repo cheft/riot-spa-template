@@ -1,0 +1,11 @@
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 10px;
+    line-height: 2.0;
+    vertical-align: top;
+    border-top: none;
+    /* border-top: 2px solid #e1e1e8; */
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: #f3f4f5;
+}

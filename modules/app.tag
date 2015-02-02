@@ -1,5 +1,5 @@
 <app>
-    <div class="navbar" id="top">
+    <div class="navbar navbar-default" id="top">
       <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
@@ -14,6 +14,9 @@
           <ul class="nav navbar-nav">
             <li>
                 <a href="javascript: void 0" onclick={start} id="user-add">Form</a>
+            </li>
+            <li>
+                <a href="javascript: void 0" onclick={start} id="list-view">List</a>
             </li>
             <li>
                 <a href="javascript: void 0" onclick={start} id="user-list">Table</a>

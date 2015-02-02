@@ -62,18 +62,18 @@ buttons = riot.mountTo(this.buttons_area, 'buttons', {
     {
       operate: 'reset',
       label: '重置',
-      icon: 'glyphicon glyphicon-eye-open',
-      style: 'danger'
+      icon: 'fui-time',
+      style: 'btn-danger'
     }, {
       operate: 'set',
       label: '设值',
-      icon: 'glyphicon glyphicon-edit',
-      style: 'success'
+      icon: 'fui-check',
+      style: 'btn-success'
     }, {
       operate: 'get',
       label: '取值',
-      icon: 'glyphicon glyphicon-trash',
-      style: 'info'
+      icon: 'fui-eye',
+      style: 'btn-info'
     }
   ]
 });

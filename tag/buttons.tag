@@ -10,8 +10,8 @@
     </style>
 
     <div class="{opts.position == 'center' ? 'text-center' : 'pull-' + opts.position}">
-        <button each={opts.buttons} class="btn btn-{style} {parent.opts.position == 'right' ? 'mg-right' : 'mg-left'}"
-            type="button" id="{operate}" onclick="{parent.test}"><i class="{icon}"></i> {label}
+        <button each={opts.buttons} class="btn {style} {parent.opts.position == 'right' ? 'mg-right' : 'mg-left'}"
+            type="button" id="{operate}" onclick="{parent.test}"><i class="{icon}"></i>&nbsp;&nbsp;&nbsp;{label}
         </button>
     </div>
 

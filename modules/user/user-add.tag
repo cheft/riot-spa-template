@@ -25,9 +25,9 @@
     buttons = riot.mountTo @buttons_area, 'buttons',
         position: 'center'  # center right left|none
         buttons: [
-            {operate: 'reset', label: '重置', icon: 'glyphicon glyphicon-eye-open', style: 'danger'}
-            {operate: 'set', label: '设值', icon: 'glyphicon glyphicon-edit', style: 'success'}
-            {operate: 'get', label: '取值', icon: 'glyphicon glyphicon-trash', style: 'info'}
+            {operate: 'reset', label: '重置', icon: 'fui-time', style: 'btn-danger'}
+            {operate: 'set', label: '设值', icon: 'fui-check', style: 'btn-success'}
+            {operate: 'get', label: '取值', icon: 'fui-eye', style: 'btn-info'}
         ]
 
     buttons.on 'reset', -> cform.reset()
