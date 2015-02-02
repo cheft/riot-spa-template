@@ -1,12 +1,12 @@
 <app>
-    <div class="navbar" id="top" style="background: #e6e6e6;">
+    <div class="navbar" id="top">
       <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
               <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar" style="background: #337ab7;"></span>
-              <span class="icon-bar" style="background: #337ab7;"></span>
-              <span class="icon-bar" style="background: #337ab7;"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
           <a href="/" class="navbar-brand">Riot Demos</a>
         </div>
