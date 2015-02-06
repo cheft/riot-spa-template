@@ -3,7 +3,8 @@
 
 ## feature
 * 表单
-* 表格
+* 列表
+* 表格（废弃，因为不支持 IE8/9 [官方解释](https://muut.com/riotjs/download.html#known-issues)）
 * 按钮组
 * ...
 
@@ -35,6 +36,26 @@
             {name: 'address', label: '地址', type: 'textarea', span: 2, rows: 6}
             {name: 'native', label: '籍贯',  type: 'textarea',  span: 2, rows: 6}
         ]
+
+### list
+
+    list = riot.mountTo @list_area, 'list',
+        col: 4
+        columns: [
+            {column: 'username',label: '用户名'}
+            {column: 'name',label: '姓名'}
+            {column: 'age'}
+            {column: 'card',label: '身份证号', span: 2}
+            {column: 'sex',label: '性别'}
+        ]
+
+        operates: [
+            {operate: 'show', label: '查看', icon: 'fui-eye'}
+            {operate: 'edit', label: '编辑', icon: 'fui-gear'}
+            {operate: 'remove', label: '删除', icon: 'fui-trash'}
+        ]
+
+        store: 'data/data.json'
 
 ### table
 
