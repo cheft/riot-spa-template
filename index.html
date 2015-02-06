@@ -16,7 +16,7 @@
     <![endif]-->
 </head>
 <body>
-    <div id="context"></div>
+    <app />
 
     <script src="js/riot.js"></script>
     <script src="js/ajax.min.js"></script>
@@ -35,9 +35,20 @@
     <script src="modules/user/user-list.js"></script>
     <script src="modules/user/list-view.js"></script>
     <script src="modules/todo.js"></script>
+    <script src="modules/blog.js"></script>
 
     <script type="text/javascript">
-        riot.mountTo(document.getElementById('context'), 'app');
+        riot.mount('app',
+            {
+                data: [
+                    {title: '表单', href: "user-add"},
+                    {title: '列表', href: "list-view"},
+                    {title: '表格', href: "user-list"},
+                    {title: '自定义', href: "todo"},
+                    {title: '博客', href: "blog"}
+                ]
+            }
+        );
     </script>
 </body>
 </html>

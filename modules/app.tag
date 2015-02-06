@@ -1,5 +1,5 @@
 <app>
-    <div class="navbar navbar-default" id="top">
+    <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
@@ -12,17 +12,8 @@
         </div>
         <div class="collapse navbar-collapse navbar-responsive-collapse" id="menu">
           <ul class="nav navbar-nav">
-            <li>
-                <a href="javascript: void 0" onclick={start} id="user-add">Form</a>
-            </li>
-            <li>
-                <a href="javascript: void 0" onclick={start} id="list-view">List</a>
-            </li>
-            <li>
-                <a href="javascript: void 0" onclick={start} id="user-list">Table</a>
-            </li>
-            <li>
-                <a href="javascript: void 0" onclick={start} id="todo">Custom</a>
+            <li each={opts.data}>
+                <a href="#{href}">{title}</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -31,16 +22,14 @@
         </div>
       </div>
     </div>
+
     <div id="container" class="container"></div>
 
-    route = (op) =>
+    start = (op) =>
         @container.innerHTML = ''
         riot.mountTo @container, op
 
-    riot.route (op) -> route(op)
-    riot.route.exec (op) -> route(op)
-
-    @start = (e) -> riot.route e.target.id
+    riot.route.exec (op) => start(op)
+    riot.route (op) => start(op)
     riot.route('user-add') unless location.hash
-
 </app>

@@ -10,13 +10,14 @@ list = riot.mountTo(this.list_area, 'list', {
       column: 'name',
       label: '姓名'
     }, {
+      column: 'age'
+    }, {
       column: 'card',
-      label: '身份证号'
+      label: '身份证号',
+      span: 2
     }, {
       column: 'sex',
       label: '性别'
-    }, {
-      column: 'age'
     }
   ],
   operates: [

@@ -6,9 +6,9 @@
         columns: [
             {column: 'username',label: '用户名'}
             {column: 'name',label: '姓名'}
-            {column: 'card',label: '身份证号'}
-            {column: 'sex',label: '性别'}
             {column: 'age'}
+            {column: 'card',label: '身份证号', span: 2}
+            {column: 'sex',label: '性别'}
         ]
 
         operates: [

@@ -5,18 +5,18 @@
     <table class="table table-striped">
         <tr>
             <th width="5%"> # </th>
-            <th width="15%">操作</th>
             <th each={opts.columns}>
                 {label || column}
             </th>
+            <th width="15%">操作 (bug)</th>
         </tr>
         <tr each={d, i in data}>
             <td> {i + 1} </td>
-            <td><span each={parent.opts.operates}>{item.parent = parent.item}<a onclick={parent.parent.event}
-            id="{operate + parent.i}" class="{icon}" href="javascript: void 0" title="{label}"></a> </span></td>
             <td each={parent.opts.columns}>
                 {parent.d[column]}
             </td>
+            <td><span each={parent.opts.operates}>{item.parent = parent.item}<a onclick={parent.parent.event}
+            id="{operate + parent.i}" class="{icon}" href="javascript: void 0" title="{label}"></a> </span></td>
         </tr>
     </table>
 
