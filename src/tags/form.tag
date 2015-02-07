@@ -15,16 +15,15 @@
 
     @getData = =>
         data = {}
-        data[i.name] = i.value for i in @form.querySelectorAll('input')
-        data[t.name] = t.value for t in @form.querySelectorAll('textarea')
+        data[item.name] = item.value for item in $('form').serializeArray() when item.value
         data
 
     @setData = (data) =>
         for name, value of data
-            input = @form.querySelector("input[name=#{name}]")
-            input.value = value if input
+            input = $("#form input[name=#{name}]")
+            input.val(value) if input
 
-            textarea = @form.querySelector("textarea[name=#{name}]")
-            textarea.innerHTML = value if textarea
+            textarea = $("#form textarea[name=#{name}]")
+            textarea.val(value) if textarea
 
 </FormTag>
