@@ -4,48 +4,45 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Riot's Demo</title>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/flat-ui.min.css">
-    <link rel="stylesheet" href="css/fill-flat.css">
-
+    <title>Cheftjs Demo</title>
+    <link rel="stylesheet" href="res/vendors/css/bootstrap.min.css">
+    <link rel="stylesheet" href="res/vendors/css/flat-ui.min.css">
+    <link rel="stylesheet" href="res/asstes/fill-flat.css">
     <!--[if lt IE 9]>
-    <script src="js/es5-shim.js"></script>
-    <script src="js/html5-shiv.js"></script>
+    <script src="res/vendors/js/es5-shim.js"></script>
+    <script src="res/vendors/js/html5-shiv.js"></script>
     <![endif]-->
 </head>
 <body>
     <app />
+    <script src="res/vendors/js/riot.js"></script>
+    <script src="res/vendors/js/jquery-1.11.2.min.js"></script>
+    <script src="res/vendors/js/flat-ui.min.js"></script>
 
-    <script src="js/riot.js"></script>
-    <script src="js/ajax.min.js"></script>
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/flat-ui.min.js"></script>
+    <script src="src/utils/model.js"></script>
 
-    <script src="data/data.js"></script>
-    <script src="tag/store.js"></script>
-    <script src="tag/ctable.js"></script>
-    <script src="tag/cform.js"></script>
-    <script src="tag/list.js"></script>
-    <script src="tag/buttons.js"></script>
+    <script src="src/tags/store.js"></script>
+    <script src="src/tags/table.js"></script>
+    <script src="src/tags/form.js"></script>
+    <script src="src/tags/list.js"></script>
+    <script src="src/tags/button.js"></script>
 
-    <script src="modules/app.js"></script>
-    <script src="modules/user/user-add.js"></script>
-    <script src="modules/user/user-list.js"></script>
-    <script src="modules/user/list-view.js"></script>
-    <script src="modules/todo.js"></script>
-    <script src="modules/blog.js"></script>
+    <script src="app/apply/form-demo.js"></script>
+    <script src="app/apply/list-demo.js"></script>
+    <script src="app/apply/table-demo.js"></script>
+    <script src="app/custom/blog.js"></script>
+    <script src="app/custom/todo.js"></script>
+    <script src="app/app.js"></script>
 
     <script type="text/javascript">
         riot.mount('app',
             {
                 data: [
-                    {title: '表单', href: "user-add"},
-                    {title: '列表', href: "list-view"},
-                    {title: '表格', href: "user-list"},
-                    {title: '自定义', href: "todo"},
-                    {title: '博客', href: "blog"}
+                    {title: '表单', href: "form-demo"},
+                    {title: '列表', href: "list-demo"},
+                    {title: '表格', href: "table-demo"},
+                    {title: '博客', href: "blog"},
+                    {title: '任务', href: "todo"}
                 ]
             }
         );

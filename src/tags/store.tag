@@ -1,13 +1,13 @@
-<store>
+<StoreTag>
 
     @fetch = ->
-        ajax
+        $.ajax
             url: @opts.url
             success: (data) =>
-                @result = JSON.parse data
+                @result = data
                 @trigger 'done'
             error: (error) => @trigger 'error'
         @
 
     @save = -> @
-</store>
+</StoreTag>

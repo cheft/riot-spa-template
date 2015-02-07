@@ -17,7 +17,7 @@
 
 ### form
 
-    cform = riot.mountTo @cform_area, 'cform',
+    form_tag = riot.mountTo @form_tag_area, 'FormTag',
         col: 4
         # hiddenLabel: true
         # hiddenPh: true
@@ -37,51 +37,53 @@
             {name: 'native', label: '籍贯',  type: 'textarea',  span: 2, rows: 6}
         ]
 
+
 ### list
 
-    list = riot.mountTo @list_area, 'list',
+    list_tag = riot.mountTo @list_tag_area, 'ListTag',
         col: 4
-        columns: [
-            {column: 'username',label: '用户名'}
-            {column: 'name',label: '姓名'}
-            {column: 'age'}
-            {column: 'card',label: '身份证号', span: 2}
-            {column: 'sex',label: '性别'}
+        fields: [
+            {name: 'username',label: '用户名'}
+            {name: 'name',label: '姓名'}
+            {name: 'age'}
+            {name: 'card',label: '身份证号', span: 2}
+            {name: 'sex',label: '性别'}
         ]
 
-        operates: [
-            {operate: 'show', label: '查看', icon: 'fui-eye'}
-            {operate: 'edit', label: '编辑', icon: 'fui-gear'}
-            {operate: 'remove', label: '删除', icon: 'fui-trash'}
+        buttons: [
+            {name: 'show', label: '查看', icon: 'fui-eye'}
+            {name: 'edit', label: '编辑', icon: 'fui-gear'}
+            {name: 'remove', label: '删除', icon: 'fui-trash'}
         ]
 
-        store: 'data/data.json'
+        store: 'src/utils/data.json'
+
 
 ### table
 
-    ctable = riot.mountTo @ctable_area, 'ctable',
-        columns: [
-            {column: 'username',label: '用户名'}
-            {column: 'name',label: '姓名'}
-            {column: 'card',label: '身份证号'}
-            {column: 'sex',label: '性别'}
-            {column: 'age'}
+    table_tag = riot.mountTo @table_tag_area, 'TableTag',
+        fields: [
+            {name: 'username',label: '用户名'}
+            {name: 'name',label: '姓名'}
+            {name: 'card',label: '身份证号'}
+            {name: 'sex',label: '性别'}
+            {name: 'age'}
         ]
 
-        operates: [
-            {operate: 'show', label: '查看', icon: 'glyphicon glyphicon-eye-open'}
-            {operate: 'edit', label: '编辑', icon: 'glyphicon glyphicon-edit'}
-            {operate: 'remove', label: '删除', icon: 'glyphicon glyphicon-trash'}
+        buttons: [
+            {name: 'show', label: '查看', icon: 'glyphicon glyphicon-eye-open'}
+            {name: 'edit', label: '编辑', icon: 'glyphicon glyphicon-edit'}
+            {name: 'remove', label: '删除', icon: 'glyphicon glyphicon-trash'}
         ]
 
-        store: 'data/data.json'
+        store: 'src/utils/data.json'
 
 ### button
 
-    buttons = riot.mountTo @buttons_area, 'buttons',
+    button_tag = riot.mountTo @button_tag_area, 'ButtonTag',
         position: 'center'  # center right left|none
         buttons: [
-            {operate: 'reset', label: '重置', icon: 'glyphicon glyphicon-eye-open', style: 'danger'}
-            {operate: 'set', label: '设值', icon: 'glyphicon glyphicon-edit', style: 'success'}
-            {operate: 'get', label: '取值', icon: 'glyphicon glyphicon-trash', style: 'info'}
+            {name: 'reset', label: '重置', icon: 'fui-time', style: 'btn-danger'}
+            {name: 'set', label: '设值', icon: 'fui-check', style: 'btn-success'}
+            {name: 'get', label: '取值', icon: 'fui-eye', style: 'btn-info'}
         ]

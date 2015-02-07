@@ -1,4 +1,4 @@
-<cform>
+<FormTag>
     <form id="form">
         <div class="row">
             <div class="col-sm-{12 / (parent.opts.col / span) || 12 / parent.opts.col} form-group" each={opts.fields}>
@@ -27,4 +27,4 @@
             textarea = @form.querySelector("textarea[name=#{name}]")
             textarea.innerHTML = value if textarea
 
-</cform>
+</FormTag>

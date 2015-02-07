@@ -1,8 +1,8 @@
-<user-add>
-    <div id="cform_area"></div>
-    <div id="buttons_area"></div>
+<form-demo>
+    <div id="form_tag_area"></div>
+    <div id="button_tag_area"></div>
 
-    cform = riot.mountTo @cform_area, 'cform',
+    form_tag = riot.mountTo @form_tag_area, 'FormTag',
         col: 4
         # hiddenLabel: true
         # hiddenPh: true
@@ -22,18 +22,18 @@
             {name: 'native', label: '籍贯',  type: 'textarea',  span: 2, rows: 6}
         ]
 
-    buttons = riot.mountTo @buttons_area, 'buttons',
+    button_tag = riot.mountTo @button_tag_area, 'ButtonTag',
         position: 'center'  # center right left|none
         buttons: [
-            {operate: 'reset', label: '重置', icon: 'fui-time', style: 'btn-danger'}
-            {operate: 'set', label: '设值', icon: 'fui-check', style: 'btn-success'}
-            {operate: 'get', label: '取值', icon: 'fui-eye', style: 'btn-info'}
+            {name: 'reset', label: '重置', icon: 'fui-time', style: 'btn-danger'}
+            {name: 'set', label: '设值', icon: 'fui-check', style: 'btn-success'}
+            {name: 'get', label: '取值', icon: 'fui-eye', style: 'btn-info'}
         ]
 
-    buttons.on 'reset', -> cform.reset()
+    button_tag.on 'reset', -> form_tag.reset()
 
-    buttons.on 'set', ->
-        cform.setData
+    button_tag.on 'set', ->
+        form_tag.setData
             username: 'cheft'
             password: '111111'
             email: 'cn.cheft@gmail.com'
@@ -48,6 +48,6 @@
             bankCard: '8888888'
             card: '99999999'
 
-    buttons.on 'get', ->
-        alert JSON.stringify(cform.getData())
-</user-add>
+    button_tag.on 'get', ->
+        alert JSON.stringify(form_tag.getData())
+</form-demo>

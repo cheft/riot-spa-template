@@ -31,5 +31,5 @@
 
     riot.route.exec (op) => start(op)
     riot.route (op) => start(op)
-    riot.route('user-add') unless location.hash
+    riot.route('form-demo') unless location.hash
 </app>

@@ -1,5 +1,5 @@
 <blog>
-    <div id="store_area"></div>
+    <div id="store_tag_area"></div>
     <div id="page_area"></div>
 
     <div class="row" each={data}>
@@ -9,12 +9,11 @@
     </div>
 
     @data = []
-    store = riot.mountTo @store_area, 'store', url: 'data/blog.json'
-    store.fetch()
+    store_tag = riot.mountTo @store_tag_area, 'StoreTag', url: 'src/utils/blog.json'
+    store_tag.fetch()
     .on 'done', =>
-        @data = store.result
+        @data = store_tag.result
         @update()
     .on 'error', =>
         console.log 'error'
-
 </blog>
