@@ -8,7 +8,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          <a href="/" class="navbar-brand">Riot Demos</a>
+          <a href="/" class="navbar-brand">Cheftjs Demos</a>
         </div>
         <div class="collapse navbar-collapse navbar-responsive-collapse" id="menu">
           <ul class="nav navbar-nav">
@@ -22,7 +22,6 @@
         </div>
       </div>
     </div>
-
     <div id="container" class="container"></div>
 
     start = (op) =>

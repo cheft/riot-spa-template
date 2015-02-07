@@ -1,5 +1,4 @@
 <StoreTag>
-
     @fetch = ->
         $.ajax
             url: @opts.url

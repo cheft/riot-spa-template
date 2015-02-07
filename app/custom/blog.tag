@@ -1,7 +1,5 @@
 <blog>
     <div id="store_tag_area"></div>
-    <div id="page_area"></div>
-
     <div class="row" each={data}>
         <h3>{title}</h3>
         <p>{content}</p>
