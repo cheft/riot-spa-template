@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse" id="menu">
           <ul class="nav navbar-nav">
             <li each={opts.data}>
-                <a href="#{href}">{title}</a>
+                <a href="#{href}">{name}</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -30,5 +30,5 @@
 
     riot.route.exec (op) => start(op)
     riot.route (op) => start(op)
-    riot.route('form-demo') unless location.hash
+    riot.route('blog') unless location.hash
 </app>

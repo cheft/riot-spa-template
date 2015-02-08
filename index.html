@@ -7,19 +7,21 @@
     <title>Cheftjs Demo</title>
     <link rel="stylesheet" href="res/vendors/css/bootstrap.min.css">
     <link rel="stylesheet" href="res/vendors/css/flat-ui.min.css">
-    <link rel="stylesheet" href="res/asstes/fill-flat.css">
+    <link rel="stylesheet" href="res/assets/fill-flat.css">
     <!--[if lt IE 9]>
     <script src="res/vendors/js/es5-shim.js"></script>
     <script src="res/vendors/js/html5-shiv.js"></script>
     <![endif]-->
 </head>
 <body>
-    <app />
+    <div id="app"></div>
     <script src="res/vendors/js/riot.js"></script>
     <script src="res/vendors/js/jquery-1.11.2.min.js"></script>
     <script src="res/vendors/js/flat-ui.min.js"></script>
+    <script src="res/vendors/js/marked.min.js"></script>
 
     <script src="src/utils/model.js"></script>
+    <script src="src/utils/util.js"></script>
 
     <script src="src/tags/store.js"></script>
     <script src="src/tags/table.js"></script>
@@ -35,14 +37,14 @@
     <script src="app/app.js"></script>
 
     <script type="text/javascript">
-        riot.mount('app',
+        riot.mountTo(document.getElementById('app'), 'app',
             {
                 data: [
-                    {title: '表单', href: "form-demo"},
-                    {title: '列表', href: "list-demo"},
-                    {title: '表格', href: "table-demo"},
-                    {title: '博客', href: "blog"},
-                    {title: '任务', href: "todo"}
+                    {name: '博客', href: "blog"},
+                    {name: '表单', href: "form-demo"},
+                    {name: '列表', href: "list-demo"},
+                    {name: '表格', href: "table-demo"},
+                    {name: '任务', href: "todo"}
                 ]
             }
         );
