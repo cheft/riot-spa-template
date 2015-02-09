@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cheftjs Demo</title>
+    <title>Cheftjs Demos</title>
     <link rel="stylesheet" href="res/vendors/css/bootstrap.min.css">
     <link rel="stylesheet" href="res/vendors/css/flat-ui.min.css">
+    <link rel="stylesheet" href="res/vendors/css/prettify.css">
     <link rel="stylesheet" href="res/assets/fill-flat.css">
     <!--[if lt IE 9]>
     <script src="res/vendors/js/es5-shim.js"></script>
@@ -15,10 +16,11 @@
 </head>
 <body>
     <div id="app"></div>
-    <script src="res/vendors/js/riot.js"></script>
     <script src="res/vendors/js/jquery-1.11.2.min.js"></script>
     <script src="res/vendors/js/flat-ui.min.js"></script>
     <script src="res/vendors/js/marked.min.js"></script>
+    <script src="res/vendors/js/prettify.min.js"></script>
+    <script src="res/vendors/js/riot.js"></script>
 
     <script src="src/utils/model.js"></script>
     <script src="src/utils/util.js"></script>
@@ -40,7 +42,6 @@
         riot.mountTo(document.getElementById('app'), 'app',
             {
                 data: [
-                    {name: '博客', href: "blog"},
                     {name: '表单', href: "form-demo"},
                     {name: '列表', href: "list-demo"},
                     {name: '表格', href: "table-demo"},
