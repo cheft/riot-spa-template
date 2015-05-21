@@ -1,0 +1,12 @@
+doctype html
+html
+	head
+		title Cheftjs
+		link(rel='stylesheet' href='bower_components/todomvc-common/base.css')
+		link(rel='stylesheet' href='bower_components/todomvc-app-css/index.css')
+	body
+		todo
+		script(src='/bower_components/riot/riot.js')
+		script(src='/cheft.js')
+		script(src='/demo/scripts/app.js')
+		script riot.mount('todo');

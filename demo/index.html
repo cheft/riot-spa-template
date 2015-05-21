@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>test</title>
-</head>
-<body>
-	<test></test>
-	<script src="bower_components/riot/riot.js"></script>
-	<script src="src/cheft.js"></script>
-	<script src="demo/scripts/main.js"></script>
-	<script src="demo/scripts/app/test/index.js"></script>
-	<script>
-		riot.mount('test');
-	</script>
-</body>
+	<head>
+		<title>Cheftjs</title>
+		<link rel="stylesheet" href="bower_components/todomvc-common/base.css"/>
+		<link rel="stylesheet" href="bower_components/todomvc-app-css/index.css"/>
+	</head>
+	<body>
+		<todo></todo>
+		<script src="/bower_components/riot/riot.js"></script>
+		<script src="/cheft.js"></script>
+		<script src="/demo/scripts/app.js"></script>
+		<script>riot.mount('todo');</script>
+	</body>
 </html>

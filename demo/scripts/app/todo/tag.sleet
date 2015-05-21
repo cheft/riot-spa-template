@@ -1,0 +1,31 @@
+item
+    script > coffee(bare=true) @mixin require('./item')
+    li(class='{completed: todo.completed, editing: editing} todo')
+        .view
+            input.toggle(type='checkbox' checked='{todo.completed}' onclick='{toggleTodo}')
+            label(ondblclick='{toEdit}') {todo.title}
+            button.destroy(onclick='{toRemove}')
+        input.edit(name='editor' onblur='{didEdit}' onkeyup='{didEdit}')
+
+todo
+    script > coffee(bare=true) @mixin require('./todo')
+    section#todoapp
+        header#header
+            h1 todos
+            input#new-todo(autofocus autocomplete='off' placeholder='What needs to be done?' onkeyup='{didAdd}')
+        section#main(if='{todos.length}')
+            input#toggle-all(type='checkbox' checked='{allDone}' onclick='{toggleAll}')
+            ul#todo-list: item(each='{t, i in filtered()}')
+        footer#footer(if='{todos.length}')
+            span#todo-count
+                strong {remaining}
+                |.
+                    {remaining > 1 ? 'items' : 'item'} left
+            ul#filters: li(each='{v in links}'): a(class='{selected: parent.activeFilter == v.name}' href='#/{v.name}') {v.label}
+            button#clear-completed(onclick='{removeCompleted}' if='{todos.length > remaining}') Clear completed
+    footer#info
+        p Double-click to edit a todo
+        p Written by
+            a(href='http://github.com/cheft') Cheft
+        p Part of
+            a(href='http://todomvc.com') TodoMVC

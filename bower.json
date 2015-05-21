@@ -1,0 +1,9 @@
+{
+  "name": "cheftjs",
+  "dependencies": {
+    "todomvc-common": "~1.0.1",
+    "riot": "~2.1.0",
+    "todomvc-app-css": "~1.0.1"
+  },
+  "version": "1.0.0"
+}
