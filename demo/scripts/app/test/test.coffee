@@ -6,7 +6,8 @@ module.exports =
 
 	title3: 'tttt3'
 
-	init: -> @on 'mount', -> console.log 'mount'
+	init: ->
+		@on 'mount', -> console.log 'mount'
 
 	test1: (e) -> console.log('test1')
 

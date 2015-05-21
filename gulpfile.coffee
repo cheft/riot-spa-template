@@ -18,7 +18,7 @@ gulp.task 'build', ->
 
     gulp.src('demo/scripts/app/test/tag.js', { read: false })
         .pipe(browserify())
-        .pipe(rename('main.js'))
+        .pipe(rename('index.js'))
         .pipe(gulp.dest('demo/scripts/app/test'))
 
 gulp.task 'serve', ->

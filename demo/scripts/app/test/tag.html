@@ -1,7 +1,14 @@
+require('../hello/tag');
 <test>
-	<script>this.mixin(require('./'));</script>
-	<h3 onclick={test1}>{title1}</h3>
-	<h3 onclick={test2}>{title2}</h3>
-	<h3 onclick={test3}>{title3}</h3>
-	<input type='tt' onkeyup={fill} onfocus="{test1}"/>
+    <script>
+        this.mixin(require('./test'));
+    </script>
+    <hello></hello><world></world>
+    <h3 onclick="{test1}">{title1}</h3>
+    <h3 onclick="{test2}">{title2}</h3>
+    <h3 onclick="{test3}">{title3}</h3>
+    <input type="text" onkeyup="{fill}" onfocus="{test1}"/>
 </test>
+<world>
+    <h1>world</h1>
+</world>
