@@ -5,7 +5,16 @@
     routes: {
       'hello/:id/:name': 'hello',
       'test/p:id': 'test',
-      'path/*path': 'path'
+      'path/*path': 'path',
+      'aa': function() {
+        return console.log('aaaaaaa');
+      },
+      '': function() {
+        return console.log('root');
+      },
+      '/': function() {
+        return console.log('/');
+      }
     },
     hello: function(id, name) {
       return console.log('hello' + id + 'name=' + name);
@@ -18,8 +27,12 @@
     }
   };
 
-  r = new c.Router(router);
+  r = window.r = new c.Router(router);
 
   r.start();
+
+  r.add('bb', function() {
+    return console.log('bbbbbb');
+  });
 
 }).call(this);
