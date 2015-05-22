@@ -83,7 +83,7 @@
       if (!route.test(path)) {
         continue;
       }
-      if (c.isFunction(routes[r])) {
+      if (C.isFunction(routes[r])) {
         results.push(routes[r].apply(router, _extractParams(route, path)));
       } else {
         results.push((ref = opts[routes[r]]) != null ? ref.apply(router, _extractParams(route, path)) : void 0);

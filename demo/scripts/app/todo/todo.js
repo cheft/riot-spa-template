@@ -1,7 +1,7 @@
 (function() {
   var storage;
 
-  storage = new c.Storage('todo');
+  storage = new C.Storage('todo');
 
   module.exports = {
     init: function() {

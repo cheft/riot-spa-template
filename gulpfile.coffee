@@ -12,10 +12,10 @@ gulp.task 'cheft', ->
     gulp.src('src/cheft.coffee')
         .pipe preprocess({context: { NODE_ENV: 'production', DEBUG: true}})
         .pipe coffee()
-        .pipe gulp.dest('./')
+        .pipe gulp.dest('./dist')
         .pipe rename('cheft.min.js')
         .pipe uglify()
-        .pipe gulp.dest('./')
+        .pipe gulp.dest('./dist')
 
 gulp.task 'build', ->
     gulp.src('demo/**/*.coffee')

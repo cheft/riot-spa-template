@@ -22,12 +22,12 @@ _router = (router, args) ->
     for r of routes
         route = _routeToRegExp(r)
         continue unless route.test path
-        if c.isFunction(routes[r])
+        if C.isFunction(routes[r])
             routes[r].apply router, _extractParams(route, path)
         else
             opts[routes[r]]?.apply router, _extractParams(route, path)
 
-class Router
+C.Router = class Router
     constructor: (opts) ->
         @opts = opts
 

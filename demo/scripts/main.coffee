@@ -1,3 +1,4 @@
 require './app/todo/tag'
-r = new c.Router require('./router')
+require './app/test/tag'
+r = new C.Router require('./router')
 r.start()
