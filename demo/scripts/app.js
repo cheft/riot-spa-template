@@ -3,7 +3,7 @@ riot.tag('hello', '<h1>hello</h1>', function(opts) {
 
 });
 },{}],2:[function(require,module,exports){
-riot.tag('menu', '<ul> <li><a href="#start/test">Test</a></li> <li><a href="#start/hello">Hello</a></li> <li><a href="#start/todo">Todo</a></li> </ul>', function(opts) {
+riot.tag('menu', '<ul> <li><a href="#start/test">Test</a></li> <li><a href="#start/hello">Hello</a></li> <li><a href="#start/todo">Todo</a></li> </ul> <yield></yield>', function(opts) {
 
 });
 },{}],3:[function(require,module,exports){
@@ -163,7 +163,7 @@ riot.tag('todo', '<section id="todoapp"> <header id="header"> <h1>todos</h1> <in
 }).call(this);
 
 },{}],8:[function(require,module,exports){
-riot.tag('viewport', '<menu></menu> <div name="container"></div>', function(opts) {
+riot.tag('viewport', '<menu> <hr><p>这是个很神奇的框架</p> <hr> </menu> <div name="container"></div>', function(opts) {
         this.mixin(require('./viewport'));
     
 });
@@ -217,6 +217,12 @@ riot.tag('viewport', '<menu></menu> <div name="container"></div>', function(opts
         return console.log('aaaaaaa');
       }
     },
+    start: function(id) {
+      return app.viewport.show(id);
+    },
+    home: function() {
+      return app.viewport.show('todo');
+    },
     hello: function(id, name) {
       return console.log('hello' + id + 'name=' + name);
     },
@@ -225,12 +231,6 @@ riot.tag('viewport', '<menu></menu> <div name="container"></div>', function(opts
     },
     path: function(path) {
       return console.log(path);
-    },
-    start: function(id) {
-      return app.viewport.show(id);
-    },
-    home: function() {
-      return app.viewport.show('todo');
     }
   };
 

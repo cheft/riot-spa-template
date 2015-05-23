@@ -11,6 +11,12 @@
         return console.log('aaaaaaa');
       }
     },
+    start: function(id) {
+      return app.viewport.show(id);
+    },
+    home: function() {
+      return app.viewport.show('todo');
+    },
     hello: function(id, name) {
       return console.log('hello' + id + 'name=' + name);
     },
@@ -19,12 +25,6 @@
     },
     path: function(path) {
       return console.log(path);
-    },
-    start: function(id) {
-      return app.viewport.show(id);
-    },
-    home: function() {
-      return app.viewport.show('todo');
     }
   };
 

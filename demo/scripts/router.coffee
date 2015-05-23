@@ -3,23 +3,18 @@ module.exports =
         '':  'home'
         '/': 'home'
         'start/:id': 'start'
-        
+
         'hello/:id/:name': 'hello'
         'test/p:id': 'test'
         'path/*path': 'path'
         'aa': -> console.log 'aaaaaaa'
 
-    hello: (id, name) ->
-        console.log 'hello' + id + 'name=' + name
+    start: (id) -> app.viewport.show(id)
 
-    test: (id) ->
-        console.log "test#{id}"
+    home: -> app.viewport.show('todo')
 
-    path: (path) ->
-        console.log path
+    hello: (id, name) -> console.log 'hello' + id + 'name=' + name
 
-    start: (id) ->
-        app.viewport.show(id)
+    test: (id) -> console.log "test#{id}"
 
-    home: ->
-        app.viewport.show('todo')
+    path: (path) -> console.log path
