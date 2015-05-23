@@ -1,17 +1,14 @@
 (function() {
   module.exports = {
     routes: {
+      '': 'home',
+      '/': 'home',
+      'start/:id': 'start',
       'hello/:id/:name': 'hello',
       'test/p:id': 'test',
       'path/*path': 'path',
       'aa': function() {
         return console.log('aaaaaaa');
-      },
-      '': function() {
-        return console.log('root');
-      },
-      '/': function() {
-        return console.log('/');
       }
     },
     hello: function(id, name) {
@@ -22,6 +19,12 @@
     },
     path: function(path) {
       return console.log(path);
+    },
+    start: function(id) {
+      return app.viewport.show(id);
+    },
+    home: function() {
+      return app.viewport.show('todo');
     }
   };
 

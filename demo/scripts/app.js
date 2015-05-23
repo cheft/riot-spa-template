@@ -3,6 +3,10 @@ riot.tag('hello', '<h1>hello</h1>', function(opts) {
 
 });
 },{}],2:[function(require,module,exports){
+riot.tag('menu', '<ul> <li><a href="#start/test">Test</a></li> <li><a href="#start/hello">Hello</a></li> <li><a href="#start/todo">Todo</a></li> </ul>', function(opts) {
+
+});
+},{}],3:[function(require,module,exports){
 require('../hello/tag');
 riot.tag('test', '<hello></hello><world></world> <h3 onclick="{test1}">{title1}</h3> <h3 onclick="{test2}">{title2}</h3> <h3 onclick="{test3}">{title3}</h3> <input type="text" onkeyup="{fill}" onfocus="{test1}">', function(opts) {
         this.mixin(require('./test'));
@@ -11,15 +15,18 @@ riot.tag('test', '<hello></hello><world></world> <h3 onclick="{test1}">{title1}<
 riot.tag('world', '<h1>world</h1>', function(opts) {
 
 });
-},{"../hello/tag":1,"./test":3}],3:[function(require,module,exports){
+},{"../hello/tag":1,"./test":4}],4:[function(require,module,exports){
 (function() {
   module.exports = {
     title1: 'ttt4455',
     title2: 'ppps',
     title3: 'tttt3',
     init: function() {
-      return this.on('mount', function() {
+      this.on('mount', function() {
         return console.log('mount');
+      });
+      return this.on('unmount', function() {
+        return console.log('unmount');
       });
     },
     test1: function(e) {
@@ -35,7 +42,7 @@ riot.tag('world', '<h1>world</h1>', function(opts) {
 
 }).call(this);
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function() {
   module.exports = {
     init: function() {
@@ -73,7 +80,7 @@ riot.tag('world', '<h1>world</h1>', function(opts) {
 
 }).call(this);
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 riot.tag('item', '<li class="{completed: todo.completed, editing: editing} todo"> <div class="view"> <input class="toggle" type="checkbox" __checked="{todo.completed}" onclick="{toggleTodo}"> <label ondblclick="{toEdit}">{todo.title}</label> <button class="destroy" onclick="{toRemove}"></button> </div> <input class="edit" name="editor" onblur="{didEdit}" onkeyup="{didEdit}"> </li>', function(opts) {
         this.mixin(require('./item'));
     
@@ -82,7 +89,7 @@ riot.tag('todo', '<section id="todoapp"> <header id="header"> <h1>todos</h1> <in
         this.mixin(require('./todo'));
     
 });
-},{"./item":4,"./todo":6}],6:[function(require,module,exports){
+},{"./item":5,"./todo":7}],7:[function(require,module,exports){
 (function() {
   var storage;
 
@@ -155,35 +162,59 @@ riot.tag('todo', '<section id="todoapp"> <header id="header"> <h1>todos</h1> <in
 
 }).call(this);
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
+riot.tag('viewport', '<menu></menu> <div name="container"></div>', function(opts) {
+        this.mixin(require('./viewport'));
+    
+});
+},{"./viewport":9}],9:[function(require,module,exports){
 (function() {
-  var r;
+  module.exports = {
+    init: function() {
+      return app.viewport = this;
+    },
+    show: function(tag) {
+      this.container.setAttribute('riot-tag', tag);
+      return riot.mount(tag);
+    }
+  };
+
+}).call(this);
+
+},{}],10:[function(require,module,exports){
+(function() {
+  var app;
+
+  require('./app/viewport/tag');
+
+  require('./app/menu/tag');
 
   require('./app/todo/tag');
 
   require('./app/test/tag');
 
-  r = new C.Router(require('./router'));
+  app = window.app = {};
 
-  r.start();
+  riot.mount('viewport');
+
+  app.router = new C.Router(require('./router'));
+
+  app.router.start();
 
 }).call(this);
 
-},{"./app/test/tag":2,"./app/todo/tag":5,"./router":8}],8:[function(require,module,exports){
+},{"./app/menu/tag":2,"./app/test/tag":3,"./app/todo/tag":6,"./app/viewport/tag":8,"./router":11}],11:[function(require,module,exports){
 (function() {
   module.exports = {
     routes: {
+      '': 'home',
+      '/': 'home',
+      'start/:id': 'start',
       'hello/:id/:name': 'hello',
       'test/p:id': 'test',
       'path/*path': 'path',
       'aa': function() {
         return console.log('aaaaaaa');
-      },
-      '': function() {
-        return console.log('root');
-      },
-      '/': function() {
-        return console.log('/');
       }
     },
     hello: function(id, name) {
@@ -194,9 +225,15 @@ riot.tag('todo', '<section id="todoapp"> <header id="header"> <h1>todos</h1> <in
     },
     path: function(path) {
       return console.log(path);
+    },
+    start: function(id) {
+      return app.viewport.show(id);
+    },
+    home: function() {
+      return app.viewport.show('todo');
     }
   };
 
 }).call(this);
 
-},{}]},{},[7])
+},{}]},{},[10])

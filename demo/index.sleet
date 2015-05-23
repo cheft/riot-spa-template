@@ -5,11 +5,7 @@ html
 		link(rel='stylesheet' href='bower_components/todomvc-common/base.css')
 		link(rel='stylesheet' href='bower_components/todomvc-app-css/index.css')
 	body
-		div(id='tag' riot-tag='test')
+		viewport
 		script(src='/bower_components/riot/riot.js')
 		script(src='/dist/cheft.js')
 		script(src='/demo/scripts/app.js')
-		script.
-			riot.mount('test');
-			tag.setAttribute('riot-tag', 'test');
-			riot.mount('todo');

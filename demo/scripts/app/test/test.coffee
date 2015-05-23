@@ -8,6 +8,7 @@ module.exports =
 
 	init: ->
 		@on 'mount', -> console.log 'mount'
+		@on 'unmount', -> console.log 'unmount'
 
 	test1: (e) -> console.log('test1')
 

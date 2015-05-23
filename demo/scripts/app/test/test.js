@@ -4,8 +4,11 @@
     title2: 'ppps',
     title3: 'tttt3',
     init: function() {
-      return this.on('mount', function() {
+      this.on('mount', function() {
         return console.log('mount');
+      });
+      return this.on('unmount', function() {
+        return console.log('unmount');
       });
     },
     test1: function(e) {

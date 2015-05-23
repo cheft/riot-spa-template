@@ -1,0 +1,5 @@
+menu
+    ul
+        li > a(href='#start/test') Test
+        li > a(href='#start/hello') Hello
+        li > a(href='#start/todo') Todo
