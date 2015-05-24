@@ -1,12 +1,10 @@
-coffee(bare=true) require '../hello/tag'
-
 test
-    script > coffee(bare=true) @mixin require('./test')
+    script > coffee C.mixin @, require('./test')
     hello + world
     h3(onclick='{test1}') {title1}
     h3(onclick='{test2}') {title2}
     h3(onclick='{test3}') {title3}
-    input(type='text' onkeyup='{fill}' onfocus='{test1}')
+    input(type='text' onkeyup='{fill}')
 
 world
     h1 world

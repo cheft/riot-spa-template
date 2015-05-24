@@ -1,20 +1,22 @@
 (function() {
-  var app;
+  var app, router;
 
   require('./app/viewport/tag');
 
   require('./app/menu/tag');
 
+  require('./app/hello/tag');
+
   require('./app/todo/tag');
 
   require('./app/test/tag');
 
-  app = window.app = {};
+  app = window.app = new C.Application();
 
-  riot.mount('viewport');
+  app.mount('viewport');
 
-  app.router = new C.Router(require('./router'));
+  router = new C.Router(require('./router'));
 
-  app.router.start();
+  router.start();
 
 }).call(this);

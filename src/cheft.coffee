@@ -17,6 +17,13 @@ C.extend = (target, mixins...) ->
 
 C.uniqueId = (prefix) -> (if prefix then prefix else '') + ++idCounter
 
+C.mixin = (tag, obj) ->
+    tag.mixin obj.actions if obj.actions
+    return unless obj.events
+    for item of obj.events
+        do (item) -> tag.on item, obj.events[item]
+
+# @include core/application.coffee
 # @include core/router.coffee
 # @include core/storage.coffee
 

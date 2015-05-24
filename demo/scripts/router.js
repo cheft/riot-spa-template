@@ -15,7 +15,7 @@
       return app.viewport.show(id);
     },
     home: function() {
-      return app.viewport.show('todo');
+      return app.viewport.show('test');
     },
     hello: function(id, name) {
       return console.log('hello' + id + 'name=' + name);

@@ -1,5 +1,5 @@
 (function() {
-  var C, Cheft, Router, Storage, _extractParams, _routeToRegExp, _router, escapeRegExp, fn1, i, idCounter, item, len, namedParam, optionalParam, splatParam, toString, types,
+  var C, Cheft, Router, Storage, _extractParams, _routeToRegExp, _router, application, escapeRegExp, fn1, i, idCounter, item, len, namedParam, optionalParam, splatParam, toString, types,
     slice = [].slice;
 
   C = Cheft = {
@@ -41,6 +41,34 @@
   C.uniqueId = function(prefix) {
     return (prefix ? prefix : '') + ++idCounter;
   };
+
+  C.mixin = function(tag, obj) {
+    var results;
+    if (obj.actions) {
+      tag.mixin(obj.actions);
+    }
+    if (!obj.events) {
+      return;
+    }
+    results = [];
+    for (item in obj.events) {
+      results.push((function(item) {
+        return tag.on(item, obj.events[item]);
+      })(item));
+    }
+    return results;
+  };
+
+  C.Application = application = (function() {
+    function application() {}
+
+    application.prototype.mount = function(tagName) {
+      return this[tagName] = riot.mount(tagName)[0];
+    };
+
+    return application;
+
+  })();
 
   optionalParam = /\((.*?)\)/g;
 

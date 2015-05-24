@@ -1,11 +1,11 @@
 <item>
     <script>
-        this.mixin(require('./item'));
+        C.mixin(this, require('./item'));
     </script>
-    <li class="{completed: todo.completed, editing: editing} todo">
+    <li class="{completed: t.completed, editing: editing} todo">
         <div class="view">
-            <input class="toggle" type="checkbox" checked="{todo.completed}" onclick="{toggleTodo}"/>
-            <label ondblclick="{toEdit}">{todo.title}</label>
+            <input class="toggle" type="checkbox" checked="{t.completed}" onclick="{toggleTodo}"/>
+            <label ondblclick="{toEdit}">{t.title}</label>
             <button class="destroy" onclick="{toRemove}"></button>
         </div>
         <input class="edit" name="editor" onblur="{didEdit}" onkeyup="{didEdit}"/>
@@ -13,7 +13,7 @@
 </item>
 <todo>
     <script>
-        this.mixin(require('./todo'));
+        C.mixin(this, require('./todo'));
     </script>
     <section id="todoapp">
         <header id="header">
@@ -22,7 +22,7 @@
         </header>
         <section id="main" if="{todos.length}">
             <input id="toggle-all" type="checkbox" checked="{allDone}" onclick="{toggleAll}"/>
-            <ul id="todo-list"><item each="{t, i in filtered()}"></item></ul>
+            <ul id="todo-list"><item each="{t in filtered()}"></item></ul>
         </section>
         <footer id="footer" if="{todos.length}">
             <span id="todo-count">

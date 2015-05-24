@@ -1,21 +1,21 @@
 item
-    script > coffee(bare=true) @mixin require('./item')
-    li(class='{completed: todo.completed, editing: editing} todo')
+    script > coffee(bare=true) C.mixin @, require('./item')
+    li(class='{completed: t.completed, editing: editing} todo')
         .view
-            input.toggle(type='checkbox' checked='{todo.completed}' onclick='{toggleTodo}')
-            label(ondblclick='{toEdit}') {todo.title}
+            input.toggle(type='checkbox' checked='{t.completed}' onclick='{toggleTodo}')
+            label(ondblclick='{toEdit}') {t.title}
             button.destroy(onclick='{toRemove}')
         input.edit(name='editor' onblur='{didEdit}' onkeyup='{didEdit}')
 
 todo
-    script > coffee(bare=true) @mixin require('./todo')
+    script > coffee(bare=true) C.mixin @, require('./todo')
     section#todoapp
         header#header
             h1 todos
             input#new-todo(autofocus autocomplete='off' placeholder='What needs to be done?' onkeyup='{didAdd}')
         section#main(if='{todos.length}')
             input#toggle-all(type='checkbox' checked='{allDone}' onclick='{toggleAll}')
-            ul#todo-list: item(each='{t, i in filtered()}')
+            ul#todo-list: item(each='{t in filtered()}')
         footer#footer(if='{todos.length}')
             span#todo-count
                 strong {remaining}

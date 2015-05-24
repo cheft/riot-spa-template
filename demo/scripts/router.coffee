@@ -11,7 +11,7 @@ module.exports =
 
     start: (id) -> app.viewport.show(id)
 
-    home: -> app.viewport.show('todo')
+    home: -> app.viewport.show('test')
 
     hello: (id, name) -> console.log 'hello' + id + 'name=' + name
 

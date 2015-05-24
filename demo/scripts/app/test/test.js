@@ -1,24 +1,38 @@
 (function() {
   module.exports = {
-    title1: 'ttt4455',
-    title2: 'ppps',
-    title3: 'tttt3',
-    init: function() {
-      this.on('mount', function() {
+    actions: {
+      init: function() {
+        this.title1 = '1111111';
+        this.title2 = '2222222';
+        this.title3 = '3333333';
+        return this.trigger('init');
+      },
+      test1: function(e) {
+        return console.log('test1');
+      },
+      test2: function() {
+        return console.log('test2');
+      },
+      fill: function(e) {
+        return this.title1 = e.target.value;
+      }
+    },
+    events: {
+      mount: function() {
         return console.log('mount');
-      });
-      return this.on('unmount', function() {
+      },
+      update: function() {
+        return console.log('update');
+      },
+      updated: function() {
+        return console.log('updated');
+      },
+      unmount: function() {
         return console.log('unmount');
-      });
-    },
-    test1: function(e) {
-      return console.log('test1');
-    },
-    test2: function() {
-      return console.log('test2');
-    },
-    fill: function(e) {
-      return this.title1 = e.target.value;
+      },
+      remove: function() {
+        return console.log('remove');
+      }
     }
   };
 

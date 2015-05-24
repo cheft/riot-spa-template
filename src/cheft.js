@@ -1,7 +1,7 @@
-var c, cheft, idCounter, item, toString, types, _fn, _i, _len,
+var C, Cheft, idCounter, item, toString, types, _fn, _i, _len,
   __slice = [].slice;
 
-c = cheft = {
+C = Cheft = {
   version: '1.0.0'
 };
 
@@ -12,7 +12,7 @@ toString = Object.prototype.toString;
 types = ['Function', 'Object', 'String', 'Array', 'Number', 'Boolean', 'Date', 'RegExp', 'Undefined', 'Null'];
 
 _fn = function(item) {
-  return c["is" + item] = function(obj) {
+  return C["is" + item] = function(obj) {
     return toString.call(obj) === ("[object " + item + "]");
   };
 };
@@ -21,7 +21,7 @@ for (_i = 0, _len = types.length; _i < _len; _i++) {
   _fn(item);
 }
 
-c.extend = function() {
+C.extend = function() {
   var key, mixin, mixins, target, value, _j, _len1;
   target = arguments[0], mixins = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
   if (!target) {
@@ -37,12 +37,25 @@ c.extend = function() {
   return target;
 };
 
-c.uniqueId = function(prefix) {
+C.uniqueId = function(prefix) {
   return (prefix ? prefix : '') + ++idCounter;
 };
 
-c.Router = Router;
+C.mixin = function(tag, obj) {
+  var _results;
+  if (obj.actions) {
+    tag.mixin(obj.actions);
+  }
+  if (!obj.events) {
+    return;
+  }
+  _results = [];
+  for (item in obj.events) {
+    _results.push((function(item) {
+      return tag.on(item, obj.events[item]);
+    })(item));
+  }
+  return _results;
+};
 
-c.Storage = Storage;
-
-window.c = c;
+window.C = C;

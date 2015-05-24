@@ -1,5 +1,5 @@
 viewport
-    script > coffee(bare=true) @mixin require('./viewport')
+    script > coffee @mixin require('./viewport')
     menu
         hr + p 这是个很神奇的框架
         hr

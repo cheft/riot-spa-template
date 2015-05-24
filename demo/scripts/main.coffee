@@ -1,9 +1,11 @@
 require './app/viewport/tag'
 require './app/menu/tag'
+require './app/hello/tag'
 require './app/todo/tag'
 require './app/test/tag'
 
-app = window.app = {}
-riot.mount('viewport');
-app.router = new C.Router require('./router')
-app.router.start()
+app = window.app = new C.Application()
+app.mount('viewport')
+
+router = new C.Router require('./router')
+router.start()

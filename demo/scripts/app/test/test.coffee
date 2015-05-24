@@ -1,17 +1,26 @@
 module.exports =
+	actions:
+		init: ->
+			@title1 = '1111111'
+			@title2 = '2222222'
+			@title3 = '3333333'
 
-	title1: 'ttt4455'
+			@trigger('init')
 
-	title2: 'ppps'
+		test1: (e) ->
+			console.log('test1')
 
-	title3: 'tttt3'
+		test2: -> console.log('test2')
 
-	init: ->
-		@on 'mount', -> console.log 'mount'
-		@on 'unmount', -> console.log 'unmount'
+		fill: (e) -> @title1 = e.target.value
 
-	test1: (e) -> console.log('test1')
+	events:
+		mount: -> console.log 'mount'
 
-	test2: -> console.log('test2')
+		update: -> console.log 'update'
 
-	fill: (e) -> @title1 = e.target.value
+		updated: -> console.log 'updated'
+
+		unmount: -> console.log 'unmount'
+
+		remove: -> console.log 'remove'
