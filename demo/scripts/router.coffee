@@ -1,17 +1,21 @@
 module.exports =
     routes:
         '':  'home'
-        '/': 'home'
         'start/:id': 'start'
+        'start/todos/:status': 'filterTodo'
 
         'hello/:id/:name': 'hello'
         'test/p:id': 'test'
         'path/*path': 'path'
         'aa': -> console.log 'aaaaaaa'
 
-    start: (id) -> app.viewport.show(id)
+    start: (id) -> app.tags.viewport.show(id)
 
-    home: -> app.viewport.show('test')
+    home: -> app.tags.viewport.show('todo')
+
+    filterTodo: (status) ->
+        app.tags.viewport.show('todo') unless app.tags.todo
+        app.tags.todo.filter status
 
     hello: (id, name) -> console.log 'hello' + id + 'name=' + name
 

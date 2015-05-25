@@ -1,12 +1,13 @@
 (function() {
-  var storage;
+  var cache;
 
-  storage = new C.Storage('todo');
+  cache = new Cheft.Cache('todo');
 
   module.exports = {
     actions: {
       init: function() {
-        this.todos = storage.fetch();
+        this.todos = cache.get();
+        this.list = this.todos;
         return this.links = [
           {
             label: 'All',
@@ -32,10 +33,16 @@
         }
       },
       filtered: function() {
-        return this.todos;
+        if (this.activeFilter === 'all') {
+          return this.todos;
+        }
+        return this.todos.filter((function(_this) {
+          return function(t) {
+            return t.completed === (_this.activeFilter === 'active' ? false : true);
+          };
+        })(this));
       },
       toggleAll: function(e) {
-        console.log('all');
         this.todos.forEach(function(t) {
           return t.completed = e.target.checked;
         });
@@ -47,6 +54,10 @@
           return !t.completed;
         });
         return this.trigger('save');
+      },
+      filter: function(status) {
+        this.activeFilter = status || 'all';
+        return this.update();
       }
     },
     events: {
@@ -61,10 +72,10 @@
         })(this));
       },
       save: function() {
-        storage.save(this.todos);
+        cache.save(this.todos);
         return this.update();
       },
-      update: function() {
+      update: function(status) {
         this.remaining = (this.todos.filter(function(t) {
           return !t.completed;
         })).length;

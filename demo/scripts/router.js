@@ -2,8 +2,8 @@
   module.exports = {
     routes: {
       '': 'home',
-      '/': 'home',
       'start/:id': 'start',
+      'start/todos/:status': 'filterTodo',
       'hello/:id/:name': 'hello',
       'test/p:id': 'test',
       'path/*path': 'path',
@@ -12,10 +12,16 @@
       }
     },
     start: function(id) {
-      return app.viewport.show(id);
+      return app.tags.viewport.show(id);
     },
     home: function() {
-      return app.viewport.show('test');
+      return app.tags.viewport.show('todo');
+    },
+    filterTodo: function(status) {
+      if (!app.tags.todo) {
+        app.tags.viewport.show('todo');
+      }
+      return app.tags.todo.filter(status);
     },
     hello: function(id, name) {
       return console.log('hello' + id + 'name=' + name);

@@ -11,11 +11,11 @@
 
   require('./app/test/tag');
 
-  app = window.app = new C.Application();
+  app = window.app = new Cheft.Application();
 
   app.mount('viewport');
 
-  router = new C.Router(require('./router'));
+  router = new Cheft.Router(require('./router'));
 
   router.start();
 

@@ -1,9 +1,10 @@
-storage = new C.Storage 'todo'
+cache = new Cheft.Cache 'todo'
 
 module.exports =
     actions:
         init: ->
-            @todos = storage.fetch()
+            @todos = cache.get()
+            @list = @todos
             @links = [{label: 'All', name: 'all'}, {label: 'Active', name: 'active'}, {label: 'Completed', name: 'completed'}]
 
         didAdd: (e) ->
@@ -13,12 +14,10 @@ module.exports =
                 @trigger 'save'
 
         filtered: ->
-            # return @todos if @activeFilter is 'all'
-            # @todos.filter (t) => t.completed is (if @activeFilter is 'active' then false else true)
-            @todos
+            return @todos if @activeFilter is 'all'
+            @todos.filter (t) => t.completed is (if @activeFilter is 'active' then false else true)
 
         toggleAll: (e) ->
-            console.log 'all'
             @todos.forEach (t) -> t.completed = e.target.checked
             @trigger 'save'
             true
@@ -27,6 +26,10 @@ module.exports =
             @todos = @todos.filter (t) -> !t.completed
             @trigger 'save'
 
+        filter: (status) ->
+            @activeFilter = status || 'all'
+            @update()
+
     events:
         remove: (todo) ->
             @todos.forEach (t) =>
@@ -34,9 +37,9 @@ module.exports =
                 @trigger 'save'
 
         save: ->
-            storage.save @todos
+            cache.save @todos
             @update()
 
-        update: ->
+        update: (status) ->
             @remaining = (@todos.filter (t) -> !t.completed).length
             @allDone = @remaining is 0
