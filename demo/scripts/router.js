@@ -15,7 +15,7 @@
       return app.tags.viewport.show(id);
     },
     home: function() {
-      return app.tags.viewport.show('todo');
+      return app.tags.viewport.show('ranking');
     },
     filterTodo: function(status) {
       if (!app.tags.todo) {

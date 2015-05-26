@@ -11,7 +11,7 @@ module.exports =
 
     start: (id) -> app.tags.viewport.show(id)
 
-    home: -> app.tags.viewport.show('todo')
+    home: -> app.tags.viewport.show('ranking')
 
     filterTodo: (status) ->
         app.tags.viewport.show('todo') unless app.tags.todo

@@ -5,7 +5,7 @@ module.exports =
 			@title2 = '2222222'
 			@title3 = '3333333'
 
-			@trigger('init')
+			@trigger('remove')
 
 		test1: (e) ->
 			console.log('test1')

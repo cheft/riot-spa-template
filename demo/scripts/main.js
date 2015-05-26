@@ -5,11 +5,7 @@
 
   require('./app/menu/tag');
 
-  require('./app/hello/tag');
-
-  require('./app/todo/tag');
-
-  require('./app/test/tag');
+  require('./app/ranking/tag');
 
   app = window.app = new Cheft.Application();
 

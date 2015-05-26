@@ -41,11 +41,11 @@
   gulp.task('serve', function() {
     var ser;
     ser = server({
-      livereload: true,
+      host: '0.0.0.0',
+      livereload: false,
       directoryListing: {
         path: './'
       },
-      open: true,
       defaultFile: 'demo/index.html'
     });
     return gulp.src('./').pipe(ser);

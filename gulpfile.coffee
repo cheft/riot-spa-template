@@ -32,7 +32,7 @@ gulp.task 'build', ->
         .pipe(gulp.dest('demo/scripts'))
 
 gulp.task 'serve', ->
-    ser = server livereload: true, directoryListing: {path: './'}, open: true, defaultFile: 'demo/index.html'
+    ser = server host: '0.0.0.0', livereload: false, directoryListing: {path: './'}, defaultFile: 'demo/index.html'
     gulp.src('./').pipe ser
 
 gulp.task 'watch', ['build', 'serve'], ->

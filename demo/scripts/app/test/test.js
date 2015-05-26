@@ -5,7 +5,7 @@
         this.title1 = '1111111';
         this.title2 = '2222222';
         this.title3 = '3333333';
-        return this.trigger('init');
+        return this.trigger('remove');
       },
       test1: function(e) {
         return console.log('test1');
