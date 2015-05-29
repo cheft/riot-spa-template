@@ -1,5 +1,5 @@
 test
-    script > coffee Cheft.mixin @, require('./test')
+    script > coffee app.mixin @, require('./test')
     hello + world
     h3(onclick='{test1}') {title1}
     h3(onclick='{test2}') {title2}

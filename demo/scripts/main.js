@@ -1,5 +1,5 @@
 (function() {
-  var app, router;
+  var app;
 
   require('./app/viewport/tag');
 
@@ -7,12 +7,14 @@
 
   require('./app/ranking/tag');
 
-  app = window.app = new Cheft.Application();
+  app = window.app = new Cheft.Application({
+    urlRoot: 'http://10.10.51.118:3000/'
+  });
 
   app.mount('viewport');
 
-  router = new Cheft.Router(require('./router'));
+  app.router = new Cheft.Router(require('./router'));
 
-  router.start();
+  app.router.start();
 
 }).call(this);

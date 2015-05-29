@@ -6,7 +6,7 @@
         riot = require('riot')
         module.exports = factory root, riot
     else
-        root.Cheft = factory root, riot
+        root.Cheft = factory root, root.riot
 ) window, (root, riot) ->
     C = Cheft = version: '1.0.0'
 
@@ -27,16 +27,10 @@
 
     C.uniqueId = (prefix) -> (if prefix then prefix else '') + ++idCounter
 
-    C.mixin = (tag, obj) ->
-        tag.mixin obj.actions if obj.actions
-        return unless obj.events
-        for item of obj.events
-            do (item) -> tag.on item, obj.events[item]
-
     # @include core/application.coffee
     # @include core/router.coffee
-    # @include core/cache.coffee
     # @include core/adapter.coffee
-    # @include core/request.coffee
+    # @include core/store.coffee
+    # @include core/cache.coffee
 
     Cheft

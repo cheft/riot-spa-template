@@ -1,3 +1,3 @@
 C.Adapter =
-    Promise: null
-    ajax: null
+    Promise: $.Deferred
+    ajax: $.ajax

@@ -7,6 +7,7 @@ coffee = require 'gulp-coffee'
 rename = require 'gulp-rename'
 riot = require 'gulp-riot'
 sleet = require 'gulp-sleet'
+ip = require 'ip'
 
 gulp.task 'cheft', ->
     gulp.src('src/cheft.coffee')
@@ -26,13 +27,13 @@ gulp.task 'build', ->
         .pipe(riot({type: 'none'}))
         .pipe(gulp.dest('demo/scripts'))
 
-    gulp.src('demo/scripts/main.js', { read: false })
+    gulp.src('demo/scripts/main.js')
         .pipe(browserify())
         .pipe(rename('app.js'))
         .pipe(gulp.dest('demo/scripts'))
 
 gulp.task 'serve', ->
-    ser = server host: '0.0.0.0', livereload: false, directoryListing: {path: './'}, defaultFile: 'demo/index.html'
+    ser = server host: ip.address(), open: true, livereload: true, directoryListing: {path: './'}, defaultFile: 'demo/index.html'
     gulp.src('./').pipe ser
 
 gulp.task 'watch', ['build', 'serve'], ->

@@ -1,4 +1,7 @@
 module.exports =
+	stores:
+		todos: url: 'todos', load: 'auto#update'
+
 	actions:
 		init: ->
 			@title1 = '1111111'

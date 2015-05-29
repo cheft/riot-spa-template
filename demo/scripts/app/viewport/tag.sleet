@@ -1,3 +1,4 @@
 viewport
-    script > coffee Cheft.mixin @, require('./viewport')
+    script > coffee app.mixin @, require('./viewport')
+    div {posts.data[0].title}
     div(name='container')

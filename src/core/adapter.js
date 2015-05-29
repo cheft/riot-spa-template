@@ -1,7 +1,4 @@
-(function() {
-  C.Adapter = {
-    Promise: null,
-    ajax: null
-  };
-
-}).call(this);
+C.Adapter = {
+  Promise: $.Deferred,
+  ajax: $.ajax
+};

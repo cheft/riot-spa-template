@@ -1,10 +1,11 @@
 <ranking>
     <script>
-          Cheft.mixin(this, require('./'));
+          app.mixin(this, require('./'));
     </script>
     <div class="ui-tooltips ui-tooltips-vip">
         <div class="ui-tooltips-cnt ui-border-b">好基友推荐排行榜</div>
     </div>
+    <button class="ui-btn-lg" onclick={add}>增加一行</button>
     <ul class="ui-grid-trisect grid-header">
         <li>
             手机号
@@ -17,45 +18,16 @@
         </li>
     </ul>
     <ul class="ui-list ui-list-text ui-border-tb">
-        <li class="ui-border-t">
-            <div class="ranking-badge ranking-badge ranking1">1</div>
+        <li class="ui-border-t" each={ranking.data} onclick={parent.edit}>
+            <div class="ranking-badge ranking-badge ranking1" onclick={parent.remove}>{id}</div>
             <ul class="ui-grid-trisect" style="width: 95%;">
                 <li>
-                    13316463314
+                    {phone}
                 </li>
-                <li style="text-align: center;">&nbsp;64人</li>
-                <li style="text-align: right;">2015/05/26</li>
-            </ul>
-        </li>
-        <li class="ui-border-t">
-            <div class="ranking-badge ranking-badge ranking2">2</div>
-            <ul class="ui-grid-trisect" style="width: 95%;">
-                <li>
-                    13316463314
-                </li>
-                <li style="text-align: center;">&nbsp;64人</li>
-                <li style="text-align: right;">2015/05/26</li>
-            </ul>
-        </li>
-        <li class="ui-border-t">
-            <div class="ranking-badge ranking-badge ranking3">3</div>
-            <ul class="ui-grid-trisect" style="width: 95%;">
-                <li>
-                    13316463314
-                </li>
-                <li style="text-align: center;">&nbsp;64人</li>
-                <li style="text-align: right;">2015/05/26</li>
-            </ul>
-        </li>
-        <li class="ui-border-t">
-            <div class="ranking-badge ranking-badge"></div>
-            <ul class="ui-grid-trisect" style="width: 95%;">
-                <li>
-                    13316463314
-                </li>
-                <li style="text-align: center;">&nbsp;64人</li>
-                <li style="text-align: right;">2015/05/26</li>
+                <li style="text-align: center;">&nbsp;{number}人</li>
+                <li style="text-align: right;">{date}</li>
             </ul>
         </li>
     </ul>
+
 </ranking>

@@ -12,14 +12,14 @@
       }
     },
     start: function(id) {
-      return app.tags.viewport.show(id);
+      return app.tags.viewport.trigger('show', 'id');
     },
     home: function() {
-      return app.tags.viewport.show('ranking');
+      return app.tags.viewport.trigger('show', 'ranking');
     },
     filterTodo: function(status) {
       if (!app.tags.todo) {
-        app.tags.viewport.show('todo');
+        app.tags.viewport.trigger('show', 'todo');
       }
       return app.tags.todo.filter(status);
     },

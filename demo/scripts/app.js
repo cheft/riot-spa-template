@@ -4,18 +4,64 @@ riot.tag('menu', '', function(opts) {
 },{}],2:[function(require,module,exports){
 (function() {
   module.exports = {
+    stores: {
+      ranking: {}
+    },
     actions: {
-      init: function() {
-        return this.list = [
-          {
-            title: 'test11111'
-          }, {
-            title: 'test22222'
-          }
-        ];
+      remove: function(e) {
+        this.ranking.del({
+          id: e.item.id
+        }).done((function(_this) {
+          return function() {
+            return _this.trigger('refresh');
+          };
+        })(this));
+        e.preventUpdate = true;
+        return e.stopPropagation();
       },
-      test: function() {
-        return console.log('111');
+      add: function(e) {
+        var obj;
+        obj = {
+          phone: '13316463321',
+          number: 1,
+          date: '2016-02-02'
+        };
+        this.ranking.save(obj).done((function(_this) {
+          return function() {
+            return _this.trigger('refresh');
+          };
+        })(this));
+        return e.preventUpdate = true;
+      },
+      edit: function(e) {
+        var obj;
+        obj = {
+          id: e.item.id,
+          phone: '133xxxx0000',
+          number: 50,
+          date: '2016-xx-xx'
+        };
+        this.ranking.save(obj).done((function(_this) {
+          return function() {
+            return _this.trigger('refresh');
+          };
+        })(this));
+        return e.preventUpdate = true;
+      }
+    },
+    events: {
+      mount: function() {
+        return this.trigger('refresh');
+      },
+      update: function() {
+        return console.log('update');
+      },
+      refresh: function() {
+        return this.ranking.get().done((function(_this) {
+          return function() {
+            return _this.update();
+          };
+        })(this));
       }
     }
   };
@@ -23,15 +69,15 @@ riot.tag('menu', '', function(opts) {
 }).call(this);
 
 },{}],3:[function(require,module,exports){
-riot.tag('ranking', '<div class="ui-tooltips ui-tooltips-vip"> <div class="ui-tooltips-cnt ui-border-b">好基友推荐排行榜</div> </div> <ul class="ui-grid-trisect grid-header"> <li> 手机号 </li> <li> 推荐人数 </li> <li> 日期 </li> </ul> <ul class="ui-list ui-list-text ui-border-tb"> <li class="ui-border-t"> <div class="ranking-badge ranking-badge ranking1">1</div> <ul class="ui-grid-trisect" style="width: 95%;"> <li> 13316463314 </li> <li style="text-align: center;">&nbsp;64人</li> <li style="text-align: right;">2015/05/26</li> </ul> </li> <li class="ui-border-t"> <div class="ranking-badge ranking-badge ranking2">2</div> <ul class="ui-grid-trisect" style="width: 95%;"> <li> 13316463314 </li> <li style="text-align: center;">&nbsp;64人</li> <li style="text-align: right;">2015/05/26</li> </ul> </li> <li class="ui-border-t"> <div class="ranking-badge ranking-badge ranking3">3</div> <ul class="ui-grid-trisect" style="width: 95%;"> <li> 13316463314 </li> <li style="text-align: center;">&nbsp;64人</li> <li style="text-align: right;">2015/05/26</li> </ul> </li> <li class="ui-border-t"> <div class="ranking-badge ranking-badge"></div> <ul class="ui-grid-trisect" style="width: 95%;"> <li> 13316463314 </li> <li style="text-align: center;">&nbsp;64人</li> <li style="text-align: right;">2015/05/26</li> </ul> </li> </ul>', function(opts) {
-          Cheft.mixin(this, require('./'));
+riot.tag('ranking', '<div class="ui-tooltips ui-tooltips-vip"> <div class="ui-tooltips-cnt ui-border-b">好基友推荐排行榜</div> </div> <button class="ui-btn-lg" onclick="{add}">增加一行</button> <ul class="ui-grid-trisect grid-header"> <li> 手机号 </li> <li> 推荐人数 </li> <li> 日期 </li> </ul> <ul class="ui-list ui-list-text ui-border-tb"> <li class="ui-border-t" each="{ranking.data}" onclick="{parent.edit}"> <div class="ranking-badge ranking-badge ranking1" onclick="{parent.remove}">{id}</div> <ul class="ui-grid-trisect" style="width: 95%;"> <li> {phone} </li> <li style="text-align: center;">&nbsp;{number}人</li> <li style="text-align: right;">{date}</li> </ul> </li> </ul>', function(opts) {
+          app.mixin(this, require('./'));
     
 });
 
 },{"./":2}],4:[function(require,module,exports){
-riot.tag('viewport', '<div name="container"></div>', function(opts) {
+riot.tag('viewport', '<div>{posts.data[0].title}</div> <div name="container"></div>', function(opts) {
         (function() {
-          Cheft.mixin(this, require('./viewport'));
+          app.mixin(this, require('./viewport'));
 
         }).call(this);
     
@@ -39,7 +85,7 @@ riot.tag('viewport', '<div name="container"></div>', function(opts) {
 },{"./viewport":5}],5:[function(require,module,exports){
 (function() {
   module.exports = {
-    actions: {
+    events: {
       show: function(tag) {
         this.container.setAttribute('riot-tag', tag);
         return app.mount(tag);
@@ -51,7 +97,7 @@ riot.tag('viewport', '<div name="container"></div>', function(opts) {
 
 },{}],6:[function(require,module,exports){
 (function() {
-  var app, router;
+  var app;
 
   require('./app/viewport/tag');
 
@@ -59,13 +105,15 @@ riot.tag('viewport', '<div name="container"></div>', function(opts) {
 
   require('./app/ranking/tag');
 
-  app = window.app = new Cheft.Application();
+  app = window.app = new Cheft.Application({
+    urlRoot: 'http://10.10.51.118:3000/'
+  });
 
   app.mount('viewport');
 
-  router = new Cheft.Router(require('./router'));
+  app.router = new Cheft.Router(require('./router'));
 
-  router.start();
+  app.router.start();
 
 }).call(this);
 
@@ -84,14 +132,14 @@ riot.tag('viewport', '<div name="container"></div>', function(opts) {
       }
     },
     start: function(id) {
-      return app.tags.viewport.show(id);
+      return app.tags.viewport.trigger('show', 'id');
     },
     home: function() {
-      return app.tags.viewport.show('ranking');
+      return app.tags.viewport.trigger('show', 'ranking');
     },
     filterTodo: function(status) {
       if (!app.tags.todo) {
-        app.tags.viewport.show('todo');
+        app.tags.viewport.trigger('show', 'todo');
       }
       return app.tags.todo.filter(status);
     },

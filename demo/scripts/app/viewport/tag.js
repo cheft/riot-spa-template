@@ -1,6 +1,6 @@
-riot.tag('viewport', '<div name="container"></div>', function(opts) {
+riot.tag('viewport', '<div>{posts.data[0].title}</div> <div name="container"></div>', function(opts) {
         (function() {
-          Cheft.mixin(this, require('./viewport'));
+          app.mixin(this, require('./viewport'));
 
         }).call(this);
     

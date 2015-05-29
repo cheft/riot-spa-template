@@ -9,12 +9,12 @@ module.exports =
         'path/*path': 'path'
         'aa': -> console.log 'aaaaaaa'
 
-    start: (id) -> app.tags.viewport.show(id)
+    start: (id) -> app.tags.viewport.trigger('show', 'id')
 
-    home: -> app.tags.viewport.show('ranking')
+    home: -> app.tags.viewport.trigger('show', 'ranking')
 
     filterTodo: (status) ->
-        app.tags.viewport.show('todo') unless app.tags.todo
+        app.tags.viewport.trigger('show', 'todo') unless app.tags.todo
         app.tags.todo.filter status
 
     hello: (id, name) -> console.log 'hello' + id + 'name=' + name

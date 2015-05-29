@@ -14,7 +14,7 @@
       return root.Cheft = factory(root, root.riot);
     }
   })(window, function(root, riot) {
-    var C, Cache, Cheft, Router, application, escapeRegExp, extractParams, fn1, i, idCounter, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
+    var C, Cache, Cheft, Router, Store, application, escapeRegExp, extractParams, fn1, i, idCounter, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
     C = Cheft = {
       version: '1.0.0'
     };
@@ -48,24 +48,11 @@
     C.uniqueId = function(prefix) {
       return (prefix ? prefix : '') + ++idCounter;
     };
-    C.mixin = function(tag, obj) {
-      var results;
-      if (obj.actions) {
-        tag.mixin(obj.actions);
-      }
-      if (!obj.events) {
-        return;
-      }
-      results = [];
-      for (item in obj.events) {
-        results.push((function(item) {
-          return tag.on(item, obj.events[item]);
-        })(item));
-      }
-      return results;
-    };
     C.Application = application = (function() {
-      function application() {}
+      function application(options) {
+        this.options = options != null ? options : {};
+        this.urlRoot = this.options.urlRoot || '';
+      }
 
       application.prototype.mount = function(tagName) {
         var tag;
@@ -73,6 +60,30 @@
         tag = riot.mount(tagName)[0];
         this.tags[tagName] = tag;
         return this.currentTag = tag;
+      };
+
+      application.prototype.mixin = function(tag, obj) {
+        var fn2, store, swap;
+        if (obj.actions) {
+          tag.mixin(obj.actions);
+        }
+        if (obj.events) {
+          fn2 = function(item) {
+            return tag.on(item, obj.events[item]);
+          };
+          for (item in obj.events) {
+            fn2(item);
+          }
+        }
+        if (obj.stores) {
+          swap = {};
+          for (item in obj.stores) {
+            obj.stores[item].url = this.urlRoot + (obj.stores[item].url || item);
+            store = new Store(tag, obj.stores[item]);
+            swap[item] = store;
+          }
+          return C.extend(tag, swap);
+        }
       };
 
       return application;
@@ -163,6 +174,92 @@
       return Router;
 
     })();
+    C.Adapter = {
+      Promise: $.Deferred,
+      ajax: $.ajax
+    };
+    C.Store = Store = (function() {
+      function Store(tag1, options) {
+        this.tag = tag1;
+        this.options = options;
+        this.params = C.extend({}, this.options.params);
+        this.url = this.options.url;
+        this.data = this.options.data || {};
+      }
+
+      Store.prototype.getParams = function() {
+        return this.params;
+      };
+
+      Store.prototype.get = function(obj) {
+        var p;
+        p = new C.Adapter.Promise();
+        this.ajax({
+          type: 'GET',
+          url: this.url
+        }, obj).done((function(_this) {
+          return function(resp) {
+            _this.set(resp);
+            return p.resolve(resp);
+          };
+        })(this)).fail(function(resp) {
+          return p.reject(resp);
+        });
+        return p.promise();
+      };
+
+      Store.prototype.post = function(obj) {
+        return this.ajax({
+          type: 'POST',
+          url: this.url
+        }, obj);
+      };
+
+      Store.prototype.put = function(obj) {
+        return this.ajax({
+          type: 'PUT',
+          url: this.url + '/' + obj.id
+        }, obj);
+      };
+
+      Store.prototype.del = function(obj) {
+        return this.ajax({
+          type: 'DELETE',
+          url: this.url + '/' + obj.id
+        }, obj);
+      };
+
+      Store.prototype.save = function(obj) {
+        if (this.data.id) {
+          return this.put(obj);
+        } else {
+          return this.post(obj);
+        }
+      };
+
+      Store.prototype.ajax = function(params, obj) {
+        var p;
+        if (obj == null) {
+          obj = {};
+        }
+        params.data = obj;
+        p = new C.Adapter.Promise();
+        return C.Adapter.ajax(params);
+      };
+
+      Store.prototype.set = function(d) {
+        this.data = this.options.root ? d[this.options.root] : d;
+        return this;
+      };
+
+      Store.prototype.clear = function(trigger) {
+        this.data = {};
+        return this;
+      };
+
+      return Store;
+
+    })();
     C.Cache = Cache = (function() {
       function Cache(key1, session) {
         this.key = key1;
@@ -184,82 +281,6 @@
       return Cache;
 
     })();
-    C.Adapter = {
-      Promise: null,
-      ajax: null
-    };
-    C.Request = {
-      url: function(model) {
-        var base, options, urls;
-        options = model.app.options;
-        urls = [options.urlRoot];
-        if (model.module.options.urlPrefix) {
-          urls.push(model.module.options.urlPrefix);
-        }
-        urls.push(model.module.name);
-        base = model.url || '';
-        if (D.isFunction(base)) {
-          base = base.apply(model);
-        }
-        while (base.indexOf('../') === 0) {
-          urls.pop();
-          base = base.slice(3);
-        }
-        if (base) {
-          urls.push(base);
-        }
-        if (model.data.id) {
-          urls.push(model.data.id);
-        }
-        if (options.urlSuffix) {
-          urls.push(urls.pop() + options.urlSuffix);
-        }
-        return compose.apply(null, urls);
-      },
-      get: function(model, options) {
-        return this.ajax({
-          type: 'GET'
-        }, model, model.getParams(), options);
-      },
-      post: function(model, options) {
-        return this.ajax({
-          type: 'POST'
-        }, model, model.data, options);
-      },
-      put: function(model, options) {
-        return this.ajax({
-          type: 'PUT'
-        }, model, model.data, options);
-      },
-      del: function(model, options) {
-        return this.ajax({
-          type: 'DELETE'
-        }, model, model.data, options);
-      },
-      save: function(model, options) {
-        if (model.data.id) {
-          return this.put(model, options);
-        } else {
-          return this.post(model, options);
-        }
-      },
-      ajax: function(params, model, data, options) {
-        var url;
-        if (options == null) {
-          options = {};
-        }
-        url = this.url(model);
-        params = D.extend(params, options);
-        data = D.extend(data, options.data);
-        params.url = url;
-        params.data = data;
-        return model.Promise.chain(A.ajax(params), function(resp) {
-          model.set(resp);
-          model.changed();
-          return model;
-        });
-      }
-    };
     return Cheft;
   });
 
