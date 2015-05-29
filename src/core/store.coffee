@@ -1,5 +1,5 @@
 C.Store = class Store
-    constructor: (@tag, @options) ->
+    constructor: (@app, @tag, @options) ->
         @params = C.extend {}, @options.params
         @url = @options.url
         @data = @options.data or {}
@@ -22,6 +22,7 @@ C.Store = class Store
     save: (obj) -> if @data.id then @put(obj) else @post(obj)
 
     ajax: (params, obj = {}) ->
+        params.url = @app.urlRoot + params.url
         params.data = obj
         p = new C.Adapter.Promise()
         C.Adapter.ajax(params)

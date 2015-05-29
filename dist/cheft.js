@@ -78,8 +78,8 @@
         if (obj.stores) {
           swap = {};
           for (item in obj.stores) {
-            obj.stores[item].url = this.urlRoot + (obj.stores[item].url || item);
-            store = new Store(tag, obj.stores[item]);
+            obj.stores[item].url = obj.stores[item].url || item;
+            store = new Store(app, tag, obj.stores[item]);
             swap[item] = store;
           }
           return C.extend(tag, swap);
@@ -179,7 +179,8 @@
       ajax: $.ajax
     };
     C.Store = Store = (function() {
-      function Store(tag1, options) {
+      function Store(app1, tag1, options) {
+        this.app = app1;
         this.tag = tag1;
         this.options = options;
         this.params = C.extend({}, this.options.params);
@@ -242,6 +243,7 @@
         if (obj == null) {
           obj = {};
         }
+        params.url = this.app.urlRoot + params.url;
         params.data = obj;
         p = new C.Adapter.Promise();
         return C.Adapter.ajax(params);

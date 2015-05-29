@@ -1,6 +1,6 @@
 module.exports =
 	stores:
-		todos: url: 'todos', load: 'auto#update'
+		todos: {}
 
 	actions:
 		init: ->

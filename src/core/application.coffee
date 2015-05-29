@@ -16,7 +16,7 @@ C.Application = class application
         if obj.stores
             swap = {}
             for item of obj.stores
-                obj.stores[item].url = @urlRoot + (obj.stores[item].url || item)
-                store = new Store tag, obj.stores[item]
+                obj.stores[item].url = obj.stores[item].url || item
+                store = new Store app, tag, obj.stores[item]
                 swap[item] = store
             C.extend tag, swap

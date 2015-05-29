@@ -69,12 +69,67 @@ riot.tag('menu', '', function(opts) {
 }).call(this);
 
 },{}],3:[function(require,module,exports){
-riot.tag('ranking', '<div class="ui-tooltips ui-tooltips-vip"> <div class="ui-tooltips-cnt ui-border-b">好基友推荐排行榜</div> </div> <button class="ui-btn-lg" onclick="{add}">增加一行</button> <ul class="ui-grid-trisect grid-header"> <li> 手机号 </li> <li> 推荐人数 </li> <li> 日期 </li> </ul> <ul class="ui-list ui-list-text ui-border-tb"> <li class="ui-border-t" each="{ranking.data}" onclick="{parent.edit}"> <div class="ranking-badge ranking-badge ranking1" onclick="{parent.remove}">{id}</div> <ul class="ui-grid-trisect" style="width: 95%;"> <li> {phone} </li> <li style="text-align: center;">&nbsp;{number}人</li> <li style="text-align: right;">{date}</li> </ul> </li> </ul>', function(opts) {
+riot.tag('ranking', '<div class="ui-tooltips ui-tooltips-vip"> <div class="ui-tooltips-cnt ui-border-b">好基友推荐排行榜</div> </div> <button class="ui-btn-lg" ontouchstart="{add}">增加一行</button> <ul class="ui-grid-trisect grid-header"> <li> 手机号 </li> <li> 推荐人数 </li> <li> 日期 </li> </ul> <ul class="ui-list ui-list-text ui-border-tb"> <li class="ui-border-t" each="{ranking.data}" ontouchstart="{parent.edit}"> <div class="ranking-badge ranking-badge ranking1" ontouchstart="{parent.remove}">{id}</div> <ul class="ui-grid-trisect" style="width: 95%;"> <li> {phone} </li> <li style="text-align: center;">&nbsp;{number}人</li> <li style="text-align: right;">{date}</li> </ul> </li> </ul>', function(opts) {
           app.mixin(this, require('./'));
     
 });
 
 },{"./":2}],4:[function(require,module,exports){
+riot.tag('test', '<hello></hello><world></world> <h3 onclick="{test1}">{title1}</h3> <h3 onclick="{test2}">{title2}</h3> <h3 onclick="{test3}">{title3}</h3> <input type="text" onkeyup="{fill}">', function(opts) {
+        (function() {
+          app.mixin(this, require('./test'));
+
+        }).call(this);
+    
+});
+riot.tag('world', '<h1>world</h1>', function(opts) {
+
+});
+},{"./test":5}],5:[function(require,module,exports){
+(function() {
+  module.exports = {
+    stores: {
+      todos: {}
+    },
+    actions: {
+      init: function() {
+        this.title1 = '1111111';
+        this.title2 = '2222222';
+        this.title3 = '3333333';
+        return this.trigger('remove');
+      },
+      test1: function(e) {
+        return console.log('test1');
+      },
+      test2: function() {
+        return console.log('test2');
+      },
+      fill: function(e) {
+        return this.title1 = e.target.value;
+      }
+    },
+    events: {
+      mount: function() {
+        return console.log('mount');
+      },
+      update: function() {
+        return console.log('update');
+      },
+      updated: function() {
+        return console.log('updated');
+      },
+      unmount: function() {
+        return console.log('unmount');
+      },
+      remove: function() {
+        return console.log('remove');
+      }
+    }
+  };
+
+}).call(this);
+
+},{}],6:[function(require,module,exports){
 riot.tag('viewport', '<div>{posts.data[0].title}</div> <div name="container"></div>', function(opts) {
         (function() {
           app.mixin(this, require('./viewport'));
@@ -82,7 +137,7 @@ riot.tag('viewport', '<div>{posts.data[0].title}</div> <div name="container"></d
         }).call(this);
     
 });
-},{"./viewport":5}],5:[function(require,module,exports){
+},{"./viewport":7}],7:[function(require,module,exports){
 (function() {
   module.exports = {
     events: {
@@ -95,13 +150,15 @@ riot.tag('viewport', '<div>{posts.data[0].title}</div> <div name="container"></d
 
 }).call(this);
 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function() {
   var app;
 
   require('./app/viewport/tag');
 
   require('./app/menu/tag');
+
+  require('./app/test/tag');
 
   require('./app/ranking/tag');
 
@@ -117,7 +174,7 @@ riot.tag('viewport', '<div>{posts.data[0].title}</div> <div name="container"></d
 
 }).call(this);
 
-},{"./app/menu/tag":1,"./app/ranking/tag":3,"./app/viewport/tag":4,"./router":7}],7:[function(require,module,exports){
+},{"./app/menu/tag":1,"./app/ranking/tag":3,"./app/test/tag":4,"./app/viewport/tag":6,"./router":9}],9:[function(require,module,exports){
 (function() {
   module.exports = {
     routes: {
@@ -156,4 +213,4 @@ riot.tag('viewport', '<div>{posts.data[0].title}</div> <div name="container"></d
 
 }).call(this);
 
-},{}]},{},[6])
+},{}]},{},[8])
