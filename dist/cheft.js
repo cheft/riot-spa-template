@@ -159,8 +159,12 @@
         return riot.route.stop();
       };
 
-      Router.prototype.to = function(hash) {
+      Router.prototype.go = function(hash) {
         return riot.route(hash);
+      };
+
+      Router.prototype.back = function() {
+        return history.back();
       };
 
       Router.prototype.add = function(route, fn) {

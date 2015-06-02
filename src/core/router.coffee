@@ -37,7 +37,9 @@ C.Router = class Router
 
     stop: -> riot.route.stop()
 
-    to: (hash) -> riot.route hash
+    go: (hash) -> riot.route hash
+
+    back: -> history.back()
 
     add: (route, fn) -> @opts.routes[route] = fn
 
