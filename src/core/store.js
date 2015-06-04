@@ -62,13 +62,11 @@ C.Store = Store = (function() {
   };
 
   Store.prototype.ajax = function(params, obj) {
-    var p;
     if (obj == null) {
       obj = {};
     }
     params.url = this.app.urlRoot + params.url;
     params.data = obj;
-    p = new C.Adapter.Promise();
     return C.Adapter.ajax(params);
   };
 

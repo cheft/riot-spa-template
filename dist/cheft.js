@@ -179,8 +179,8 @@
 
     })();
     C.Adapter = {
-      Promise: $.Deferred,
-      ajax: $.ajax
+      Promise: {},
+      ajax: {}
     };
     C.Store = Store = (function() {
       function Store(app1, tag1, options) {
@@ -243,13 +243,11 @@
       };
 
       Store.prototype.ajax = function(params, obj) {
-        var p;
         if (obj == null) {
           obj = {};
         }
         params.url = this.app.urlRoot + params.url;
         params.data = obj;
-        p = new C.Adapter.Promise();
         return C.Adapter.ajax(params);
       };
 

@@ -24,7 +24,6 @@ C.Store = class Store
     ajax: (params, obj = {}) ->
         params.url = @app.urlRoot + params.url
         params.data = obj
-        p = new C.Adapter.Promise()
         C.Adapter.ajax(params)
 
     set: (d) ->
