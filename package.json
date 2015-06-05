@@ -16,7 +16,7 @@
     "url": "https://github.com/cheft/cheftjs/issues"
   },
   "homepage": "https://github.com/cheft/cheftjs",
-  "dependencies": {
+  "devDependencies": {
     "browserify": "^10.2.1",
     "coffee-script": "^1.9.0",
     "gulp": "^3.8.11",
@@ -26,9 +26,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-riot": "^0.2.5",
     "gulp-server-livereload": "^1.0.2",
-    "gulp-sleet": "^0.0.2",
     "gulp-uglify": "^1.1.0",
     "gulp-watch": "^4.1.1",
+    "gulp-sleet": "^0.0.3",
     "ip": "^0.3.2"
   }
 }
