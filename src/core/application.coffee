@@ -9,14 +9,18 @@ C.Application = class application
         @currentTag = tag
 
     mixin: (tag, obj) ->
-        tag.mixin obj.actions if obj.actions
+        init = ->
         if obj.events
+            init = obj.events.init || ->
             for item of obj.events
                 do (item) -> tag.on item, obj.events[item]
-        if obj.stores
-            swap = {}
-            for item of obj.stores
-                obj.stores[item].url = obj.stores[item].url || item
-                store = new Store app, tag, obj.stores[item]
-                swap[item] = store
-            C.extend tag, swap
+        if obj.actions
+            obj.actions.init = init
+            tag.mixin obj.actions
+        if obj.store
+            opt = {}
+            if C.isString(obj.store)
+                opt.url = obj.store
+            else if C.isObject(obj.store)
+                opt = obj.store
+            tag.store = new Store app, tag, opt

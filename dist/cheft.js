@@ -14,11 +14,10 @@
       return root.Cheft = factory(root, root.riot);
     }
   })(window, function(root, riot) {
-    var C, Cache, Cheft, Router, Store, application, escapeRegExp, extractParams, fn1, i, idCounter, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
+    var C, Cheft, Router, Store, application, escapeRegExp, extractParams, fn1, i, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
     C = Cheft = {
       version: '1.0.0'
     };
-    idCounter = 0;
     toString = Object.prototype.toString;
     types = ['Function', 'Object', 'String', 'Array', 'Number', 'Boolean', 'Date', 'RegExp', 'Undefined', 'Null'];
     fn1 = function(item) {
@@ -45,9 +44,6 @@
       }
       return target;
     };
-    C.uniqueId = function(prefix) {
-      return (prefix ? prefix : '') + ++idCounter;
-    };
     C.Application = application = (function() {
       function application(options) {
         this.options = options != null ? options : {};
@@ -63,11 +59,10 @@
       };
 
       application.prototype.mixin = function(tag, obj) {
-        var fn2, store, swap;
-        if (obj.actions) {
-          tag.mixin(obj.actions);
-        }
+        var fn2, init, opt;
+        init = function() {};
         if (obj.events) {
+          init = obj.events.init || function() {};
           fn2 = function(item) {
             return tag.on(item, obj.events[item]);
           };
@@ -75,14 +70,18 @@
             fn2(item);
           }
         }
-        if (obj.stores) {
-          swap = {};
-          for (item in obj.stores) {
-            obj.stores[item].url = obj.stores[item].url || item;
-            store = new Store(app, tag, obj.stores[item]);
-            swap[item] = store;
+        if (obj.actions) {
+          obj.actions.init = init;
+          tag.mixin(obj.actions);
+        }
+        if (obj.store) {
+          opt = {};
+          if (C.isString(obj.store)) {
+            opt.url = obj.store;
+          } else if (C.isObject(obj.store)) {
+            opt = obj.store;
           }
-          return C.extend(tag, swap);
+          return tag.store = new Store(app, tag, opt);
         }
       };
 
@@ -187,7 +186,7 @@
         this.app = app1;
         this.tag = tag1;
         this.options = options;
-        this.params = C.extend({}, this.options.params);
+        this.params = this.options.params || {};
         this.url = this.options.url;
         this.data = this.options.data || {};
       }
@@ -197,41 +196,31 @@
       };
 
       Store.prototype.get = function(obj) {
-        var p;
-        p = new C.Adapter.Promise();
-        this.ajax({
+        return this.ajax({
           type: 'GET',
           url: this.url
-        }, obj).done((function(_this) {
-          return function(resp) {
-            _this.set(resp);
-            return p.resolve(resp);
-          };
-        })(this)).fail(function(resp) {
-          return p.reject(resp);
-        });
-        return p.promise();
+        }, obj, 'geted');
       };
 
       Store.prototype.post = function(obj) {
         return this.ajax({
           type: 'POST',
           url: this.url
-        }, obj);
+        }, obj, 'posted');
       };
 
       Store.prototype.put = function(obj) {
         return this.ajax({
           type: 'PUT',
           url: this.url + '/' + obj.id
-        }, obj);
+        }, obj, 'puted');
       };
 
       Store.prototype.del = function(obj) {
         return this.ajax({
           type: 'DELETE',
           url: this.url + '/' + obj.id
-        }, obj);
+        }, obj, 'deleted');
       };
 
       Store.prototype.save = function(obj) {
@@ -242,13 +231,30 @@
         }
       };
 
-      Store.prototype.ajax = function(params, obj) {
+      Store.prototype.ajax = function(params, obj, evt) {
+        var p, self;
         if (obj == null) {
           obj = {};
         }
+        self = this;
         params.url = this.app.urlRoot + params.url;
         params.data = obj;
-        return C.Adapter.ajax(params);
+        p = new C.Adapter.Promise();
+        C.Adapter.ajax(params).done(function(resp) {
+          self.set(resp);
+          self.tag.trigger(evt, 'success', resp);
+          if (evt === 'posted') {
+            self.tag.trigger('saved', 'success', resp);
+          }
+          return p.resolve(resp);
+        }).fail(function(resp) {
+          self.tag.trigger(evt, 'error', resp);
+          if (evt === 'posted') {
+            self.tag.trigger('saved', 'error', resp);
+          }
+          return p.reject(resp);
+        });
+        return p.promise();
       };
 
       Store.prototype.set = function(d) {
@@ -262,27 +268,6 @@
       };
 
       return Store;
-
-    })();
-    C.Cache = Cache = (function() {
-      function Cache(key1, session) {
-        this.key = key1;
-        this.session = session;
-        this.cache = localStorage;
-        if (this.session) {
-          this.cache = sessionStorage;
-        }
-      }
-
-      Cache.prototype.get = function() {
-        return JSON.parse(this.cache.getItem(this.key) || '[]');
-      };
-
-      Cache.prototype.save = function(data) {
-        return this.cache.setItem(this.key, JSON.stringify(data));
-      };
-
-      return Cache;
 
     })();
     return Cheft;

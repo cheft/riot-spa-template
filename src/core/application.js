@@ -16,11 +16,10 @@ C.Application = application = (function() {
   };
 
   application.prototype.mixin = function(tag, obj) {
-    var fn, item, store, swap;
-    if (obj.actions) {
-      tag.mixin(obj.actions);
-    }
+    var fn, init, item, opt;
+    init = function() {};
     if (obj.events) {
+      init = obj.events.init || function() {};
       fn = function(item) {
         return tag.on(item, obj.events[item]);
       };
@@ -28,14 +27,18 @@ C.Application = application = (function() {
         fn(item);
       }
     }
-    if (obj.stores) {
-      swap = {};
-      for (item in obj.stores) {
-        obj.stores[item].url = obj.stores[item].url || item;
-        store = new Store(app, tag, obj.stores[item]);
-        swap[item] = store;
+    if (obj.actions) {
+      obj.actions.init = init;
+      tag.mixin(obj.actions);
+    }
+    if (obj.store) {
+      opt = {};
+      if (C.isString(obj.store)) {
+        opt.url = obj.store;
+      } else if (C.isObject(obj.store)) {
+        opt = obj.store;
       }
-      return C.extend(tag, swap);
+      return tag.store = new Store(app, tag, opt);
     }
   };
 

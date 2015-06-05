@@ -10,7 +10,6 @@
 ) window, (root, riot) ->
     C = Cheft = version: '1.0.0'
 
-    idCounter = 0
     toString = Object.prototype.toString
     types = [
         'Function', 'Object', 'String', 'Array', 'Number'
@@ -25,12 +24,9 @@
         target[key] = value for key, value of mixin for mixin in mixins
         target
 
-    C.uniqueId = (prefix) -> (if prefix then prefix else '') + ++idCounter
-
     # @include core/application.coffee
     # @include core/router.coffee
     # @include core/adapter.coffee
     # @include core/store.coffee
-    # @include core/cache.coffee
 
     Cheft

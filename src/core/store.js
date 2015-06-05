@@ -6,7 +6,7 @@ C.Store = Store = (function() {
     this.app = app;
     this.tag = tag;
     this.options = options;
-    this.params = C.extend({}, this.options.params);
+    this.params = this.options.params || {};
     this.url = this.options.url;
     this.data = this.options.data || {};
   }
@@ -16,41 +16,31 @@ C.Store = Store = (function() {
   };
 
   Store.prototype.get = function(obj) {
-    var p;
-    p = new C.Adapter.Promise();
-    this.ajax({
+    return this.ajax({
       type: 'GET',
       url: this.url
-    }, obj).done((function(_this) {
-      return function(resp) {
-        _this.set(resp);
-        return p.resolve(resp);
-      };
-    })(this)).fail(function(resp) {
-      return p.reject(resp);
-    });
-    return p.promise();
+    }, obj, 'geted');
   };
 
   Store.prototype.post = function(obj) {
     return this.ajax({
       type: 'POST',
       url: this.url
-    }, obj);
+    }, obj, 'posted');
   };
 
   Store.prototype.put = function(obj) {
     return this.ajax({
       type: 'PUT',
       url: this.url + '/' + obj.id
-    }, obj);
+    }, obj, 'puted');
   };
 
   Store.prototype.del = function(obj) {
     return this.ajax({
       type: 'DELETE',
       url: this.url + '/' + obj.id
-    }, obj);
+    }, obj, 'deleted');
   };
 
   Store.prototype.save = function(obj) {
@@ -61,13 +51,30 @@ C.Store = Store = (function() {
     }
   };
 
-  Store.prototype.ajax = function(params, obj) {
+  Store.prototype.ajax = function(params, obj, evt) {
+    var p, self;
     if (obj == null) {
       obj = {};
     }
+    self = this;
     params.url = this.app.urlRoot + params.url;
     params.data = obj;
-    return C.Adapter.ajax(params);
+    p = new C.Adapter.Promise();
+    C.Adapter.ajax(params).done(function(resp) {
+      self.set(resp);
+      self.tag.trigger(evt, 'success', resp);
+      if (evt === 'posted') {
+        self.tag.trigger('saved', 'success', resp);
+      }
+      return p.resolve(resp);
+    }).fail(function(resp) {
+      self.tag.trigger(evt, 'error', resp);
+      if (evt === 'posted') {
+        self.tag.trigger('saved', 'error', resp);
+      }
+      return p.reject(resp);
+    });
+    return p.promise();
   };
 
   Store.prototype.set = function(d) {
