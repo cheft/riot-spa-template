@@ -1,4 +1,6 @@
 .DS_Store
-bower_components
 node_modules
 **/**.js
+gulpfile.js
+demo/bower_components
+demo/node_modules

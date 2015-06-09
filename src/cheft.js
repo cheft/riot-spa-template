@@ -18,6 +18,7 @@ var slice = [].slice;
   C = Cheft = {
     version: '1.0.0'
   };
+  C.riot = riot;
   toString = Object.prototype.toString;
   types = ['Function', 'Object', 'String', 'Array', 'Number', 'Boolean', 'Date', 'RegExp', 'Undefined', 'Null'];
   fn = function(item) {

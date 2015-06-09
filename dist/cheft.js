@@ -18,6 +18,7 @@
     C = Cheft = {
       version: '1.0.0'
     };
+    C.riot = riot;
     toString = Object.prototype.toString;
     types = ['Function', 'Object', 'String', 'Array', 'Number', 'Boolean', 'Date', 'RegExp', 'Undefined', 'Null'];
     fn1 = function(item) {
@@ -48,14 +49,22 @@
       function application(options) {
         this.options = options != null ? options : {};
         this.urlRoot = this.options.urlRoot || '';
+        this.contentType = this.options.contentType || 'application/x-www-form-urlencoded';
+        this.router = new C.Router(this.options.router);
       }
+
+      application.prototype.start = function() {
+        this.container = this.mount(this.options.container);
+        return this.router.start();
+      };
 
       application.prototype.mount = function(tagName) {
         var tag;
         this.tags = this.tags || {};
         tag = riot.mount(tagName)[0];
         this.tags[tagName] = tag;
-        return this.currentTag = tag;
+        this.currentTag = tag;
+        return tag;
       };
 
       application.prototype.mixin = function(tag, obj) {
@@ -186,71 +195,79 @@
         this.app = app1;
         this.tag = tag1;
         this.options = options;
-        this.params = this.options.params || {};
         this.url = this.options.url;
         this.data = this.options.data || {};
+        this.params = this.options.params || {};
+        delete this.options.url;
+        delete this.options.data;
+        delete this.options.params;
       }
 
-      Store.prototype.getParams = function() {
-        return this.params;
-      };
-
-      Store.prototype.get = function(obj) {
+      Store.prototype.get = function(data) {
         return this.ajax({
           type: 'GET',
           url: this.url
-        }, obj, 'geted');
+        }, data, 'geted');
       };
 
-      Store.prototype.post = function(obj) {
+      Store.prototype.post = function(data) {
         return this.ajax({
           type: 'POST',
           url: this.url
-        }, obj, 'posted');
+        }, data, 'posted');
       };
 
-      Store.prototype.put = function(obj) {
+      Store.prototype.put = function(data) {
         return this.ajax({
           type: 'PUT',
-          url: this.url + '/' + obj.id
-        }, obj, 'puted');
+          url: this.url + '/' + data.id
+        }, data, 'puted');
       };
 
-      Store.prototype.del = function(obj) {
+      Store.prototype.del = function(data) {
         return this.ajax({
           type: 'DELETE',
-          url: this.url + '/' + obj.id
-        }, obj, 'deleted');
+          url: this.url + '/' + data.id
+        }, data, 'deleted');
       };
 
-      Store.prototype.save = function(obj) {
-        if (this.data.id) {
-          return this.put(obj);
+      Store.prototype.save = function(data) {
+        if (data.id) {
+          return this.put(data);
         } else {
-          return this.post(obj);
+          return this.post(data);
         }
       };
 
-      Store.prototype.ajax = function(params, obj, evt) {
-        var p, self;
-        if (obj == null) {
-          obj = {};
+      Store.prototype.ajax = function(opts, data, evt) {
+        var appendUrl, config, p, self;
+        if (data == null) {
+          data = {};
         }
         self = this;
-        params.url = this.app.urlRoot + params.url;
-        params.data = obj;
+        opts.contentType = this.app.contentType;
+        config = C.extend(opts, this.options);
+        config.url = this.app.urlRoot + config.url;
+        appendUrl = '';
+        for (p in this.params) {
+          appendUrl += p + '=' + this.params[p] + '&';
+        }
+        if (appendUrl !== '') {
+          config.url += '?' + appendUrl.substring(0, appendUrl.length - 1);
+        }
+        config.data = data;
         p = new C.Adapter.Promise();
-        C.Adapter.ajax(params).done(function(resp) {
+        C.Adapter.ajax(config).done(function(resp) {
           self.set(resp);
-          self.tag.trigger(evt, 'success', resp);
-          if (evt === 'posted') {
-            self.tag.trigger('saved', 'success', resp);
+          self.tag.trigger(evt, resp, 'success');
+          if (evt === ('posted' || 'puted')) {
+            self.tag.trigger('saved', resp, 'success');
           }
           return p.resolve(resp);
         }).fail(function(resp) {
-          self.tag.trigger(evt, 'error', resp);
-          if (evt === 'posted') {
-            self.tag.trigger('saved', 'error', resp);
+          self.tag.trigger(evt, resp, 'error');
+          if (evt === ('posted' || 'puted')) {
+            self.tag.trigger('saved', resp, 'error');
           }
           return p.reject(resp);
         });
@@ -262,7 +279,7 @@
         return this;
       };
 
-      Store.prototype.clear = function(trigger) {
+      Store.prototype.clear = function() {
         this.data = {};
         return this;
       };

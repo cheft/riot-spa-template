@@ -1,31 +1,39 @@
 C.Store = class Store
     constructor: (@app, @tag, @options) ->
-        @params = @options.params || {}
         @url = @options.url
         @data = @options.data or {}
+        @params = @options.params || {}
+        delete @options.url
+        delete @options.data
+        delete @options.params
 
-    getParams: -> @params
+    get : (data) -> @ajax type: 'GET', url: @url, data, 'geted'
+    post: (data) -> @ajax type: 'POST', url: @url, data, 'posted'
+    put : (data) -> @ajax type: 'PUT', url: @url + '/' + data.id, data, 'puted'
+    del : (data) -> @ajax type: 'DELETE', url: @url + '/' + data.id, data, 'deleted'
+    save: (data) -> if data.id then @put(data) else @post(data)
 
-    get : (obj) -> @ajax type: 'GET', url: @url, obj, 'geted'
-    post: (obj) -> @ajax type: 'POST', url: @url, obj, 'posted'
-    put : (obj) -> @ajax type: 'PUT', url: @url + '/' + obj.id, obj, 'puted'
-    del : (obj) -> @ajax type: 'DELETE', url: @url + '/' + obj.id, obj, 'deleted'
-    save: (obj) -> if @data.id then @put(obj) else @post(obj)
-
-    ajax: (params, obj = {}, evt) ->
+    ajax: (opts, data = {}, evt) ->
         self = @
-        params.url = @app.urlRoot + params.url
-        params.data = obj
+        opts.contentType = @app.contentType
+        config = C.extend opts, @options
+        config.url = @app.urlRoot + config.url
+        appendUrl = ''
+        appendUrl += p + '=' + @params[p] + '&' for p of @params
+        config.url += '?' + appendUrl.substring(0, appendUrl.length - 1) if appendUrl isnt ''
+        config.data = data
         p = new C.Adapter.Promise()
-        C.Adapter.ajax(params)
+        C.Adapter.ajax(config)
             .done (resp) ->
                 self.set resp
-                self.tag.trigger evt, 'success', resp
-                self.tag.trigger 'saved', 'success', resp if evt is 'posted'
+                self.tag.trigger evt, resp, 'success'
+                if evt is ('posted' or 'puted')
+                    self.tag.trigger 'saved', resp, 'success' 
                 p.resolve resp
             .fail (resp) ->
-                self.tag.trigger evt, 'error', resp
-                self.tag.trigger 'saved', 'error', resp if evt is 'posted'
+                self.tag.trigger evt, resp, 'error'
+                if evt is ('posted' or 'puted')
+                    self.tag.trigger 'saved', resp, 'error' 
                 p.reject resp
         p.promise()
 
@@ -33,7 +41,7 @@ C.Store = class Store
         @data = if @options.root then d[@options.root] else d
         @
 
-    clear: (trigger) ->
+    clear: ->
         @data = {}
         @
 

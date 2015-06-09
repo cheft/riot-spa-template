@@ -5,14 +5,22 @@ C.Application = application = (function() {
   function application(options) {
     this.options = options != null ? options : {};
     this.urlRoot = this.options.urlRoot || '';
+    this.contentType = this.options.contentType || 'application/x-www-form-urlencoded';
+    this.router = new C.Router(this.options.router);
   }
+
+  application.prototype.start = function() {
+    this.container = this.mount(this.options.container);
+    return this.router.start();
+  };
 
   application.prototype.mount = function(tagName) {
     var tag;
     this.tags = this.tags || {};
     tag = riot.mount(tagName)[0];
     this.tags[tagName] = tag;
-    return this.currentTag = tag;
+    this.currentTag = tag;
+    return tag;
   };
 
   application.prototype.mixin = function(tag, obj) {

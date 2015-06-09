@@ -1,15 +1,10 @@
-gulp = require 'gulp'
-browserify = require 'gulp-browserify'
+gulp       = require 'gulp'
 preprocess = require 'gulp-preprocess'
-uglify = require 'gulp-uglify'
-server = require 'gulp-server-livereload'
-coffee = require 'gulp-coffee'
-rename = require 'gulp-rename'
-riot = require 'gulp-riot'
-sleet = require 'gulp-sleet'
-ip = require 'ip'
+uglify     = require 'gulp-uglify'
+coffee     = require 'gulp-coffee'
+rename     = require 'gulp-rename'
 
-gulp.task 'cheft', ->
+gulp.task 'build', ->
     gulp.src('src/cheft.coffee')
         .pipe preprocess({context: { NODE_ENV: 'production', DEBUG: true}})
         .pipe coffee()
@@ -18,25 +13,4 @@ gulp.task 'cheft', ->
         .pipe uglify()
         .pipe gulp.dest('./dist')
 
-gulp.task 'build', ->
-    gulp.src('demo/**/*.coffee')
-        .pipe(coffee())
-        .pipe(gulp.dest('demo'))
-
-    gulp.src('demo/scripts/**/*.html')
-        .pipe(riot({type: 'none'}))
-        .pipe(gulp.dest('demo/scripts'))
-
-    gulp.src('demo/scripts/main.js')
-        .pipe(browserify())
-        .pipe(rename('app.js'))
-        .pipe(gulp.dest('demo/scripts'))
-
-gulp.task 'serve', ->
-    ser = server host: ip.address(), open: true, livereload: true, directoryListing: {path: './'}, defaultFile: 'demo/index.html'
-    gulp.src('./').pipe ser
-
-gulp.task 'watch', ['build', 'serve'], ->
-    gulp.watch ['src/**', 'demo/**'], ['build']
-
-gulp.task 'default', ['watch']
+gulp.task 'default', ['build']
