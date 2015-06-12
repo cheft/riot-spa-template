@@ -67,16 +67,19 @@ C.Store = Store = (function() {
       config.url += '?' + appendUrl.substring(0, appendUrl.length - 1);
     }
     config.data = data;
+    this.app.trigger('ajax', config);
     p = new C.Adapter.Promise();
     C.Adapter.ajax(config).done(function(resp) {
       self.set(resp);
       self.tag.trigger(evt, resp, 'success');
+      this.app.trigger('ajaxed', resp, 'success');
       if (evt === ('posted' || 'puted')) {
         self.tag.trigger('saved', resp, 'success');
       }
       return p.resolve(resp);
     }).fail(function(resp) {
       self.tag.trigger(evt, resp, 'error');
+      this.app.trigger('ajaxed', resp, 'error');
       if (evt === ('posted' || 'puted')) {
         self.tag.trigger('saved', resp, 'error');
       }

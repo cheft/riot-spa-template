@@ -7,6 +7,7 @@ C.Application = application = (function() {
     this.urlRoot = this.options.urlRoot || '';
     this.contentType = this.options.contentType || 'application/x-www-form-urlencoded';
     this.router = new C.Router(this.options.router);
+    riot.observable(this);
   }
 
   application.prototype.start = function() {

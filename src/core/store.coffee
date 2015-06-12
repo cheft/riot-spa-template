@@ -22,16 +22,19 @@ C.Store = class Store
         appendUrl += p + '=' + @params[p] + '&' for p of @params
         config.url += '?' + appendUrl.substring(0, appendUrl.length - 1) if appendUrl isnt ''
         config.data = data
+        @app.trigger 'ajax', config
         p = new C.Adapter.Promise()
         C.Adapter.ajax(config)
             .done (resp) ->
                 self.set resp
                 self.tag.trigger evt, resp, 'success'
+                @app.trigger 'ajaxed', resp, 'success'
                 if evt is ('posted' or 'puted')
                     self.tag.trigger 'saved', resp, 'success' 
                 p.resolve resp
             .fail (resp) ->
                 self.tag.trigger evt, resp, 'error'
+                @app.trigger 'ajaxed', resp, 'error'
                 if evt is ('posted' or 'puted')
                     self.tag.trigger 'saved', resp, 'error' 
                 p.reject resp

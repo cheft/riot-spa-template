@@ -3,6 +3,7 @@ C.Application = class application
         @urlRoot = @options.urlRoot || ''
         @contentType = @options.contentType || 'application/x-www-form-urlencoded'
         @router = new C.Router @options.router
+        riot.observable @
 
     start: ->
         @container = @mount @options.container
