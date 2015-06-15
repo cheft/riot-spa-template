@@ -1,0 +1,159 @@
+<navigator>
+    <script></script>
+    <div class="tabs tabs-style-linemove">
+        <nav>
+            <ul>
+                <li class="tab-current">
+                    <a class="icon icon-home" onclick={change}><div>Home</div></a>
+                </li>
+                <li>
+                    <a class="icon icon-box" onclick={change}><div>Archive</div></a>
+                </li>
+                <li>
+                    <a class="icon icon-display" onclick={change}><div>Analytics</div></a>
+                </li>
+                <li>
+                    <a class="icon icon-upload" onclick={change}><div>Upload</div></a>
+                </li>
+                <li>
+                    <a class="icon icon-tools" onclick={change}><div>Settings</div></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <style>
+        .tabs {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 100%;
+            font-weight: 300;
+            font-size: 1.25em;
+        }
+
+        /* Nav */
+        .tabs nav {
+            text-align: center;
+        }
+
+        .tabs nav ul {
+            position: relative;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: flex;
+            margin: 0 auto;
+            padding: 0;
+            max-width: 1200px;
+            list-style: none;
+            -ms-box-orient: horizontal;
+            -ms-box-pack: center;
+            -webkit-flex-flow: row wrap;
+            -moz-flex-flow: row wrap;
+            -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-justify-content: center;
+            justify-content: center;
+        }
+
+        .tabs nav ul li {
+            position: relative;
+            z-index: 1;
+            display: block;
+            margin: 0;
+            text-align: center;
+            -webkit-flex: 1;
+            -moz-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .tabs nav a {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 2.5;
+        }
+
+        .tabs nav a div {
+            vertical-align: middle;
+            font-size: 0.75em;
+        }
+
+        .tabs nav li.tab-current a {
+            color: #74777b;
+        }
+
+        .tabs nav a:focus {
+            outline: none;
+        }
+
+        @media screen and (max-width: 58em) {
+            .tabs nav a.icon div {
+                display: none;
+            }
+            .tabs nav a:before {
+                margin-right: 0;
+            }
+        }
+         .tabs-style-linemove nav {
+            background: #fff;
+        }
+
+        .tabs-style-linemove nav li:last-child::before {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #1FADC5;
+            content: '';
+            -webkit-transition: -webkit-transform 0.3s;
+            transition: transform 0.3s;
+        }
+
+        /* Move the line */
+        .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before {
+            -webkit-transform: translate3d(-400%,0,0);
+            transform: translate3d(-400%,0,0);
+        }
+
+        .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before {
+            -webkit-transform: translate3d(-300%,0,0);
+            transform: translate3d(-300%,0,0);
+        }
+
+        .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before {
+            -webkit-transform: translate3d(-200%,0,0);
+            transform: translate3d(-200%,0,0);
+        }
+
+        .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before {
+            -webkit-transform: translate3d(-100%,0,0);
+            transform: translate3d(-100%,0,0);
+        }
+
+        .tabs-style-linemove nav a {
+            padding: 1em 0;
+            color: #74777b;
+            line-height: 1;
+            -webkit-transition: color 0.3s, -webkit-transform 0.3s; 
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .tabs-style-linemove nav li.tab-current a {
+            color: #1FADC5;
+            -webkit-transform: translate3d(0,8px,0);
+            transform: translate3d(0,8px,0);
+        }
+
+        .tabs-style-linemove nav a div {
+            font-weight: 700;
+        }
+    </style>
+</navigator>

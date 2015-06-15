@@ -30,5 +30,8 @@
     "gulp-watch": "^4.1.1",
     "gulp-sleet": "^0.0.3",
     "ip": "^0.3.2"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
   }
 }

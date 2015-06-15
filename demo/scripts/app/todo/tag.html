@@ -1,0 +1,68 @@
+<todo>
+    <script></script>
+    <h3>{ title }</h3>
+    <ul>
+        <li each={ items }>
+            <label class={ completed: done }>
+                <input type="checkbox" checked={ done } onclick={ parent.toggle }> { title }
+            </label>
+        </li>
+    </ul>
+    <form onsubmit={ add }>
+        <input name="input" onkeyup={ edit }>
+        <button disabled={ !text }>Add #{ items.length + 1 }</button>
+    </form>
+
+    <style scoped>
+        :scope { 
+            display: block;
+            max-width: 400px;
+            margin: 5% auto;
+            font-family: 'myriad pro', sans-serif;
+            font-size: 20px;
+            border: 0;
+        }
+
+        form input {
+            font-size: 100%;
+            padding: .6em;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        button {
+            background-color: #1FADC5;
+            border: 1px solid rgba(0, 0, 0, .2);
+            font-size: 100%;
+            color: #fff;
+            padding: .6em 1.2em;
+            border-radius: 3em;
+            cursor: pointer;
+            margin: 0 .3em;
+            outline: none;
+        }
+        
+        button[disabled] {
+            background-color: #ddd;
+            color: #aaa;
+        }
+        
+        ul {
+            padding: 0;
+        }
+        
+        li {
+            list-style-type: none;
+            padding: .2em 0;
+        }
+        
+        .completed {
+            text-decoration: line-through;
+            color: #ccc;
+        }
+        
+        label {
+            cursor: pointer;
+        }
+    </style>
+</todo>
