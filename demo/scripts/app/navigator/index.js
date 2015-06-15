@@ -1,13 +1,19 @@
 module.exports = {
     actions: {
         change: function(e) {
-            var li = $(e.target).parent();
-            console.log(li);
-            if(e.target.tagName != 'A') {
-                li = $(e.target).parent().parent();
+            var a = e.target;
+            var li = e.target.parentNode;
+            if(a.tagName != 'A') {
+                li = li.parentNode;
+                a = a.parentNode;
             }
-            $('li.tab-current').removeClass('tab-current');
-            li.addClass('tab-current');
+            app.router.go(a.href.split('#')[1]);
         }
-    } 
+    },
+    events: {
+        changed: function(li) {
+            document.querySelector('.tab-current').className = '';
+            li.className = 'tab-current';
+        }
+    }
 }

@@ -4,19 +4,22 @@
         <nav>
             <ul>
                 <li class="tab-current">
-                    <a class="icon icon-home" onclick={change}><div>Home</div></a>
+                    <a href="#todo" class="icon-shop" onclick={change}><span>Todo</span></a>
                 </li>
                 <li>
-                    <a class="icon icon-box" onclick={change}><div>Archive</div></a>
+                    <a href="#todomvc" class="icon-note" onclick={change}><span>TodoMVC</span></a>
                 </li>
                 <li>
-                    <a class="icon icon-display" onclick={change}><div>Analytics</div></a>
+                    <a href="#blog" class="icon-calendar" onclick={change}><span>Blog</span></a>
                 </li>
                 <li>
-                    <a class="icon icon-upload" onclick={change}><div>Upload</div></a>
+                    <a href="#book" class="icon-book" onclick={change}><span>Book</span></a>
                 </li>
                 <li>
-                    <a class="icon icon-tools" onclick={change}><div>Settings</div></a>
+                    <a href="#setting" class="icon-params" onclick={change}><span>Setting</span></a>
+                </li>
+                <li>
+                    <a href="#aboutme" class="icon-desktop" onclick={change}><span>AboutMe</span></a>
                 </li>
             </ul>
         </nav>
@@ -78,15 +81,16 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             line-height: 2.5;
+            text-decoration: none;
         }
 
-        .tabs nav a div {
+        .tabs nav a span {
             vertical-align: middle;
             font-size: 0.75em;
         }
 
         .tabs nav li.tab-current a {
-            color: #74777b;
+            color: #B12D2B;
         }
 
         .tabs nav a:focus {
@@ -94,7 +98,7 @@
         }
 
         @media screen and (max-width: 58em) {
-            .tabs nav a.icon div {
+            .tabs nav a span {
                 display: none;
             }
             .tabs nav a:before {
@@ -102,7 +106,7 @@
             }
         }
          .tabs-style-linemove nav {
-            background: #fff;
+            background: #F4F4F4;
         }
 
         .tabs-style-linemove nav li:last-child::before {
@@ -111,7 +115,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: #1FADC5;
+            background: #B12D2B;
             content: '';
             -webkit-transition: -webkit-transform 0.3s;
             transition: transform 0.3s;
@@ -119,40 +123,44 @@
 
         /* Move the line */
         .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before {
+            -webkit-transform: translate3d(-500%,0,0);
+            transform: translate3d(-500%,0,0);
+        }
+
+        .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before {
             -webkit-transform: translate3d(-400%,0,0);
             transform: translate3d(-400%,0,0);
         }
 
-        .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before {
+        .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before {
             -webkit-transform: translate3d(-300%,0,0);
             transform: translate3d(-300%,0,0);
         }
 
-        .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before {
+        .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before {
             -webkit-transform: translate3d(-200%,0,0);
             transform: translate3d(-200%,0,0);
         }
-
-        .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before {
+        .tabs-style-linemove nav li:nth-child(5).tab-current ~ li:last-child::before {
             -webkit-transform: translate3d(-100%,0,0);
             transform: translate3d(-100%,0,0);
         }
 
         .tabs-style-linemove nav a {
             padding: 1em 0;
-            color: #74777b;
+            color: #949494;
             line-height: 1;
             -webkit-transition: color 0.3s, -webkit-transform 0.3s; 
             transition: color 0.3s, transform 0.3s;
         }
 
         .tabs-style-linemove nav li.tab-current a {
-            color: #1FADC5;
-            -webkit-transform: translate3d(0,8px,0);
-            transform: translate3d(0,8px,0);
+            color: #B12D2B;
+            -webkit-transform: translate3d(0,4px,0);
+            transform: translate3d(0,4px,0);
         }
 
-        .tabs-style-linemove nav a div {
+        .tabs-style-linemove nav a span {
             font-weight: 700;
         }
     </style>
