@@ -16,7 +16,7 @@
   })(window, function(root, riot) {
     var C, Cheft, Router, Store, application, escapeRegExp, extractParams, fn1, i, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
     C = Cheft = {
-      version: '1.0.0'
+      version: '1.0.5'
     };
     C.riot = riot;
     toString = Object.prototype.toString;
@@ -207,7 +207,7 @@
       Store.prototype.get = function(data) {
         return this.ajax({
           type: 'GET',
-          url: this.url
+          url: (data.id ? this.url : this.url + '/' + data.id)
         }, data, 'geted');
       };
 
