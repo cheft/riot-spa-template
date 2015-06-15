@@ -7,7 +7,7 @@ C.Store = class Store
         delete @options.data
         delete @options.params
 
-    get : (data) -> @ajax type: 'GET', url: @url, data, 'geted'
+    get : (data) -> @ajax type: 'GET', url: (if data.id then @url else @url + '/' + data.id), data, 'geted'
     post: (data) -> @ajax type: 'POST', url: @url, data, 'posted'
     put : (data) -> @ajax type: 'PUT', url: @url + '/' + data.id, data, 'puted'
     del : (data) -> @ajax type: 'DELETE', url: @url + '/' + data.id, data, 'deleted'

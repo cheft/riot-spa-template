@@ -17,7 +17,7 @@ C.Store = Store = (function() {
   Store.prototype.get = function(data) {
     return this.ajax({
       type: 'GET',
-      url: this.url
+      url: (data.id ? this.url : this.url + '/' + data.id)
     }, data, 'geted');
   };
 
