@@ -7,13 +7,13 @@ C.Store = class Store
         delete @options.data
         delete @options.params
 
-    get : (data) -> @ajax type: 'GET', url: (if data.id then @url else @url + '/' + data.id), data, 'geted'
-    post: (data) -> @ajax type: 'POST', url: @url, data, 'posted'
-    put : (data) -> @ajax type: 'PUT', url: @url + '/' + data.id, data, 'puted'
-    del : (data) -> @ajax type: 'DELETE', url: @url + '/' + data.id, data, 'deleted'
-    save: (data) -> if data.id then @put(data) else @post(data)
+    get : (data = {}) -> @ajax type: 'GET', url: (if data.id then @url + '/' + data.id else @url), data, 'geted'
+    post: (data = {}) -> @ajax type: 'POST', url: @url, data, 'posted'
+    put : (data = {}) -> @ajax type: 'PUT', url: @url + '/' + data.id, data, 'puted'
+    del : (data = {}) -> @ajax type: 'DELETE', url: @url + '/' + data.id, data, 'deleted'
+    save: (data = {}) -> if data.id then @put(data) else @post(data)
 
-    ajax: (opts, data = {}, evt) ->
+    ajax: (opts, data, evt) ->
         self = @
         opts.contentType = @app.contentType
         config = C.extend opts, @options

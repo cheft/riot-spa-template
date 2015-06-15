@@ -16,7 +16,7 @@
   })(window, function(root, riot) {
     var C, Cheft, Router, Store, application, escapeRegExp, extractParams, fn1, i, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
     C = Cheft = {
-      version: '1.0.5'
+      version: '1.0.7'
     };
     C.riot = riot;
     toString = Object.prototype.toString;
@@ -205,13 +205,19 @@
       }
 
       Store.prototype.get = function(data) {
+        if (data == null) {
+          data = {};
+        }
         return this.ajax({
           type: 'GET',
-          url: (data.id ? this.url : this.url + '/' + data.id)
+          url: (data.id ? this.url + '/' + data.id : this.url)
         }, data, 'geted');
       };
 
       Store.prototype.post = function(data) {
+        if (data == null) {
+          data = {};
+        }
         return this.ajax({
           type: 'POST',
           url: this.url
@@ -219,6 +225,9 @@
       };
 
       Store.prototype.put = function(data) {
+        if (data == null) {
+          data = {};
+        }
         return this.ajax({
           type: 'PUT',
           url: this.url + '/' + data.id
@@ -226,6 +235,9 @@
       };
 
       Store.prototype.del = function(data) {
+        if (data == null) {
+          data = {};
+        }
         return this.ajax({
           type: 'DELETE',
           url: this.url + '/' + data.id
@@ -233,6 +245,9 @@
       };
 
       Store.prototype.save = function(data) {
+        if (data == null) {
+          data = {};
+        }
         if (data.id) {
           return this.put(data);
         } else {
@@ -242,9 +257,6 @@
 
       Store.prototype.ajax = function(opts, data, evt) {
         var appendUrl, config, p, self;
-        if (data == null) {
-          data = {};
-        }
         self = this;
         opts.contentType = this.app.contentType;
         config = C.extend(opts, this.options);

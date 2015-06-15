@@ -8,7 +8,7 @@
     else
         root.Cheft = factory root, root.riot
 ) window, (root, riot) ->
-    C = Cheft = version: '1.0.5'
+    C = Cheft = version: '1.0.7'
     C.riot = riot
 
     toString = Object.prototype.toString
