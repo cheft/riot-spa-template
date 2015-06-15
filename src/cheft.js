@@ -16,7 +16,7 @@ var slice = [].slice;
 })(window, function(root, riot) {
   var C, Cheft, fn, i, item, len, toString, types;
   C = Cheft = {
-    version: '1.0.0'
+    version: '1.0.5'
   };
   C.riot = riot;
   toString = Object.prototype.toString;
