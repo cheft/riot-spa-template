@@ -1,3 +1,5 @@
+![Alt text](snapshot/demo.png)
+
 # cheftjs
 是基于 riot.js 薄封装的一套类 flux 框架
 
