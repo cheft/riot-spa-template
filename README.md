@@ -90,10 +90,14 @@ or
     }
 
 ## Demo
+    cd demo
     npm install
     gulp
 
+![Alt text](snapshot/demo.png)
+
 ## [Project](https://github.com/cheft/extend-frontend)
+![Alt text](snapshot/1.jpg)
 
 <!-- ### Snapshot
 ![Alt text](snapshot/1.jpg)
