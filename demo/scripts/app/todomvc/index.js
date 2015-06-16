@@ -19,9 +19,6 @@ module.exports = {
                 this.editor.focus();
             }
         },
-        get: function() {
-            this.store.get();
-        },
         geted: function(data) {
             var self = this;
             if(this.status === 'all') {
@@ -38,6 +35,11 @@ module.exports = {
         },
         deleted: function() {
             this.trigger('get');
+        },
+
+        // custom event
+        get: function() {
+            this.store.get();
         },
         filtering: function(status) {
             this.status = status;
@@ -83,7 +85,7 @@ module.exports = {
         },
         sort: function(e) {
             this.todos = this.todos.reverse();
-            this.update({arrow: (e.target.innerHTML == '↓' ? '↑' : '↓')});
+            this.arrow = e.target.innerHTML == '↓' ? '↑' : '↓';
         }
     }
 }

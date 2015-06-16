@@ -8,6 +8,6 @@ var app = window.app = new c.Application({
     router       : require('./router')
 });
 
-window.onload = function() {
+$(function() {
     app.start();
-}
+});
