@@ -3,20 +3,19 @@
     <section id="todoapp">
         <header id="header">
             <h1>todos</h1>
-            <input id="new-todo" autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" onkeyup="{didAdd}"/>
+            <input id="new-todo" autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" onkeyup="{add}"/>
         </header>
         <section id="main" if="{todos.length}">
             <input id="toggle-all" type="checkbox" checked="{allDone}" onclick="{toggleAll}"/>
             <ul id="todo-list">
-                <li class="{completed: t.completed, editing: editing} todo">
+                <li each={todos} class="{completed: completed, editing: editing} todo">
                     <div class="view">
-                        <input class="toggle" type="checkbox" checked="{t.completed}" onclick="{toggleTodo}"/>
-                        <label ondblclick="{toEdit}">{t.title}</label>
-                        <button class="destroy" onclick="{toRemove}"></button>
+                        <input class="toggle" type="checkbox" checked="{completed}" onclick="{parent.toggle}"/>
+                        <label ondblclick="{parent.toEdit}">{title}</label>
+                        <button class="destroy" onclick="{parent.remove}"></button>
                     </div>
-                    <input class="edit" name="editor" onblur="{didEdit}" onkeyup="{didEdit}"/>
+                    <input class="edit" onblur="{parent.edit}" onkeyup="{parent.edit}" value="{title}"/>
                 </li>
-            <!-- <item each="{t in filtered()}"></item> -->
             </ul>
         </section>
         <footer id="footer" if="{todos.length}">
@@ -24,8 +23,13 @@
                 <strong>{remaining}</strong>
                 {remaining > 1 ? 'items' : 'item'} left
             </span>
-            <ul id="filters"><li each="{v in links}"><a class="{selected: parent.activeFilter == v.name}" href="#start/todos/{v.name}">{v.label}</a></li></ul>
-            <button id="clear-completed" onclick="{removeCompleted}" if="{todos.length > remaining}">Clear completed</button>
+            <ul id="filters">
+                <li each="{v in links}">
+                    <a class="{selected: parent.status == v.toLowerCase()}" href="#todomvc/{v.toLowerCase()}">{v}</a>
+                </li>
+            </ul>
+            <button id="clear-completed" onclick="{sort}" style="float: left; padding: 0px 10px;" >{arrow ? arrow : '↑'}</button>
+            <button id="clear-completed" onclick="{clear}" if="{store.data.length > remaining}">Clear completed</button>
         </footer>
     </section>
     <footer id="info">

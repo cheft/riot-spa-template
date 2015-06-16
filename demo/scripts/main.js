@@ -3,7 +3,7 @@ var $ = window.$ = require('jquery');
 c.Adapter = {Promise: $.Deferred, ajax: $.ajax};
 
 var app = window.app = new c.Application({
-    urlRoot      : 'localhost:3000/data',
+    urlRoot      : 'http://localhost:3000/',
     container    : 'viewport',
     router       : require('./router')
 });

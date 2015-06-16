@@ -82,19 +82,21 @@ C.Store = Store = (function() {
     this.app.trigger('ajax', config);
     p = new C.Adapter.Promise();
     C.Adapter.ajax(config).done(function(resp) {
-      self.set(resp);
+      if (evt === 'geted') {
+        self.set(resp);
+      }
       self.tag.trigger(evt, resp, 'success');
-      this.app.trigger('ajaxed', resp, 'success');
-      if (evt === ('posted' || 'puted')) {
+      if (evt === 'posted' || evt === 'puted') {
         self.tag.trigger('saved', resp, 'success');
       }
+      self.app.trigger('ajaxed', resp, 'success');
       return p.resolve(resp);
     }).fail(function(resp) {
       self.tag.trigger(evt, resp, 'error');
-      this.app.trigger('ajaxed', resp, 'error');
-      if (evt === ('posted' || 'puted')) {
+      if (evt === 'posted' || evt === 'puted') {
         self.tag.trigger('saved', resp, 'error');
       }
+      self.app.trigger('ajaxed', resp, 'error');
       return p.reject(resp);
     });
     return p.promise();

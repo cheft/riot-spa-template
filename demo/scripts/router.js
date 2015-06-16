@@ -1,7 +1,8 @@
 module.exports = {
     routes: {
         '': 'home',
-        ':id': 'start'
+        ':id': 'start',
+        'todomvc/:status': 'todomvc'
     },
 
     home: function() {
@@ -9,5 +10,9 @@ module.exports = {
     }, 
     start: function(id) {
         app.container.trigger('show', id);
+    },
+    todomvc: function(status) {
+        app.container.trigger('show', 'todomvc');
+        app.tags.todomvc.trigger('filtering', status);
     }
 };

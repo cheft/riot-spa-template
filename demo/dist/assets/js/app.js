@@ -29,7 +29,7 @@ module.exports = riot.tag('todo', '<h3>{ title }</h3> <ul> <li each="{ items }">
 
 },{"./":14,"riot":12}],7:[function(require,module,exports){
 var riot = require('riot');
-module.exports = riot.tag('todomvc', '<section id="todoapp"> <header id="header"> <h1>todos</h1> <input id="new-todo" autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" onkeyup="{didAdd}"> </header> <section id="main" if="{todos.length}"> <input id="toggle-all" type="checkbox" __checked="{allDone}" onclick="{toggleAll}"> <ul id="todo-list"> <li class="{completed: t.completed, editing: editing} todo"> <div class="view"> <input class="toggle" type="checkbox" __checked="{t.completed}" onclick="{toggleTodo}"> <label ondblclick="{toEdit}">{t.title}</label> <button class="destroy" onclick="{toRemove}"></button> </div> <input class="edit" name="editor" onblur="{didEdit}" onkeyup="{didEdit}"> </li>  </ul> </section> <footer id="footer" if="{todos.length}"> <span id="todo-count"> <strong>{remaining}</strong> {remaining > 1 ? \'items\' : \'item\'} left </span> <ul id="filters"><li each="{v in links}"><a class="{selected: parent.activeFilter == v.name}" href="#start/todos/{v.name}">{v.label}</a></li></ul> <button id="clear-completed" onclick="{removeCompleted}" if="{todos.length > remaining}">Clear completed</button> </footer> </section> <footer id="info"> <p>Double-click to edit a todo</p> <p>Written by <a href="http://github.com/cheft">Cheft</a> </p> <p>Part of <a href="http://todomvc.com">TodoMVC</a> </p> </footer>', 'todomvc , [riot-tag="todomvc"] { max-width: 550px; margin: 0 auto; line-height: 1.4em; color: #4d4d4d; min-width: 230px; max-width: 550px; margin: 0 auto; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; font-weight: 300; } todomvc button , [riot-tag="todomvc"] button { margin: 0; padding: 0; border: 0; background: none; font-size: 100%; vertical-align: baseline; font-family: inherit; font-weight: inherit; color: inherit; -webkit-appearance: none; appearance: none; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; } todomvc button, [riot-tag="todomvc"] button,todomvc input[type="checkbox"] , [riot-tag="todomvc"] input[type="checkbox"] { outline: none; } todomvc .hidden , [riot-tag="todomvc"] .hidden { display: none; } todomvc #todoapp , [riot-tag="todomvc"] #todoapp { background: #fff; margin: 130px 0 40px 0; position: relative; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1); } todomvc #todoapp input::-webkit-input-placeholder , [riot-tag="todomvc"] #todoapp input::-webkit-input-placeholder { font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp input::-moz-placeholder , [riot-tag="todomvc"] #todoapp input::-moz-placeholder { font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp input::input-placeholder , [riot-tag="todomvc"] #todoapp input::input-placeholder { font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp h1 , [riot-tag="todomvc"] #todoapp h1 { position: absolute; top: -155px; width: 100%; font-size: 100px; font-weight: 100; text-align: center; color: rgba(175, 47, 47, 0.15); -webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; text-rendering: optimizeLegibility; } todomvc #new-todo, [riot-tag="todomvc"] #new-todo,todomvc .edit , [riot-tag="todomvc"] .edit { position: relative; margin: 0; width: 100%; font-size: 24px; font-family: inherit; font-weight: inherit; line-height: 1.4em; border: 0; outline: none; color: inherit; padding: 6px; border: 1px solid #999; box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2); box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; } todomvc #new-todo , [riot-tag="todomvc"] #new-todo { padding: 16px 16px 16px 60px; border: none; background: rgba(0, 0, 0, 0.003); box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03); } todomvc #main , [riot-tag="todomvc"] #main { position: relative; z-index: 2; border-top: 1px solid #e6e6e6; } todomvc label[for=\'toggle-all\'] , [riot-tag="todomvc"] label[for=\'toggle-all\'] { display: none; } todomvc #toggle-all , [riot-tag="todomvc"] #toggle-all { position: absolute; top: -55px; left: -12px; width: 60px; height: 34px; text-align: center; border: none; } todomvc #toggle-all:before , [riot-tag="todomvc"] #toggle-all:before { content: \'❯\'; font-size: 22px; color: #e6e6e6; padding: 10px 27px 10px 27px; } todomvc #toggle-all:checked:before , [riot-tag="todomvc"] #toggle-all:checked:before { color: #737373; } todomvc #todo-list , [riot-tag="todomvc"] #todo-list { margin: 0; padding: 0; list-style: none; } todomvc #todo-list li , [riot-tag="todomvc"] #todo-list li { position: relative; font-size: 24px; border-bottom: 1px solid #ededed; } todomvc #todo-list li:last-child , [riot-tag="todomvc"] #todo-list li:last-child { border-bottom: none; } todomvc #todo-list li.editing , [riot-tag="todomvc"] #todo-list li.editing { border-bottom: none; padding: 0; } todomvc #todo-list li.editing .edit , [riot-tag="todomvc"] #todo-list li.editing .edit { display: block; width: 506px; padding: 13px 17px 12px 17px; margin: 0 0 0 43px; } todomvc #todo-list li.editing .view , [riot-tag="todomvc"] #todo-list li.editing .view { display: none; } todomvc #todo-list li .toggle , [riot-tag="todomvc"] #todo-list li .toggle { text-align: center; width: 40px; height: auto; position: absolute; top: 0; bottom: 0; margin: auto 0; border: none; -webkit-appearance: none; appearance: none; } todomvc #todo-list li .toggle:after , [riot-tag="todomvc"] #todo-list li .toggle:after { content: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>\'); } todomvc #todo-list li .toggle:checked:after , [riot-tag="todomvc"] #todo-list li .toggle:checked:after { content: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>\'); } todomvc #todo-list li label , [riot-tag="todomvc"] #todo-list li label { white-space: pre; word-break: break-word; padding: 15px 60px 15px 15px; margin-left: 45px; display: block; line-height: 1.2; transition: color 0.4s; } todomvc #todo-list li.completed label , [riot-tag="todomvc"] #todo-list li.completed label { color: #d9d9d9; text-decoration: line-through; } todomvc #todo-list li .destroy , [riot-tag="todomvc"] #todo-list li .destroy { display: none; position: absolute; top: 0; right: 10px; bottom: 0; width: 40px; height: 40px; margin: auto 0; font-size: 30px; color: #cc9a9a; margin-bottom: 11px; transition: color 0.2s ease-out; } todomvc #todo-list li .destroy:hover , [riot-tag="todomvc"] #todo-list li .destroy:hover { color: #af5b5e; } todomvc #todo-list li .destroy:after , [riot-tag="todomvc"] #todo-list li .destroy:after { content: \'×\'; } todomvc #todo-list li:hover .destroy , [riot-tag="todomvc"] #todo-list li:hover .destroy { display: block; } todomvc #todo-list li .edit , [riot-tag="todomvc"] #todo-list li .edit { display: none; } todomvc #todo-list li.editing:last-child , [riot-tag="todomvc"] #todo-list li.editing:last-child { margin-bottom: -1px; } todomvc #footer , [riot-tag="todomvc"] #footer { color: #777; padding: 10px 15px; height: 20px; text-align: center; border-top: 1px solid #e6e6e6; } todomvc #footer:before , [riot-tag="todomvc"] #footer:before { content: \'\'; position: absolute; right: 0; bottom: 0; left: 0; height: 50px; overflow: hidden; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2); } todomvc #todo-count , [riot-tag="todomvc"] #todo-count { float: left; text-align: left; } todomvc #todo-count strong , [riot-tag="todomvc"] #todo-count strong { font-weight: 300; } todomvc #filters , [riot-tag="todomvc"] #filters { margin: 0; padding: 0; list-style: none; position: absolute; right: 0; left: 0; } todomvc #filters li , [riot-tag="todomvc"] #filters li { display: inline; } todomvc #filters li a , [riot-tag="todomvc"] #filters li a { color: inherit; margin: 3px; padding: 3px 7px; text-decoration: none; border: 1px solid transparent; border-radius: 3px; } todomvc #filters li a.selected, [riot-tag="todomvc"] #filters li a.selected,todomvc #filters li a:hover , [riot-tag="todomvc"] #filters li a:hover { border-color: rgba(175, 47, 47, 0.1); } todomvc #filters li a.selected , [riot-tag="todomvc"] #filters li a.selected { border-color: rgba(175, 47, 47, 0.2); } todomvc #clear-completed, [riot-tag="todomvc"] #clear-completed,todomvc html #clear-completed:active , [riot-tag="todomvc"] html #clear-completed:active { float: right; position: relative; line-height: 20px; text-decoration: none; cursor: pointer; position: relative; } todomvc #clear-completed:hover , [riot-tag="todomvc"] #clear-completed:hover { text-decoration: underline; } todomvc #info , [riot-tag="todomvc"] #info { margin: 65px auto 0; color: #bfbfbf; font-size: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); text-align: center; } todomvc #info p , [riot-tag="todomvc"] #info p { line-height: 1; } todomvc #info a , [riot-tag="todomvc"] #info a { color: inherit; text-decoration: none; font-weight: 400; } todomvc #info a:hover , [riot-tag="todomvc"] #info a:hover { text-decoration: underline; } @media screen and (-webkit-min-device-pixel-ratio:0) { todomvc #toggle-all, [riot-tag="todomvc"] #toggle-all,todomvc #todo-list li .toggle , [riot-tag="todomvc"] #todo-list li .toggle { background: none; } todomvc #todo-list li .toggle , [riot-tag="todomvc"] #todo-list li .toggle { height: 40px; } todomvc #toggle-all , [riot-tag="todomvc"] #toggle-all { -webkit-transform: rotate(90deg); transform: rotate(90deg); -webkit-appearance: none; appearance: none; } } @media (max-width: 430px) { todomvc #footer , [riot-tag="todomvc"] #footer { height: 50px; } todomvc #filters , [riot-tag="todomvc"] #filters { bottom: 10px; } } todomvc hr , [riot-tag="todomvc"] hr { margin: 20px 0; border: 0; border-top: 1px dashed #c5c5c5; border-bottom: 1px dashed #f7f7f7; } todomvc .learn a , [riot-tag="todomvc"] .learn a { font-weight: normal; text-decoration: none; color: #b83f45; } todomvc .learn a:hover , [riot-tag="todomvc"] .learn a:hover { text-decoration: underline; color: #787e7e; } todomvc .learn h3, [riot-tag="todomvc"] .learn h3,todomvc .learn h4, [riot-tag="todomvc"] .learn h4,todomvc .learn h5 , [riot-tag="todomvc"] .learn h5 { margin: 10px 0; font-weight: 500; line-height: 1.2; color: #000; } todomvc .learn h3 , [riot-tag="todomvc"] .learn h3 { font-size: 24px; } todomvc .learn h4 , [riot-tag="todomvc"] .learn h4 { font-size: 18px; } todomvc .learn h5 , [riot-tag="todomvc"] .learn h5 { margin-bottom: 0; font-size: 14px; } todomvc .learn ul , [riot-tag="todomvc"] .learn ul { padding: 0; margin: 0 0 30px 25px; } todomvc .learn li , [riot-tag="todomvc"] .learn li { line-height: 20px; } todomvc .learn p , [riot-tag="todomvc"] .learn p { font-size: 15px; font-weight: 300; line-height: 1.3; margin-top: 0; margin-bottom: 0; } todomvc #issue-count , [riot-tag="todomvc"] #issue-count { display: none; } todomvc .quote , [riot-tag="todomvc"] .quote { border: none; margin: 20px 0 60px 0; } todomvc .quote p , [riot-tag="todomvc"] .quote p { font-style: italic; } todomvc .quote p:before , [riot-tag="todomvc"] .quote p:before { content: \'“\'; font-size: 50px; opacity: .15; position: absolute; top: -20px; left: 3px; } todomvc .quote p:after , [riot-tag="todomvc"] .quote p:after { content: \'”\'; font-size: 50px; opacity: .15; position: absolute; bottom: -42px; right: 3px; } todomvc .quote footer , [riot-tag="todomvc"] .quote footer { position: absolute; bottom: -40px; right: 0; } todomvc .quote footer img , [riot-tag="todomvc"] .quote footer img { border-radius: 3px; } todomvc .quote footer a , [riot-tag="todomvc"] .quote footer a { margin-left: 5px; vertical-align: middle; } todomvc .speech-bubble , [riot-tag="todomvc"] .speech-bubble { position: relative; padding: 10px; background: rgba(0, 0, 0, .04); border-radius: 5px; } todomvc .speech-bubble:after , [riot-tag="todomvc"] .speech-bubble:after { content: \'\'; position: absolute; top: 100%; right: 30px; border: 13px solid transparent; border-top-color: rgba(0, 0, 0, .04); } todomvc .learn-bar > .learn , [riot-tag="todomvc"] .learn-bar > .learn { position: absolute; width: 272px; top: 8px; left: -300px; padding: 10px; border-radius: 5px; background-color: rgba(255, 255, 255, .6); transition-property: left; transition-duration: 500ms; } @media (min-width: 899px) { todomvc .learn-bar , [riot-tag="todomvc"] .learn-bar { width: auto; padding-left: 300px; } todomvc .learn-bar > .learn , [riot-tag="todomvc"] .learn-bar > .learn { left: 8px; } }', function(opts) {app.mixin(this, require('./'));
+module.exports = riot.tag('todomvc', '<section id="todoapp"> <header id="header"> <h1>todos</h1> <input id="new-todo" autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" onkeyup="{add}"> </header> <section id="main" if="{todos.length}"> <input id="toggle-all" type="checkbox" __checked="{allDone}" onclick="{toggleAll}"> <ul id="todo-list"> <li each="{todos}" class="{completed: completed, editing: editing} todo"> <div class="view"> <input class="toggle" type="checkbox" __checked="{completed}" onclick="{parent.toggle}"> <label ondblclick="{parent.toEdit}">{title}</label> <button class="destroy" onclick="{parent.remove}"></button> </div> <input class="edit" onblur="{parent.edit}" onkeyup="{parent.edit}" value="{title}"> </li> </ul> </section> <footer id="footer" if="{todos.length}"> <span id="todo-count"> <strong>{remaining}</strong> {remaining > 1 ? \'items\' : \'item\'} left </span> <ul id="filters"> <li each="{v in links}"> <a class="{selected: parent.status == v.toLowerCase()}" href="#todomvc/{v.toLowerCase()}">{v}</a> </li> </ul> <button id="clear-completed" onclick="{sort}" style="float: left; padding: 0px 10px;" >{arrow ? arrow : \'↑\'}</button> <button id="clear-completed" onclick="{clear}" if="{store.data.length > remaining}">Clear completed</button> </footer> </section> <footer id="info"> <p>Double-click to edit a todo</p> <p>Written by <a href="http://github.com/cheft">Cheft</a> </p> <p>Part of <a href="http://todomvc.com">TodoMVC</a> </p> </footer>', 'todomvc , [riot-tag="todomvc"] { max-width: 550px; margin: 0 auto; line-height: 1.4em; color: #4d4d4d; min-width: 230px; max-width: 550px; margin: 0 auto; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; font-weight: 300; } todomvc button , [riot-tag="todomvc"] button { margin: 0; padding: 0; border: 0; background: none; font-size: 100%; vertical-align: baseline; font-family: inherit; font-weight: inherit; color: inherit; -webkit-appearance: none; appearance: none; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; } todomvc button, [riot-tag="todomvc"] button,todomvc input[type="checkbox"] , [riot-tag="todomvc"] input[type="checkbox"] { outline: none; } todomvc .hidden , [riot-tag="todomvc"] .hidden { display: none; } todomvc #todoapp , [riot-tag="todomvc"] #todoapp { background: #fff; margin: 130px 0 40px 0; position: relative; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1); } todomvc #todoapp input::-webkit-input-placeholder , [riot-tag="todomvc"] #todoapp input::-webkit-input-placeholder { font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp input::-moz-placeholder , [riot-tag="todomvc"] #todoapp input::-moz-placeholder { font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp input::input-placeholder , [riot-tag="todomvc"] #todoapp input::input-placeholder { font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp h1 , [riot-tag="todomvc"] #todoapp h1 { position: absolute; top: -155px; width: 100%; font-size: 100px; font-weight: 100; text-align: center; color: rgba(175, 47, 47, 0.15); -webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; text-rendering: optimizeLegibility; } todomvc #new-todo, [riot-tag="todomvc"] #new-todo,todomvc .edit , [riot-tag="todomvc"] .edit { position: relative; margin: 0; width: 100%; font-size: 24px; font-family: inherit; font-weight: inherit; line-height: 1.4em; border: 0; outline: none; color: inherit; padding: 6px; border: 1px solid #999; box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2); box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; } todomvc #new-todo , [riot-tag="todomvc"] #new-todo { padding: 16px 16px 16px 60px; border: none; background: rgba(0, 0, 0, 0.003); box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03); } todomvc #main , [riot-tag="todomvc"] #main { position: relative; z-index: 2; border-top: 1px solid #e6e6e6; } todomvc label[for=\'toggle-all\'] , [riot-tag="todomvc"] label[for=\'toggle-all\'] { display: none; } todomvc #toggle-all , [riot-tag="todomvc"] #toggle-all { position: absolute; top: -55px; left: -12px; width: 60px; height: 34px; text-align: center; border: none; } todomvc #toggle-all:before , [riot-tag="todomvc"] #toggle-all:before { content: \'❯\'; font-size: 22px; color: #e6e6e6; padding: 10px 27px 10px 27px; } todomvc #toggle-all:checked:before , [riot-tag="todomvc"] #toggle-all:checked:before { color: #737373; } todomvc #todo-list , [riot-tag="todomvc"] #todo-list { margin: 0; padding: 0; list-style: none; } todomvc #todo-list li , [riot-tag="todomvc"] #todo-list li { position: relative; font-size: 24px; border-bottom: 1px solid #ededed; } todomvc #todo-list li:last-child , [riot-tag="todomvc"] #todo-list li:last-child { border-bottom: none; } todomvc #todo-list li.editing , [riot-tag="todomvc"] #todo-list li.editing { border-bottom: none; padding: 0; } todomvc #todo-list li.editing .edit , [riot-tag="todomvc"] #todo-list li.editing .edit { display: block; width: 506px; padding: 13px 17px 12px 17px; margin: 0 0 0 43px; } todomvc #todo-list li.editing .view , [riot-tag="todomvc"] #todo-list li.editing .view { display: none; } todomvc #todo-list li .toggle , [riot-tag="todomvc"] #todo-list li .toggle { text-align: center; width: 40px; height: auto; position: absolute; top: 0; bottom: 0; margin: auto 0; border: none; -webkit-appearance: none; appearance: none; } todomvc #todo-list li .toggle:after , [riot-tag="todomvc"] #todo-list li .toggle:after { content: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>\'); } todomvc #todo-list li .toggle:checked:after , [riot-tag="todomvc"] #todo-list li .toggle:checked:after { content: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>\'); } todomvc #todo-list li label , [riot-tag="todomvc"] #todo-list li label { white-space: pre; word-break: break-word; padding: 15px 60px 15px 15px; margin-left: 45px; display: block; line-height: 1.2; transition: color 0.4s; } todomvc #todo-list li.completed label , [riot-tag="todomvc"] #todo-list li.completed label { color: #d9d9d9; text-decoration: line-through; } todomvc #todo-list li .destroy , [riot-tag="todomvc"] #todo-list li .destroy { display: none; position: absolute; top: 0; right: 10px; bottom: 0; width: 40px; height: 40px; margin: auto 0; font-size: 30px; color: #cc9a9a; margin-bottom: 11px; transition: color 0.2s ease-out; } todomvc #todo-list li .destroy:hover , [riot-tag="todomvc"] #todo-list li .destroy:hover { color: #af5b5e; } todomvc #todo-list li .destroy:after , [riot-tag="todomvc"] #todo-list li .destroy:after { content: \'×\'; } todomvc #todo-list li:hover .destroy , [riot-tag="todomvc"] #todo-list li:hover .destroy { display: block; } todomvc #todo-list li .edit , [riot-tag="todomvc"] #todo-list li .edit { display: none; } todomvc #todo-list li.editing:last-child , [riot-tag="todomvc"] #todo-list li.editing:last-child { margin-bottom: -1px; } todomvc #footer , [riot-tag="todomvc"] #footer { color: #777; padding: 10px 15px; height: 20px; text-align: center; border-top: 1px solid #e6e6e6; } todomvc #footer:before , [riot-tag="todomvc"] #footer:before { content: \'\'; position: absolute; right: 0; bottom: 0; left: 0; height: 50px; overflow: hidden; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2); } todomvc #todo-count , [riot-tag="todomvc"] #todo-count { float: left; text-align: left; } todomvc #todo-count strong , [riot-tag="todomvc"] #todo-count strong { font-weight: 300; } todomvc #filters , [riot-tag="todomvc"] #filters { margin: 0; padding: 0; list-style: none; position: absolute; right: 0; left: 0; } todomvc #filters li , [riot-tag="todomvc"] #filters li { display: inline; } todomvc #filters li a , [riot-tag="todomvc"] #filters li a { color: inherit; margin: 3px; padding: 3px 7px; text-decoration: none; border: 1px solid transparent; border-radius: 3px; } todomvc #filters li a.selected, [riot-tag="todomvc"] #filters li a.selected,todomvc #filters li a:hover , [riot-tag="todomvc"] #filters li a:hover { border-color: rgba(175, 47, 47, 0.1); } todomvc #filters li a.selected , [riot-tag="todomvc"] #filters li a.selected { border-color: rgba(175, 47, 47, 0.2); } todomvc #clear-completed, [riot-tag="todomvc"] #clear-completed,todomvc html #clear-completed:active , [riot-tag="todomvc"] html #clear-completed:active { float: right; position: relative; line-height: 20px; text-decoration: none; cursor: pointer; position: relative; } todomvc #clear-completed:hover , [riot-tag="todomvc"] #clear-completed:hover { text-decoration: underline; } todomvc #info , [riot-tag="todomvc"] #info { margin: 65px auto 0; color: #bfbfbf; font-size: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); text-align: center; } todomvc #info p , [riot-tag="todomvc"] #info p { line-height: 1; } todomvc #info a , [riot-tag="todomvc"] #info a { color: inherit; text-decoration: none; font-weight: 400; } todomvc #info a:hover , [riot-tag="todomvc"] #info a:hover { text-decoration: underline; } @media screen and (-webkit-min-device-pixel-ratio:0) { todomvc #toggle-all, [riot-tag="todomvc"] #toggle-all,todomvc #todo-list li .toggle , [riot-tag="todomvc"] #todo-list li .toggle { background: none; } todomvc #todo-list li .toggle , [riot-tag="todomvc"] #todo-list li .toggle { height: 40px; } todomvc #toggle-all , [riot-tag="todomvc"] #toggle-all { -webkit-transform: rotate(90deg); transform: rotate(90deg); -webkit-appearance: none; appearance: none; } } @media (max-width: 430px) { todomvc #footer , [riot-tag="todomvc"] #footer { height: 50px; } todomvc #filters , [riot-tag="todomvc"] #filters { bottom: 10px; } } todomvc hr , [riot-tag="todomvc"] hr { margin: 20px 0; border: 0; border-top: 1px dashed #c5c5c5; border-bottom: 1px dashed #f7f7f7; } todomvc .learn a , [riot-tag="todomvc"] .learn a { font-weight: normal; text-decoration: none; color: #b83f45; } todomvc .learn a:hover , [riot-tag="todomvc"] .learn a:hover { text-decoration: underline; color: #787e7e; } todomvc .learn h3, [riot-tag="todomvc"] .learn h3,todomvc .learn h4, [riot-tag="todomvc"] .learn h4,todomvc .learn h5 , [riot-tag="todomvc"] .learn h5 { margin: 10px 0; font-weight: 500; line-height: 1.2; color: #000; } todomvc .learn h3 , [riot-tag="todomvc"] .learn h3 { font-size: 24px; } todomvc .learn h4 , [riot-tag="todomvc"] .learn h4 { font-size: 18px; } todomvc .learn h5 , [riot-tag="todomvc"] .learn h5 { margin-bottom: 0; font-size: 14px; } todomvc .learn ul , [riot-tag="todomvc"] .learn ul { padding: 0; margin: 0 0 30px 25px; } todomvc .learn li , [riot-tag="todomvc"] .learn li { line-height: 20px; } todomvc .learn p , [riot-tag="todomvc"] .learn p { font-size: 15px; font-weight: 300; line-height: 1.3; margin-top: 0; margin-bottom: 0; } todomvc #issue-count , [riot-tag="todomvc"] #issue-count { display: none; } todomvc .quote , [riot-tag="todomvc"] .quote { border: none; margin: 20px 0 60px 0; } todomvc .quote p , [riot-tag="todomvc"] .quote p { font-style: italic; } todomvc .quote p:before , [riot-tag="todomvc"] .quote p:before { content: \'“\'; font-size: 50px; opacity: .15; position: absolute; top: -20px; left: 3px; } todomvc .quote p:after , [riot-tag="todomvc"] .quote p:after { content: \'”\'; font-size: 50px; opacity: .15; position: absolute; bottom: -42px; right: 3px; } todomvc .quote footer , [riot-tag="todomvc"] .quote footer { position: absolute; bottom: -40px; right: 0; } todomvc .quote footer img , [riot-tag="todomvc"] .quote footer img { border-radius: 3px; } todomvc .quote footer a , [riot-tag="todomvc"] .quote footer a { margin-left: 5px; vertical-align: middle; } todomvc .speech-bubble , [riot-tag="todomvc"] .speech-bubble { position: relative; padding: 10px; background: rgba(0, 0, 0, .04); border-radius: 5px; } todomvc .speech-bubble:after , [riot-tag="todomvc"] .speech-bubble:after { content: \'\'; position: absolute; top: 100%; right: 30px; border: 13px solid transparent; border-top-color: rgba(0, 0, 0, .04); } todomvc .learn-bar > .learn , [riot-tag="todomvc"] .learn-bar > .learn { position: absolute; width: 272px; top: 8px; left: -300px; padding: 10px; border-radius: 5px; background-color: rgba(255, 255, 255, .6); transition-property: left; transition-duration: 500ms; } @media (min-width: 899px) { todomvc .learn-bar , [riot-tag="todomvc"] .learn-bar { width: auto; padding-left: 300px; } todomvc .learn-bar > .learn , [riot-tag="todomvc"] .learn-bar > .learn { left: 8px; } }', function(opts) {app.mixin(this, require('./'));
 });
 },{"./":15,"riot":12}],8:[function(require,module,exports){
 var riot = require('riot');
@@ -42,7 +42,7 @@ var $ = window.$ = require('jquery');
 c.Adapter = {Promise: $.Deferred, ajax: $.ajax};
 
 var app = window.app = new c.Application({
-    urlRoot      : 'localhost:3000/data',
+    urlRoot      : 'http://localhost:3000/',
     container    : 'viewport',
     router       : require('./router')
 });
@@ -325,19 +325,21 @@ window.onload = function() {
         this.app.trigger('ajax', config);
         p = new C.Adapter.Promise();
         C.Adapter.ajax(config).done(function(resp) {
-          self.set(resp);
+          if (evt === 'geted') {
+            self.set(resp);
+          }
           self.tag.trigger(evt, resp, 'success');
-          this.app.trigger('ajaxed', resp, 'success');
-          if (evt === ('posted' || 'puted')) {
+          if (evt === 'posted' || evt === 'puted') {
             self.tag.trigger('saved', resp, 'success');
           }
+          self.app.trigger('ajaxed', resp, 'success');
           return p.resolve(resp);
         }).fail(function(resp) {
           self.tag.trigger(evt, resp, 'error');
-          this.app.trigger('ajaxed', resp, 'error');
-          if (evt === ('posted' || 'puted')) {
+          if (evt === 'posted' || evt === 'puted') {
             self.tag.trigger('saved', resp, 'error');
           }
+          self.app.trigger('ajaxed', resp, 'error');
           return p.reject(resp);
         });
         return p.promise();
@@ -10908,7 +10910,98 @@ module.exports = {
     }
 }
 },{}],15:[function(require,module,exports){
-
+module.exports = {
+    store: 'todos',
+    events: {
+        init: function() {
+            this.status = 'all';
+            this.links = ['All', 'Active', 'Completed'];
+        },
+        mount: function() {
+            this.trigger('get');
+        },
+        update: function() {
+            if(this.store.data.length > 0) {
+                this.remaining = (this.store.data.filter(function(t) {return !t.completed})).length;
+                this.allDone = (this.remaining === 0 ? true : false);
+            }
+        },
+        updated: function() {
+            if(this.editing) {
+                this.editor.focus();
+            }
+        },
+        get: function() {
+            this.store.get();
+        },
+        geted: function(data) {
+            this.trigger('filtered');
+        },
+        posted: function() {
+            this.trigger('get');
+        },
+        deleted: function() {
+            this.trigger('get');
+        },
+        filtering: function(status) {
+            this.status = status;
+        },
+        filtered: function() {
+            var self = this;
+            if(this.status === 'all') {
+                this.todos = this.store.data;
+            }else {
+                this.todos = this.store.data.filter(function(t) {
+                    return t.completed === (self.status === 'active' ? false : true);
+                });
+            }
+            this.update();
+        }
+    },
+    actions: {
+        add: function(e) {
+            if(e.which === 13 && (value = e.target.value)) {
+                this.store.save({title: value.trim(), completed: false});
+                e.target.value = '';
+            }
+        },
+        remove: function(e) {
+            this.store.del({id: e.item.id});
+        },
+        clear: function() {
+            var self = this;
+            this.store.data.filter(function(t) {return t.completed}).forEach(function(t) {
+                self.store.del({id: t.id});
+            });
+        },
+        toEdit: function(e) {
+            this.editing = e.item.editing = true;
+            this.editor = e.target.parentNode.parentNode.getElementsByClassName('edit')[0];
+        },
+        edit: function(e) {
+            if(e.which === 13 || e.which === 0) {
+                this.editing = e.item.editing = false;
+                e.item.title = e.target.value.trim();
+                this.store.save({id: e.item.id, title: e.item.title});
+            }
+        },
+        toggle: function(e) {
+            e.item.completed = !e.item.completed;
+            this.store.save({id: e.item.id, completed: e.item.completed});
+        },
+        toggleAll: function(e) {
+            var self = this;
+            this.store.data.forEach(function(t) {
+                t.completed = e.target.checked
+                self.store.save({id: t.id, completed: t.completed});
+            });
+        },
+        sort: function(e) {
+            this.todos = this.todos.reverse();
+            this.update({arrow: (e.target.innerHTML == '↓' ? '↑' : '↓')});
+        }
+    }
+}
 },{}],16:[function(require,module,exports){
 module.exports = {
     events: {
@@ -10925,7 +11018,8 @@ module.exports = {
 module.exports = {
     routes: {
         '': 'home',
-        ':id': 'start'
+        ':id': 'start',
+        'todomvc/:status': 'todomvc'
     },
 
     home: function() {
@@ -10933,6 +11027,10 @@ module.exports = {
     }, 
     start: function(id) {
         app.container.trigger('show', id);
+    },
+    todomvc: function(status) {
+        app.container.trigger('show', 'todomvc');
+        app.tags.todomvc.trigger('filtering', status);
     }
 };
 

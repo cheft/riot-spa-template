@@ -26,17 +26,17 @@ C.Store = class Store
         p = new C.Adapter.Promise()
         C.Adapter.ajax(config)
             .done (resp) ->
-                self.set resp
+                self.set resp if evt is 'geted'
                 self.tag.trigger evt, resp, 'success'
-                @app.trigger 'ajaxed', resp, 'success'
-                if evt is ('posted' or 'puted')
+                if evt is 'posted' or evt is 'puted'
                     self.tag.trigger 'saved', resp, 'success' 
+                self.app.trigger 'ajaxed', resp, 'success'
                 p.resolve resp
             .fail (resp) ->
                 self.tag.trigger evt, resp, 'error'
-                @app.trigger 'ajaxed', resp, 'error'
-                if evt is ('posted' or 'puted')
+                if evt is 'posted' or evt is 'puted'
                     self.tag.trigger 'saved', resp, 'error' 
+                self.app.trigger 'ajaxed', resp, 'error'
                 p.reject resp
         p.promise()
 
