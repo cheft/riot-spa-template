@@ -15,7 +15,7 @@ module.exports = riot.tag('book', '<h1>Book</h1>', function(opts) {
 });
 },{"riot":12}],4:[function(require,module,exports){
 var riot = require('riot');
-module.exports = riot.tag('navigator', '<div class="tabs tabs-style-linemove"> <nav> <ul> <li class="tab-current"> <a href="#todo" class="icon-shop" onclick="{change}"><span>Todo</span></a> </li> <li> <a href="#todomvc" class="icon-note" onclick="{change}"><span>TodoMVC</span></a> </li> <li> <a href="#blog" class="icon-calendar" onclick="{change}"><span>Blog</span></a> </li> <li> <a href="#book" class="icon-book" onclick="{change}"><span>Book</span></a> </li> <li> <a href="#setting" class="icon-params" onclick="{change}"><span>Setting</span></a> </li> <li> <a href="#aboutme" class="icon-desktop" onclick="{change}"><span>AboutMe</span></a> </li> </ul> </nav> </div>', '.tabs { position: relative; overflow: hidden; margin: 0 auto; width: 100%; font-weight: 300; font-size: 1.25em; } /* Nav */ .tabs nav { text-align: center; } .tabs nav ul { position: relative; display: -ms-flexbox; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: flex; margin: 0 auto; padding: 0; max-width: 1200px; list-style: none; -ms-box-orient: horizontal; -ms-box-pack: center; -webkit-flex-flow: row wrap; -moz-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; justify-content: center; } .tabs nav ul li { position: relative; z-index: 1; display: block; margin: 0; text-align: center; -webkit-flex: 1; -moz-flex: 1; -ms-flex: 1; flex: 1; } .tabs nav a { position: relative; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 2.5; text-decoration: none; } .tabs nav a span { vertical-align: middle; font-size: 0.75em; } .tabs nav li.tab-current a { color: #B12D2B; } .tabs nav a:focus { outline: none; } @media screen and (max-width: 58em) { .tabs nav a span { display: none; } .tabs nav a:before { margin-right: 0; } } .tabs-style-linemove nav { background: #F4F4F4; } .tabs-style-linemove nav li:last-child::before { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #B12D2B; content: \'\'; -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s; } /* Move the line */ .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before { -webkit-transform: translate3d(-500%,0,0); transform: translate3d(-500%,0,0); } .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-400%,0,0); transform: translate3d(-400%,0,0); } .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-300%,0,0); transform: translate3d(-300%,0,0); } .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-200%,0,0); transform: translate3d(-200%,0,0); } .tabs-style-linemove nav li:nth-child(5).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-100%,0,0); transform: translate3d(-100%,0,0); } .tabs-style-linemove nav a { padding: 1em 0; color: #949494; line-height: 1; -webkit-transition: color 0.3s, -webkit-transform 0.3s; transition: color 0.3s, transform 0.3s; } .tabs-style-linemove nav li.tab-current a { color: #B12D2B; -webkit-transform: translate3d(0,4px,0); transform: translate3d(0,4px,0); } .tabs-style-linemove nav a span { font-weight: 700; }', function(opts) {app.mixin(this, require('./'));
+module.exports = riot.tag('navigator', '<div class="tabs tabs-style-linemove"> <nav> <ul> <li class="tab-current"> <a href="#todomvc" class="icon-shop" onclick="{change}"><span>TodoMVC</span></a> </li> <li> <a href="#todo" class="icon-note" onclick="{change}"><span>Todo</span></a> </li> <li> <a href="#blog" class="icon-calendar" onclick="{change}"><span>Blog</span></a> </li> <li> <a href="#book" class="icon-book" onclick="{change}"><span>Book</span></a> </li> <li> <a href="#setting" class="icon-params" onclick="{change}"><span>Setting</span></a> </li> <li> <a href="#aboutme" class="icon-desktop" onclick="{change}"><span>AboutMe</span></a> </li> </ul> </nav> </div>', '.tabs { position: relative; overflow: hidden; margin: 0 auto; width: 100%; font-weight: 300; font-size: 1.25em; } /* Nav */ .tabs nav { text-align: center; } .tabs nav ul { position: relative; display: -ms-flexbox; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: flex; margin: 0 auto; padding: 0; max-width: 1200px; list-style: none; -ms-box-orient: horizontal; -ms-box-pack: center; -webkit-flex-flow: row wrap; -moz-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; justify-content: center; } .tabs nav ul li { position: relative; z-index: 1; display: block; margin: 0; text-align: center; -webkit-flex: 1; -moz-flex: 1; -ms-flex: 1; flex: 1; } .tabs nav a { position: relative; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 2.5; text-decoration: none; } .tabs nav a span { vertical-align: middle; font-size: 0.75em; } .tabs nav li.tab-current a { color: #B12D2B; } .tabs nav a:focus { outline: none; } @media screen and (max-width: 58em) { .tabs nav a span { display: none; } .tabs nav a:before { margin-right: 0; } } .tabs-style-linemove nav { background: #F4F4F4; } .tabs-style-linemove nav li:last-child::before { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #B12D2B; content: \'\'; -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s; } /* Move the line */ .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before { -webkit-transform: translate3d(-500%,0,0); transform: translate3d(-500%,0,0); } .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-400%,0,0); transform: translate3d(-400%,0,0); } .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-300%,0,0); transform: translate3d(-300%,0,0); } .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-200%,0,0); transform: translate3d(-200%,0,0); } .tabs-style-linemove nav li:nth-child(5).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-100%,0,0); transform: translate3d(-100%,0,0); } .tabs-style-linemove nav a { padding: 1em 0; color: #949494; line-height: 1; -webkit-transition: color 0.3s, -webkit-transform 0.3s; transition: color 0.3s, transform 0.3s; } .tabs-style-linemove nav li.tab-current a { color: #B12D2B; -webkit-transform: translate3d(0,4px,0); transform: translate3d(0,4px,0); } .tabs-style-linemove nav a span { font-weight: 700; }', function(opts) {app.mixin(this, require('./'));
 });
 },{"./":13,"riot":12}],5:[function(require,module,exports){
 var riot = require('riot');
@@ -10935,18 +10935,6 @@ module.exports = {
             this.store.get();
         },
         geted: function(data) {
-            this.trigger('filtered');
-        },
-        posted: function() {
-            this.trigger('get');
-        },
-        deleted: function() {
-            this.trigger('get');
-        },
-        filtering: function(status) {
-            this.status = status;
-        },
-        filtered: function() {
             var self = this;
             if(this.status === 'all') {
                 this.todos = this.store.data;
@@ -10956,6 +10944,15 @@ module.exports = {
                 });
             }
             this.update();
+        },
+        posted: function() {
+            this.trigger('get');
+        },
+        deleted: function() {
+            this.trigger('get');
+        },
+        filtering: function(status) {
+            this.status = status;
         }
     },
     actions: {
@@ -11023,7 +11020,7 @@ module.exports = {
     },
 
     home: function() {
-        app.container.trigger('show', 'todo');
+        app.container.trigger('show', 'todomvc');
     }, 
     start: function(id) {
         app.container.trigger('show', id);

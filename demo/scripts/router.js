@@ -6,7 +6,7 @@ module.exports = {
     },
 
     home: function() {
-        app.container.trigger('show', 'todo');
+        app.container.trigger('show', 'todomvc');
     }, 
     start: function(id) {
         app.container.trigger('show', id);

@@ -23,18 +23,6 @@ module.exports = {
             this.store.get();
         },
         geted: function(data) {
-            this.trigger('filtered');
-        },
-        posted: function() {
-            this.trigger('get');
-        },
-        deleted: function() {
-            this.trigger('get');
-        },
-        filtering: function(status) {
-            this.status = status;
-        },
-        filtered: function() {
             var self = this;
             if(this.status === 'all') {
                 this.todos = this.store.data;
@@ -44,6 +32,15 @@ module.exports = {
                 });
             }
             this.update();
+        },
+        posted: function() {
+            this.trigger('get');
+        },
+        deleted: function() {
+            this.trigger('get');
+        },
+        filtering: function(status) {
+            this.status = status;
         }
     },
     actions: {

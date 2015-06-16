@@ -1,6 +1,7 @@
 # cheftjs
 是基于 riot.js 薄封装的一套类 flux 框架
 
+
     ||=====================||      
     ||     Application     ||
     ||=====================||
@@ -16,9 +17,9 @@
     var c = require('cheftjs');
     var app = new c.Applicaton({
         router: require('./router.js')
-    })    
+    });    
 
-## Router
+## Router - [like backbone](http://backbonejs.org/#Router-routes)
     module.exports = {
         routes: {
             '': 'home'
@@ -28,7 +29,7 @@
         }
     }
 
-## Tag = [riot](https://github.com/riot/riot)
+## Tag - [base on riot](https://github.com/riot/riot)
     <test>
         <script></script>
         <h1>{result}</h1>
@@ -56,10 +57,12 @@ or
 
     module.exports = {
         store: {
+            url: '',
+            contentType: ''
         }
     }
 
-### method:
+### method
 * get()
 * save()
 * del()
