@@ -3,7 +3,7 @@ module.exports = {
         change: function(e) {
             var a = e.target;
             var li = e.target.parentNode;
-            if(a.tagName != 'A') {
+            if(a.tagName !== 'A') {
                 li = li.parentNode;
                 a = a.parentNode;
             }
@@ -16,4 +16,4 @@ module.exports = {
             li.className = 'tab-current';
         }
     }
-}
+};

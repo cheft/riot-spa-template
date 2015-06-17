@@ -10,7 +10,7 @@ module.exports = {
         },
         update: function() {
             if(this.store.data.length > 0) {
-                this.remaining = (this.store.data.filter(function(t) {return !t.completed})).length;
+                this.remaining = (this.store.data.filter(function(t) {return !t.completed; })).length;
                 this.allDone = (this.remaining === 0 ? true : false);
             }
         },
@@ -19,7 +19,7 @@ module.exports = {
                 this.editor.focus();
             }
         },
-        geted: function(data) {
+        geted: function() {
             var self = this;
             if(this.status === 'all') {
                 this.todos = this.store.data;
@@ -57,7 +57,7 @@ module.exports = {
         },
         clear: function() {
             var self = this;
-            this.store.data.filter(function(t) {return t.completed}).forEach(function(t) {
+            this.store.data.filter(function(t) {return t.completed; }).forEach(function(t) {
                 self.store.del({id: t.id});
             });
         },
@@ -79,13 +79,13 @@ module.exports = {
         toggleAll: function(e) {
             var self = this;
             this.store.data.forEach(function(t) {
-                t.completed = e.target.checked
+                t.completed = e.target.checked;
                 self.store.save({id: t.id, completed: t.completed});
             });
         },
         sort: function(e) {
             this.todos = this.todos.reverse();
-            this.arrow = e.target.innerHTML == '↓' ? '↑' : '↓';
+            this.arrow = e.target.innerHTML === '↓' ? '↑' : '↓';
         }
     }
-}
+};

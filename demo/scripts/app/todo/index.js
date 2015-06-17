@@ -1,6 +1,6 @@
 module.exports = {
     actions: {
-        add: function(e) {
+        add: function() {
             if (this.text) {
                 this.items.push({
                     title: this.text
@@ -27,4 +27,4 @@ module.exports = {
             this.disabled = true;
         }
     }
-}
+};
