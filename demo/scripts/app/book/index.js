@@ -2,6 +2,8 @@ module.exports = {
     events: {
         init: function() {
             this.title = this.opts.title || '';
+
+            this.title = '选择';
         }
     },
     actions: {

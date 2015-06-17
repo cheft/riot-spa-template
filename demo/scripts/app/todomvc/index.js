@@ -47,7 +47,8 @@ module.exports = {
     },
     actions: {
         add: function(e) {
-            if(e.which === 13 && (value = e.target.value)) {
+            var value = e.target.value;
+            if(e.which === 13 && value) {
                 this.store.save({title: value.trim(), completed: false});
                 e.target.value = '';
             }

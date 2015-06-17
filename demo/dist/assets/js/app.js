@@ -10,7 +10,7 @@ module.exports = riot.tag('blog', '<h1>Blog</h1>', function(opts) {
 });
 },{"riot":12}],3:[function(require,module,exports){
 var riot = require('riot');
-module.exports = riot.tag('book', '<div class="c-dialog" name="dialog"> <div class="c-dialog-content"> <div class="c-dialog-header"> <div class="title"> 选择 <a href="javascript: void(0);" class="close" onclick="{close}">×</a> </div> </div> <div class="c-dialog-body"> 温馨提示内容 </div> <div class="c-dialog-footer">  </div> </div> </div>', 'book .c-dialog , [riot-tag="book"] .c-dialog { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: center; -webkit-box-align: center; background: rgba(0,0,0,.4); display: none; color: #000; } book .c-dialog.show , [riot-tag="book"] .c-dialog.show { display: -webkit-box; display: box; } book .c-dialog-content , [riot-tag="book"] .c-dialog-content { border-radius: 6px; width: 270px; -webkit-background-clip: padding-box; background-clip: padding-box; outline: 0; pointer-events: auto; background-color: rgba(253,253,253,.95); position: relative; } book .c-dialog-header , [riot-tag="book"] .c-dialog-header { border-top-left-radius: 6px; border-top-right-radius: 6px; margin-bottom: 4px; font-size: 16px; width: 100%; text-align: center; background: #B12D2B; color: #FFF; } book .c-dialog-header .title , [riot-tag="book"] .c-dialog-header .title { padding: 15px 10px 15px; font-size: 1rem; } book .c-dialog-header .close , [riot-tag="book"] .c-dialog-header .close { position: absolute; top: 4px; padding: 4px; right: 6px; text-decoration: none; color: #FFF; } book .c-dialog-body , [riot-tag="book"] .c-dialog-body { width: 100%; padding: 10px; } book .c-dialog-footer , [riot-tag="book"] .c-dialog-footer { display: -webkit-box; width: 100%; -webkit-box-sizing: border-box; box-sizing: border-box; } book .c-dialog-footer button , [riot-tag="book"] .c-dialog-footer button { height: 42px; line-height: 42px; background: transparent; color: #00a5e0; line-height: 50px; height: 48px; text-align: center; font-size: 16px; border: 1px #c8c7cc solid; width: 100%; display: block; -webkit-box-flex: 1; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; background-image: none; } book .animated , [riot-tag="book"] .animated { animation-duration: 3s; animation-fill-mode: both; } @keyframes zoomIn { book 0% , [riot-tag="book"] 0% { opacity: 0; transform: scale3d(.3, .3, .3); } book 50% , [riot-tag="book"] 50% { opacity: 1; } } book .zoomIn , [riot-tag="book"] .zoomIn { animation-name: zoomIn; } @keyframes zoomOut { book 0% , [riot-tag="book"] 0% { opacity: 1; } book 50% , [riot-tag="book"] 50% { opacity: 0; transform: scale3d(.3, .3, .3); } book 100% , [riot-tag="book"] 100% { opacity: 0; } } book .zoomOut , [riot-tag="book"] .zoomOut { animation-name: zoomOut; }', function(opts) {app.mixin(this, require('./'));
+module.exports = riot.tag('book', '<div class="c-dialog" name="dialog"> <div class="c-dialog-content"> <div class="c-dialog-header"> <div class="title"> {title} <a href="javascript: void(0);" class="close" onclick="{close}">×</a> </div> </div> <div class="c-dialog-body"> <yield></yield> </div> <div class="c-dialog-footer"> <button>关闭</button> <button>关闭</button> </div> </div> </div>', 'book .c-dialog , [riot-tag="book"] .c-dialog { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: center; -webkit-box-align: center; background: rgba(0,0,0,.4); display: none; color: #000; } book .c-dialog.show , [riot-tag="book"] .c-dialog.show { display: -webkit-box; display: box; } book .c-dialog-content , [riot-tag="book"] .c-dialog-content { border-radius: 6px; width: 270px; -webkit-background-clip: padding-box; background-clip: padding-box; outline: 0; pointer-events: auto; background-color: rgba(253,253,253,.95); position: relative; } book .c-dialog-header , [riot-tag="book"] .c-dialog-header { border-top-left-radius: 6px; border-top-right-radius: 6px; margin-bottom: 4px; font-size: 16px; width: 100%; text-align: center; background: #B12D2B; color: #FFF; } book .c-dialog-header .title , [riot-tag="book"] .c-dialog-header .title { padding: 15px 10px 15px; font-size: 1rem; } book .c-dialog-header .close , [riot-tag="book"] .c-dialog-header .close { position: absolute; top: 4px; padding: 4px; right: 6px; text-decoration: none; color: #FFF; } book .c-dialog-body , [riot-tag="book"] .c-dialog-body { width: 100%; padding: 10px; } book .c-dialog-footer , [riot-tag="book"] .c-dialog-footer { display: -webkit-box; width: 100%; -webkit-box-sizing: border-box; box-sizing: border-box; } book .c-dialog-footer button , [riot-tag="book"] .c-dialog-footer button { height: 42px; line-height: 42px; background: transparent; color: #00a5e0; line-height: 50px; height: 48px; text-align: center; font-size: 16px; border: 1px #c8c7cc solid; width: 100%; display: block; -webkit-box-flex: 1; background-image: none; } book .animated , [riot-tag="book"] .animated { animation-duration: 3s; animation-fill-mode: both; } @keyframes zoomIn { book 0% , [riot-tag="book"] 0% { opacity: 0; transform: scale3d(.3, .3, .3); } book 50% , [riot-tag="book"] 50% { opacity: 1; } } book .zoomIn , [riot-tag="book"] .zoomIn { animation-name: zoomIn; } @keyframes zoomOut { book 0% , [riot-tag="book"] 0% { opacity: 1; } book 50% , [riot-tag="book"] 50% { opacity: 0; transform: scale3d(.3, .3, .3); } book 100% , [riot-tag="book"] 100% { opacity: 0; } } book .zoomOut , [riot-tag="book"] .zoomOut { animation-name: zoomOut; }', function(opts) {app.mixin(this, require('./'));
 });
 
 },{"./":13,"riot":12}],4:[function(require,module,exports){
@@ -50,6 +50,7 @@ var app = window.app = new c.Application({
 $(function() {
     app.start();
 });
+
 },{"./router":18,"cheftjs":10,"jquery":11}],10:[function(require,module,exports){
 (function() {
   var slice = [].slice;
@@ -10860,6 +10861,13 @@ riot.mountTo = riot.mount
 
 },{}],13:[function(require,module,exports){
 module.exports = {
+    events: {
+        init: function() {
+            this.title = this.opts.title || '';
+
+            this.title = '选择';
+        }
+    },
     actions: {
         show: function() {
             this.dialog.className = 'c-dialog show';
@@ -10868,14 +10876,15 @@ module.exports = {
             this.dialog.className = 'c-dialog';
         }
     }
-}
+};
+
 },{}],14:[function(require,module,exports){
 module.exports = {
     actions: {
         change: function(e) {
             var a = e.target;
             var li = e.target.parentNode;
-            if(a.tagName != 'A') {
+            if(a.tagName !== 'A') {
                 li = li.parentNode;
                 a = a.parentNode;
             }
@@ -10888,11 +10897,12 @@ module.exports = {
             li.className = 'tab-current';
         }
     }
-}
+};
+
 },{}],15:[function(require,module,exports){
 module.exports = {
     actions: {
-        add: function(e) {
+        add: function() {
             if (this.text) {
                 this.items.push({
                     title: this.text
@@ -10919,7 +10929,8 @@ module.exports = {
             this.disabled = true;
         }
     }
-}
+};
+
 },{}],16:[function(require,module,exports){
 module.exports = {
     store: 'todos',
@@ -10933,7 +10944,7 @@ module.exports = {
         },
         update: function() {
             if(this.store.data.length > 0) {
-                this.remaining = (this.store.data.filter(function(t) {return !t.completed})).length;
+                this.remaining = (this.store.data.filter(function(t) {return !t.completed; })).length;
                 this.allDone = (this.remaining === 0 ? true : false);
             }
         },
@@ -10942,7 +10953,7 @@ module.exports = {
                 this.editor.focus();
             }
         },
-        geted: function(data) {
+        geted: function() {
             var self = this;
             if(this.status === 'all') {
                 this.todos = this.store.data;
@@ -10980,7 +10991,7 @@ module.exports = {
         },
         clear: function() {
             var self = this;
-            this.store.data.filter(function(t) {return t.completed}).forEach(function(t) {
+            this.store.data.filter(function(t) {return t.completed; }).forEach(function(t) {
                 self.store.del({id: t.id});
             });
         },
@@ -11002,23 +11013,24 @@ module.exports = {
         toggleAll: function(e) {
             var self = this;
             this.store.data.forEach(function(t) {
-                t.completed = e.target.checked
+                t.completed = e.target.checked;
                 self.store.save({id: t.id, completed: t.completed});
             });
         },
         sort: function(e) {
             this.todos = this.todos.reverse();
-            this.arrow = e.target.innerHTML == '↓' ? '↑' : '↓';
+            this.arrow = e.target.innerHTML === '↓' ? '↑' : '↓';
         }
     }
-}
+};
+
 },{}],17:[function(require,module,exports){
 module.exports = {
     events: {
         show: function(tag) {
             this.container.setAttribute('riot-tag', tag);
             app.mount(tag);
-            this.tags.navigator.trigger('changed', 
+            this.tags.navigator.trigger('changed',
                 document.querySelectorAll('a[href="#' + tag + '"]')[0].parentNode);
         }
     }
@@ -11034,7 +11046,7 @@ module.exports = {
 
     home: function() {
         app.container.trigger('show', 'todomvc');
-    }, 
+    },
     start: function(id) {
         app.container.trigger('show', id);
     },

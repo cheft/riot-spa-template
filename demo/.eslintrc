@@ -1,8 +1,13 @@
-env:
-    browser: true
-
-rules:
-    quotes: 0
-    strict: 0
-    no-undef: ["require", "app"]
-    key-spacing: 0
+{
+    env: {
+        browser: true,
+        node: true
+    },
+    globals: {
+        app: true
+    },
+    rules: {
+        strict: 0,
+        quotes: [2, 'single']
+    }
+}
