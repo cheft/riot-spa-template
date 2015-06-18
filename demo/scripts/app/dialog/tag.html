@@ -1,0 +1,139 @@
+<ui-dialog>
+    <script></script>
+    <div class="c-dialog" name="dialog">
+        <div class="c-dialog-content animated zoomIn">
+            <div class="c-dialog-header">
+                <div class="title">
+                    {title}
+                    <a href="javascript: void(0);" class="close" onclick="{close}">×</a>
+                </div>
+            </div>
+            <div class="c-dialog-body">
+                <yield></yield>
+            </div>
+            <div class="c-dialog-footer">
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .c-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            background: rgba(0,0,0,.4);
+            display: none;
+            color: #000;
+            height: 100%;
+        }
+
+        .c-dialog.show {
+            display: -webkit-box;
+            display: box;
+        }
+        .c-dialog.show {
+            display: -webkit-box;
+            display: box;
+        }
+        .c-dialog-content {
+            border-radius: 6px;
+            width: 270px;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            outline: 0;
+            pointer-events: auto;
+            background-color: rgba(253,253,253,.95);
+            position: relative;
+            height: 90%;
+        }
+        .c-dialog-header {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            background: #B12D2B;
+            color: #FFF;
+        }
+        .c-dialog-header .title {
+            padding: 15px 10px 15px;
+            font-size: 1rem;
+        }
+        .c-dialog-header .close {
+            position: absolute;
+            top: 6px;
+            padding: 6px;
+            right: 6px;
+            text-decoration: none;
+            color: #FFF;
+        }
+        .c-dialog-body {
+            width: 100%;
+            min-height: 20%;
+            max-height: 88%;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .c-dialog-footer {
+            display: -webkit-box;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .c-dialog-footer button {
+            height: 42px;
+            line-height: 42px;
+            background: transparent;
+            color: #00a5e0;
+            line-height: 50px;
+            height: 48px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px #c8c7cc solid;
+            width: 100%;
+            display: block;
+            -webkit-box-flex: 1;
+            background-image: none;
+        }
+
+        .animated {
+            -webkit-animation-duration: 0.3s;
+            -webkit-animation-fill-mode: both;
+        }
+        
+        @-webkit-keyframes zoomIn {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale3d(.3, .3, .3);
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+        .zoomIn {
+            -webkit-animation-name: zoomIn;
+        }
+
+        @-webkit-keyframes out {
+            from {
+                display: -webkit-box;
+                display: box;
+            }
+            to {
+                display: none;
+            }
+        }
+        .out {
+            -webkit-animation-name out;
+        }
+    </style>
+</ui-dialog>

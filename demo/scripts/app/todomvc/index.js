@@ -6,7 +6,7 @@ module.exports = {
             this.links = ['All', 'Active', 'Completed'];
         },
         mount: function() {
-            this.trigger('get');
+            this.trigger('getting');
         },
         update: function() {
             if(this.store.data.length > 0) {
@@ -31,14 +31,14 @@ module.exports = {
             this.update();
         },
         posted: function() {
-            this.trigger('get');
+            this.trigger('getting');
         },
         deleted: function() {
-            this.trigger('get');
+            this.trigger('getting');
         },
 
         // custom event
-        get: function() {
+        getting: function() {
             this.store.get();
         },
         filtering: function(status) {
@@ -75,13 +75,20 @@ module.exports = {
         },
         toggle: function(e) {
             e.item.completed = !e.item.completed;
-            this.store.save({id: e.item.id, completed: e.item.completed});
+            var self = this;
+            this.store.save({id: e.item.id, completed: e.item.completed})
+                .done(function() {
+                    self.trigger('getting');
+                });
         },
         toggleAll: function(e) {
-            var self = this;
+            var self = this, defs = [];
             this.store.data.forEach(function(t) {
                 t.completed = e.target.checked;
-                self.store.save({id: t.id, completed: t.completed});
+                defs.push(self.store.save({id: t.id, completed: t.completed}));
+            });
+            $.when.apply(this, defs).done(function() {
+                self.trigger('getting');
             });
         },
         sort: function(e) {

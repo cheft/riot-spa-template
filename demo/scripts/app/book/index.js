@@ -1,17 +1,26 @@
 module.exports = {
     events: {
         init: function() {
-            this.title = this.opts.title || '';
-
-            this.title = '选择';
+            this.list = ['广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西'];
         }
     },
     actions: {
-        show: function() {
-            this.dialog.className = 'c-dialog show';
+        open: function() {
+            this.tags.p.show();
         },
-        close: function() {
-            this.dialog.className = 'c-dialog';
+        selectP: function(e) {
+            console.log(e.target.innerHTML);
+            this.tags.p.close();
+            this.tags.c.show();
+        },
+        selectC: function(e) {
+            console.log(e.target.innerHTML);
+            this.tags.c.close();
+            this.tags.s.show();
+        },
+        selectS: function(e) {
+            console.log(e.target.innerHTML);
+            this.tags.s.close();
         }
     }
 };

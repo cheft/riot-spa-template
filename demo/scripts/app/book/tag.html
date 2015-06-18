@@ -1,136 +1,63 @@
 <book>
     <script></script>
-    <div class="c-dialog" name="dialog">
-        <div class="c-dialog-content">
-            <div class="c-dialog-header">
-                <div class="title">
-                    {title}
-                    <a href="javascript: void(0);" class="close" onclick="{close}">×</a>
-                </div>
-            </div>
-            <div class="c-dialog-body">
-                <yield></yield>
-            </div>
-            <div class="c-dialog-footer">
-                <button>关闭</button>
-                <button>关闭</button>
-            </div>
+    <ui-dialog title="请选择省" name="p">
+        <div class="c-contianer">
+            <ul class="c-list ui-list-text ui-border-tb">
+                <li class="c-border-t" each={l in parent.list} onclick="{parent.parent.selectP}">
+                    {l}
+                </li>
+            </ul>
         </div>
-    </div>
+    </ui-dialog>
 
-    <style scoped>
-        .c-dialog {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 999;
-            display: -webkit-box;
-            -webkit-box-orient: horizontal;
-            -webkit-box-pack: center;
-            -webkit-box-align: center;
-            background: rgba(0,0,0,.4);
-            display: none;
-            color: #000;
-        }
-        .c-dialog.show {
-            display: -webkit-box;
-            display: box;
-        }
-        .c-dialog-content {
-            border-radius: 6px;
-            width: 270px;
-            -webkit-background-clip: padding-box;
-            background-clip: padding-box;
-            outline: 0;
-            pointer-events: auto;
-            background-color: rgba(253,253,253,.95);
-            position: relative;
-        }
-        .c-dialog-header {
-            border-top-left-radius: 6px;
-            border-top-right-radius: 6px;
-            margin-bottom: 4px;
-            font-size: 16px;
-            width: 100%;
-            text-align: center;
-            background: #B12D2B;
-            color: #FFF;
-        }
-        .c-dialog-header .title {
-            padding: 15px 10px 15px;
-            font-size: 1rem;
-        }
-        .c-dialog-header .close {
-            position: absolute;
-            top: 4px;
-            padding: 4px;
-            right: 6px;
-            text-decoration: none;
-            color: #FFF;
-        }
-        .c-dialog-body {
-            width: 100%;
+    <ui-dialog title="请选择市" name="c">
+        <div class="c-contianer">
+            <ul class="c-list ui-list-text ui-border-tb">
+                <li class="c-border-t" each={l in parent.list} onclick="{parent.parent.selectC}">
+                    {l}
+                </li>
+            </ul>
+        </div>
+    </ui-dialog>
+
+    <ui-dialog title="请选择学校" name="s">
+        <div class="c-contianer">
+            <ul class="c-list ui-list-text ui-border-tb">
+                <li class="c-border-t" each={l in parent.list} onclick="{parent.parent.selectS}">
+                    {l}
+                </li>
+            </ul>
+        </div>
+    </ui-dialog>
+    
+    <button onclick="{open}">选择省</button>
+
+    <div style="height: 3200px;"></div>
+
+    <style>
+        .c-contianer {
             padding: 10px;
         }
-        .c-dialog-footer {
-            display: -webkit-box;
-            width: 100%;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-        .c-dialog-footer button {
-            height: 42px;
-            line-height: 42px;
-            background: transparent;
-            color: #00a5e0;
-            line-height: 50px;
-            height: 48px;
+        .c-dialog-body ul {
+            padding-left: 0px;
             text-align: center;
+            -webkit-margin-before: 0px;
+            -webkit-padding-start: 0px;
+        }
+        .c-dialog-body li {
+            position: relative;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 15px;
             font-size: 16px;
-            border: 1px #c8c7cc solid;
-            width: 100%;
-            display: block;
-            -webkit-box-flex: 1;
-            background-image: none;
+            -webkit-box-align: center;
         }
-
-        .animated {
-            animation-duration: 3s;
-            animation-fill-mode: both;
+        .c-list {
+            list-style: none;
         }
-
-        @keyframes zoomIn {
-            0% {
-                opacity: 0;
-                transform: scale3d(.3, .3, .3);
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-        .zoomIn {
-            animation-name: zoomIn;
-        }
-
-        @keyframes zoomOut {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-                transform: scale3d(.3, .3, .3);
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-        .zoomOut {
-            animation-name: zoomOut;
+        .c-border-t {
+            /*border: 1px solid #e0e0e0;*/
+            border-bottom: 1px dashed #e0e0e0;
         }
     </style>
 </book>
