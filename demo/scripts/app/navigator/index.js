@@ -1,4 +1,10 @@
 module.exports = {
+    listeners: {
+        changed: function(li) {
+            document.querySelector('.tab-current').className = '';
+            li.className = 'tab-current';
+        }
+    },
     actions: {
         change: function(e) {
             var a = e.target;
@@ -8,12 +14,6 @@ module.exports = {
                 a = a.parentNode;
             }
             app.router.go(a.href.split('#')[1]);
-        }
-    },
-    events: {
-        changed: function(li) {
-            document.querySelector('.tab-current').className = '';
-            li.className = 'tab-current';
         }
     }
 };

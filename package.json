@@ -1,6 +1,6 @@
 {
   "name": "cheftjs",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/cheft.js",
   "scripts": {
@@ -30,8 +30,5 @@
     "gulp-watch": "^4.1.1",
     "gulp-sleet": "^0.0.3",
     "ip": "^0.3.2"
-  },
-  "dependencies": {
-    "jquery": "^2.1.4"
   }
 }

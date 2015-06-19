@@ -9,10 +9,10 @@
     ||=====================||
     ||        Router       ||
     ||=====================||
-    Tag --> Actions --> Events
-      \        |        /
-       \     Store     /
-        \_____________/
+    Tag --> Actions --> Listeners
+      \        |         /
+       \     Store      /
+        \______________/
               <--
 
 ## Application
@@ -71,10 +71,10 @@ or
 * post()
 * put()
 
-## Events
+## Listeners
     
     module.exports = {
-        events: {
+        Listeners: {
             init:    function() {}
             mount:   function() {}
             update:  function() {}

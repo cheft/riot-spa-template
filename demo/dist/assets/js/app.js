@@ -75,7 +75,7 @@ $(function() {
   })(window, function(root, riot) {
     var C, Cheft, Router, Store, application, escapeRegExp, extractParams, fn1, i, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
     C = Cheft = {
-      version: '1.0.7'
+      version: '1.1.1'
     };
     C.riot = riot;
     toString = Object.prototype.toString;
@@ -130,12 +130,12 @@ $(function() {
       application.prototype.mixin = function(tag, obj) {
         var fn2, init, opt;
         init = function() {};
-        if (obj.events) {
-          init = obj.events.init || function() {};
+        if (obj.listeners) {
+          init = obj.listeners.init || function() {};
           fn2 = function(item) {
-            return tag.on(item, obj.events[item]);
+            return tag.on(item, obj.listeners[item]);
           };
-          for (item in obj.events) {
+          for (item in obj.listeners) {
             fn2(item);
           }
         }
@@ -10866,7 +10866,7 @@ riot.mountTo = riot.mount
 
 },{}],14:[function(require,module,exports){
 module.exports = {
-    events: {
+    listeners: {
         init: function() {
             this.list = ['广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西'];
         }
@@ -10894,7 +10894,7 @@ module.exports = {
 
 },{}],15:[function(require,module,exports){
 module.exports = {
-    events: {
+    listeners: {
         init: function() {
             this.title = this.opts.title || '';
         }
@@ -10914,6 +10914,12 @@ module.exports = {
 
 },{}],16:[function(require,module,exports){
 module.exports = {
+    listeners: {
+        changed: function(li) {
+            document.querySelector('.tab-current').className = '';
+            li.className = 'tab-current';
+        }
+    },
     actions: {
         change: function(e) {
             var a = e.target;
@@ -10924,17 +10930,22 @@ module.exports = {
             }
             app.router.go(a.href.split('#')[1]);
         }
-    },
-    events: {
-        changed: function(li) {
-            document.querySelector('.tab-current').className = '';
-            li.className = 'tab-current';
-        }
     }
 };
 
 },{}],17:[function(require,module,exports){
 module.exports = {
+    listeners: {
+        init: function() {
+            this.title = 'I want to behave!';
+            this.items = [
+                { title: 'Avoid excessive coffeine', done: true },
+                { title: 'Be less provocative' },
+                { title: 'Be nice to people' }
+            ];
+            this.disabled = true;
+        }
+    },
     actions: {
         add: function() {
             if (this.text) {
@@ -10951,24 +10962,13 @@ module.exports = {
             var item = e.item;
             item.done = !item.done;
         }
-    },
-    events: {
-        init: function() {
-            this.title = 'I want to behave!';
-            this.items = [
-                { title: 'Avoid excessive coffeine', done: true },
-                { title: 'Be less provocative' },
-                { title: 'Be nice to people' }
-            ];
-            this.disabled = true;
-        }
     }
 };
 
 },{}],18:[function(require,module,exports){
 module.exports = {
     store: 'todos',
-    events: {
+    listeners: {
         init: function() {
             this.status = 'all';
             this.links = ['All', 'Active', 'Completed'];
@@ -11068,7 +11068,7 @@ module.exports = {
 
 },{}],19:[function(require,module,exports){
 module.exports = {
-    events: {
+    listeners: {
         show: function(tag) {
             this.container.setAttribute('riot-tag', tag);
             app.mount(tag);

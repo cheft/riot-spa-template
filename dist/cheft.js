@@ -16,7 +16,7 @@
   })(window, function(root, riot) {
     var C, Cheft, Router, Store, application, escapeRegExp, extractParams, fn1, i, item, len, namedParam, optionalParam, routeToRegExp, router, splatParam, toString, types;
     C = Cheft = {
-      version: '1.0.8'
+      version: '1.1.1'
     };
     C.riot = riot;
     toString = Object.prototype.toString;
@@ -71,12 +71,12 @@
       application.prototype.mixin = function(tag, obj) {
         var fn2, init, opt;
         init = function() {};
-        if (obj.events) {
-          init = obj.events.init || function() {};
+        if (obj.listeners) {
+          init = obj.listeners.init || function() {};
           fn2 = function(item) {
-            return tag.on(item, obj.events[item]);
+            return tag.on(item, obj.listeners[item]);
           };
-          for (item in obj.events) {
+          for (item in obj.listeners) {
             fn2(item);
           }
         }

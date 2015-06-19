@@ -18,10 +18,10 @@ C.Application = class application
 
     mixin: (tag, obj) ->
         init = ->
-        if obj.events
-            init = obj.events.init || ->
-            for item of obj.events
-                do (item) -> tag.on item, obj.events[item]
+        if obj.listeners
+            init = obj.listeners.init || ->
+            for item of obj.listeners
+                do (item) -> tag.on item, obj.listeners[item]
         if obj.actions
             obj.actions.init = init
             tag.mixin obj.actions

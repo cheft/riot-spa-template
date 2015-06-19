@@ -1,5 +1,5 @@
 module.exports = {
-    events: {
+    listeners: {
         init: function() {
             this.list = ['广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西'];
         }

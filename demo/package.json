@@ -9,6 +9,7 @@
   "license": "ISC",
   "devDependencies": {
     "browserify": "^9.0.8",
+    "cheftjs": "^1.1.1",
     "cors": "^2.7.1",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
@@ -27,7 +28,7 @@
     "watchify": "^3.2.1"
   },
   "dependencies": {
-    "cheftjs": "^1.0.7",
+    "cheftjs": "^1.1.0",
     "jquery": "^2.1.4",
     "riot": "^2.1.0"
   }

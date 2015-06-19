@@ -1,5 +1,5 @@
 module.exports = {
-    events: {
+    listeners: {
         init: function() {
             this.title = this.opts.title || '';
         }

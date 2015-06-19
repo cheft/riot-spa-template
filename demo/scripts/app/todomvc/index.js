@@ -1,6 +1,6 @@
 module.exports = {
     store: 'todos',
-    events: {
+    listeners: {
         init: function() {
             this.status = 'all';
             this.links = ['All', 'Active', 'Completed'];

@@ -27,12 +27,12 @@ C.Application = application = (function() {
   application.prototype.mixin = function(tag, obj) {
     var fn, init, item, opt;
     init = function() {};
-    if (obj.events) {
-      init = obj.events.init || function() {};
+    if (obj.listeners) {
+      init = obj.listeners.init || function() {};
       fn = function(item) {
-        return tag.on(item, obj.events[item]);
+        return tag.on(item, obj.listeners[item]);
       };
-      for (item in obj.events) {
+      for (item in obj.listeners) {
         fn(item);
       }
     }
