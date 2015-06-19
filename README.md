@@ -74,7 +74,7 @@ or
 ## Listeners
     
     module.exports = {
-        Listeners: {
+        listeners: {
             init:    function() {}
             mount:   function() {}
             update:  function() {}
