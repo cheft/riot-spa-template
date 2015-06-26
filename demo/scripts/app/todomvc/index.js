@@ -2,6 +2,7 @@ module.exports = {
     store: 'todos',
     listeners: {
         init: function() {
+            app.analysis('todomvc');
             this.status = 'all';
             this.links = ['All', 'Active', 'Completed'];
         },

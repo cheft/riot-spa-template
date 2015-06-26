@@ -1,10 +1,9 @@
 module.exports = {
     routes: {
         '': 'home',
-        ':id': 'start',
+        '!:id': 'start',
         'todomvc/:status': 'todomvc'
     },
-
     home: function() {
         app.container.trigger('show', 'todomvc');
     },

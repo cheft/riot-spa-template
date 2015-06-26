@@ -1,6 +1,7 @@
 module.exports = {
     listeners: {
         init: function() {
+            app.analysis('todo');
             this.title = 'I want to behave!';
             this.items = [
                 { title: 'Avoid excessive coffeine', done: true },

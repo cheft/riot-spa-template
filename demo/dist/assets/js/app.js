@@ -20,7 +20,7 @@ module.exports = riot.tag('ui-dialog', '<div class="c-dialog" name="dialog"> <di
 
 },{"./":15,"riot":13}],5:[function(require,module,exports){
 var riot = require('riot');
-module.exports = riot.tag('navigator', '<div class="tabs tabs-style-linemove"> <nav> <ul> <li class="tab-current"> <a href="#todomvc" class="icon-shop" onclick="{change}"><span>TodoMVC</span></a> </li> <li> <a href="#todo" class="icon-note" onclick="{change}"><span>Todo</span></a> </li> <li> <a href="#blog" class="icon-calendar" onclick="{change}"><span>Blog</span></a> </li> <li> <a href="#book" class="icon-book" onclick="{change}"><span>Book</span></a> </li> <li> <a href="#setting" class="icon-params" onclick="{change}"><span>Setting</span></a> </li> <li> <a href="#aboutme" class="icon-desktop" onclick="{change}"><span>AboutMe</span></a> </li> </ul> </nav> </div>', '.tabs { position: relative; overflow: hidden; margin: 0 auto; width: 100%; font-weight: 300; font-size: 1.25em; } /* Nav */ .tabs nav { text-align: center; } .tabs nav ul { position: relative; display: -ms-flexbox; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: flex; margin: 0 auto; padding: 0; max-width: 1200px; list-style: none; -ms-box-orient: horizontal; -ms-box-pack: center; -webkit-flex-flow: row wrap; -moz-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; justify-content: center; } .tabs nav ul li { position: relative; z-index: 1; display: block; margin: 0; text-align: center; -webkit-flex: 1; -moz-flex: 1; -ms-flex: 1; flex: 1; } .tabs nav a { position: relative; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 2.5; text-decoration: none; } .tabs nav a span { vertical-align: middle; font-size: 0.75em; } .tabs nav li.tab-current a { color: #B12D2B; } .tabs nav a:focus { outline: none; } @media screen and (max-width: 58em) { .tabs nav a span { display: none; } .tabs nav a:before { margin-right: 0; } } .tabs-style-linemove nav { background: #F4F4F4; } .tabs-style-linemove nav li:last-child::before { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #B12D2B; content: \'\'; -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s; } /* Move the line */ .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before { -webkit-transform: translate3d(-500%,0,0); transform: translate3d(-500%,0,0); } .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-400%,0,0); transform: translate3d(-400%,0,0); } .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-300%,0,0); transform: translate3d(-300%,0,0); } .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-200%,0,0); transform: translate3d(-200%,0,0); } .tabs-style-linemove nav li:nth-child(5).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-100%,0,0); transform: translate3d(-100%,0,0); } .tabs-style-linemove nav a { padding: 1em 0; color: #949494; line-height: 1; -webkit-transition: color 0.3s, -webkit-transform 0.3s; transition: color 0.3s, transform 0.3s; } .tabs-style-linemove nav li.tab-current a { color: #B12D2B; -webkit-transform: translate3d(0,4px,0); transform: translate3d(0,4px,0); } .tabs-style-linemove nav a span { font-weight: 700; }', function(opts) {app.mixin(this, require('./'));
+module.exports = riot.tag('navigator', '<div class="tabs tabs-style-linemove"> <nav> <ul> <li class="tab-current"> <a href="#!todomvc" class="icon-shop" onclick="{change}"><span>TodoMVC</span></a> </li> <li> <a href="#!todo" class="icon-note" onclick="{change}"><span>Todo</span></a> </li> <li> <a href="#!blog" class="icon-calendar" onclick="{change}"><span>Blog</span></a> </li> <li> <a href="#!book" class="icon-book" onclick="{change}"><span>Book</span></a> </li> <li> <a href="#!setting" class="icon-params" onclick="{change}"><span>Setting</span></a> </li> <li> <a href="#!aboutme" class="icon-desktop" onclick="{change}"><span>AboutMe</span></a> </li> </ul> </nav> </div>', '.tabs { position: relative; overflow: hidden; margin: 0 auto; width: 100%; font-weight: 300; font-size: 1.25em; } /* Nav */ .tabs nav { text-align: center; } .tabs nav ul { position: relative; display: -ms-flexbox; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: flex; margin: 0 auto; padding: 0; max-width: 1200px; list-style: none; -ms-box-orient: horizontal; -ms-box-pack: center; -webkit-flex-flow: row wrap; -moz-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; justify-content: center; } .tabs nav ul li { position: relative; z-index: 1; display: block; margin: 0; text-align: center; -webkit-flex: 1; -moz-flex: 1; -ms-flex: 1; flex: 1; } .tabs nav a { position: relative; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 2.5; text-decoration: none; } .tabs nav a span { vertical-align: middle; font-size: 0.75em; } .tabs nav li.tab-current a { color: #B12D2B; } .tabs nav a:focus { outline: none; } @media screen and (max-width: 58em) { .tabs nav a span { display: none; } .tabs nav a:before { margin-right: 0; } } .tabs-style-linemove nav { background: #F4F4F4; } .tabs-style-linemove nav li:last-child::before { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #B12D2B; content: \'\'; -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s; } /* Move the line */ .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before { -webkit-transform: translate3d(-500%,0,0); transform: translate3d(-500%,0,0); } .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-400%,0,0); transform: translate3d(-400%,0,0); } .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-300%,0,0); transform: translate3d(-300%,0,0); } .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-200%,0,0); transform: translate3d(-200%,0,0); } .tabs-style-linemove nav li:nth-child(5).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-100%,0,0); transform: translate3d(-100%,0,0); } .tabs-style-linemove nav a { padding: 1em 0; color: #949494; line-height: 1; -webkit-transition: color 0.3s, -webkit-transform 0.3s; transition: color 0.3s, transform 0.3s; } .tabs-style-linemove nav li.tab-current a { color: #B12D2B; -webkit-transform: translate3d(0,4px,0); transform: translate3d(0,4px,0); } .tabs-style-linemove nav a span { font-weight: 700; }', function(opts) {app.mixin(this, require('./'));
 });
 },{"./":16,"riot":13}],6:[function(require,module,exports){
 var riot = require('riot');
@@ -51,6 +51,27 @@ var app = window.app = new c.Application({
     container: 'viewport',
     router: require('./router')
 });
+
+app.analysis = function(url) {
+    // baidu
+    window._hmt = [];
+    window._hmt.push(['_trackPageview', '/' + url]);
+    (function() {
+      var hm = document.createElement('script');
+      hm.src = '//hm.baidu.com/hm.js?ecfd047a98f492c156ac1441ed6e45df';
+      var s = document.getElementsByTagName('script')[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+    // google
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-64305601-1', 'auto');
+    ga('send', 'pageview', url);
+}
 
 $(function() {
     app.start();
@@ -10868,6 +10889,7 @@ riot.mountTo = riot.mount
 module.exports = {
     listeners: {
         init: function() {
+            app.analysis('book');
             this.list = ['广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西'];
         }
     },
@@ -10937,6 +10959,7 @@ module.exports = {
 module.exports = {
     listeners: {
         init: function() {
+            app.analysis('todo');
             this.title = 'I want to behave!';
             this.items = [
                 { title: 'Avoid excessive coffeine', done: true },
@@ -10970,6 +10993,7 @@ module.exports = {
     store: 'todos',
     listeners: {
         init: function() {
+            app.analysis('todomvc');
             this.status = 'all';
             this.links = ['All', 'Active', 'Completed'];
         },
@@ -11073,7 +11097,7 @@ module.exports = {
             this.container.setAttribute('riot-tag', tag);
             app.mount(tag);
             this.tags.navigator.trigger('changed',
-                document.querySelectorAll('a[href="#' + tag + '"]')[0].parentNode);
+                document.querySelectorAll('a[href="#!' + tag + '"]')[0].parentNode);
         }
     }
 };
@@ -11082,10 +11106,9 @@ module.exports = {
 module.exports = {
     routes: {
         '': 'home',
-        ':id': 'start',
+        '!:id': 'start',
         'todomvc/:status': 'todomvc'
     },
-
     home: function() {
         app.container.trigger('show', 'todomvc');
     },

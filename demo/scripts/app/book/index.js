@@ -1,6 +1,7 @@
 module.exports = {
     listeners: {
         init: function() {
+            app.analysis('book');
             this.list = ['广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西'];
         }
     },
