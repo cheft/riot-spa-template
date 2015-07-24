@@ -281,12 +281,12 @@
           }
           self.app.trigger('ajaxed', resp, 'success');
           return p.resolve(resp);
-        }).fail(function(resp, status) {
+        }).fail(function(resp) {
           self.tag.trigger(evt, resp, 'error');
           if (evt === 'posted' || evt === 'puted') {
             self.tag.trigger('saved', resp, 'error');
           }
-          self.app.trigger('ajaxed', resp, 'error', status);
+          self.app.trigger('ajaxed', resp, 'error');
           return p.reject(resp);
         });
         return p.promise();

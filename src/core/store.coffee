@@ -32,11 +32,11 @@ C.Store = class Store
                     self.tag.trigger 'saved', resp, 'success' 
                 self.app.trigger 'ajaxed', resp, 'success'
                 p.resolve resp
-            .fail (resp, status) ->
+            .fail (resp) ->
                 self.tag.trigger evt, resp, 'error'
                 if evt is 'posted' or evt is 'puted'
                     self.tag.trigger 'saved', resp, 'error' 
-                self.app.trigger 'ajaxed', resp, 'error', status
+                self.app.trigger 'ajaxed', resp, 'error'
                 p.reject resp
         p.promise()
 
