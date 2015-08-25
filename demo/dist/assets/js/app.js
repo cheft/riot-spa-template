@@ -1,47 +1,52 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var riot = require('riot');
-module.exports = riot.tag('aboutme', '<h1>Cheft</h1>', function(opts) {
+module.exports = riot.tag('sub', '<h4>HaifengChen</h4>', function(opts) {
 
 });
-},{"riot":13}],2:[function(require,module,exports){
+},{"riot":14}],2:[function(require,module,exports){
+var riot = require('riot');
+module.exports = riot.tag('aboutme', '<h1>Cheft</h1> <sub></sub>', function(opts) {
+
+});
+},{"riot":14}],3:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('blog', '<h1>Blog</h1>', function(opts) {
 
 });
-},{"riot":13}],3:[function(require,module,exports){
+},{"riot":14}],4:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('book', '<ui-dialog title="请选择省" name="p"> <div class="c-contianer"> <ul class="c-list ui-list-text ui-border-tb"> <li class="c-border-t" each="{l in parent.list}" onclick="{parent.parent.selectP}"> {l} </li> </ul> </div> </ui-dialog> <ui-dialog title="请选择市" name="c"> <div class="c-contianer"> <ul class="c-list ui-list-text ui-border-tb"> <li class="c-border-t" each="{l in parent.list}" onclick="{parent.parent.selectC}"> {l} </li> </ul> </div> </ui-dialog> <ui-dialog title="请选择学校" name="s"> <div class="c-contianer"> <ul class="c-list ui-list-text ui-border-tb"> <li class="c-border-t" each="{l in parent.list}" onclick="{parent.parent.selectS}"> {l} </li> </ul> </div> </ui-dialog> <button onclick="{open}">选择省</button> <div style="height: 3200px;"></div>', '.c-contianer { padding: 10px; } .c-dialog-body ul { padding-left: 0px; text-align: center; -webkit-margin-before: 0px; -webkit-padding-start: 0px; } .c-dialog-body li { position: relative; padding-top: 10px; padding-bottom: 10px; padding-right: 15px; font-size: 16px; -webkit-box-align: center; } .c-list { list-style: none; } .c-border-t { /*border: 1px solid #e0e0e0;*/ border-bottom: 1px dashed #e0e0e0; }', function(opts) {app.mixin(this, require('./'));
 });
 
-},{"./":14,"riot":13}],4:[function(require,module,exports){
+},{"./":15,"riot":14}],5:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('ui-dialog', '<div class="c-dialog" name="dialog"> <div class="c-dialog-content animated zoomIn"> <div class="c-dialog-header"> <div class="title"> {title} <a href="javascript: void(0);" class="close" onclick="{close}">×</a> </div> </div> <div class="c-dialog-body"> <yield></yield> </div> <div class="c-dialog-footer"> </div> </div> </div>', '.c-dialog { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; display: -webkit-box; -webkit-box-orient: horizontal; -webkit-box-pack: center; -webkit-box-align: center; background: rgba(0,0,0,.4); display: none; color: #000; height: 100%; } .c-dialog.show { display: -webkit-box; display: box; } .c-dialog.show { display: -webkit-box; display: box; } .c-dialog-content { border-radius: 6px; width: 270px; -webkit-background-clip: padding-box; background-clip: padding-box; outline: 0; pointer-events: auto; background-color: rgba(253,253,253,.95); position: relative; height: 90%; } .c-dialog-header { border-top-left-radius: 6px; border-top-right-radius: 6px; margin-bottom: 4px; font-size: 16px; width: 100%; text-align: center; background: #B12D2B; color: #FFF; } .c-dialog-header .title { padding: 15px 10px 15px; font-size: 1rem; } .c-dialog-header .close { position: absolute; top: 6px; padding: 6px; right: 6px; text-decoration: none; color: #FFF; } .c-dialog-body { width: 100%; min-height: 20%; max-height: 88%; overflow: auto; -webkit-overflow-scrolling: touch; } .c-dialog-footer { display: -webkit-box; width: 100%; -webkit-box-sizing: border-box; box-sizing: border-box; } .c-dialog-footer button { height: 42px; line-height: 42px; background: transparent; color: #00a5e0; line-height: 50px; height: 48px; text-align: center; font-size: 16px; border: 1px #c8c7cc solid; width: 100%; display: block; -webkit-box-flex: 1; background-image: none; } .animated { -webkit-animation-duration: 0.3s; -webkit-animation-fill-mode: both; } @-webkit-keyframes zoomIn { 0% { opacity: 0; -webkit-transform: scale3d(.3, .3, .3); } 50% { opacity: 1; } } .zoomIn { -webkit-animation-name: zoomIn; } @-webkit-keyframes out { from { display: -webkit-box; display: box; } to { display: none; } } .out { -webkit-animation-name out; }', function(opts) {app.mixin(this, require('./'));
 });
 
-},{"./":15,"riot":13}],5:[function(require,module,exports){
+},{"./":16,"riot":14}],6:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('navigator', '<div class="tabs tabs-style-linemove"> <nav> <ul> <li class="tab-current"> <a href="#todomvc" class="icon-shop" onclick="{change}"><span>TodoMVC</span></a> </li> <li> <a href="#todo" class="icon-note" onclick="{change}"><span>Todo</span></a> </li> <li> <a href="#blog" class="icon-calendar" onclick="{change}"><span>Blog</span></a> </li> <li> <a href="#book" class="icon-book" onclick="{change}"><span>Book</span></a> </li> <li> <a href="#setting" class="icon-params" onclick="{change}"><span>Setting</span></a> </li> <li> <a href="#aboutme" class="icon-desktop" onclick="{change}"><span>AboutMe</span></a> </li> </ul> </nav> </div>', '.tabs { position: relative; overflow: hidden; margin: 0 auto; width: 100%; font-weight: 300; font-size: 1.25em; } /* Nav */ .tabs nav { text-align: center; } .tabs nav ul { position: relative; display: -ms-flexbox; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: flex; margin: 0 auto; padding: 0; max-width: 1200px; list-style: none; -ms-box-orient: horizontal; -ms-box-pack: center; -webkit-flex-flow: row wrap; -moz-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; justify-content: center; } .tabs nav ul li { position: relative; z-index: 1; display: block; margin: 0; text-align: center; -webkit-flex: 1; -moz-flex: 1; -ms-flex: 1; flex: 1; } .tabs nav a { position: relative; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 2.5; text-decoration: none; } .tabs nav a span { vertical-align: middle; font-size: 0.75em; } .tabs nav li.tab-current a { color: #B12D2B; } .tabs nav a:focus { outline: none; } @media screen and (max-width: 58em) { .tabs nav a span { display: none; } .tabs nav a:before { margin-right: 0; } } .tabs-style-linemove nav { background: #F4F4F4; } .tabs-style-linemove nav li:last-child::before { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #B12D2B; content: \'\'; -webkit-transition: -webkit-transform 0.3s; transition: transform 0.3s; } /* Move the line */ .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before { -webkit-transform: translate3d(-500%,0,0); transform: translate3d(-500%,0,0); } .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-400%,0,0); transform: translate3d(-400%,0,0); } .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-300%,0,0); transform: translate3d(-300%,0,0); } .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-200%,0,0); transform: translate3d(-200%,0,0); } .tabs-style-linemove nav li:nth-child(5).tab-current ~ li:last-child::before { -webkit-transform: translate3d(-100%,0,0); transform: translate3d(-100%,0,0); } .tabs-style-linemove nav a { padding: 1em 0; color: #949494; line-height: 1; -webkit-transition: color 0.3s, -webkit-transform 0.3s; transition: color 0.3s, transform 0.3s; } .tabs-style-linemove nav li.tab-current a { color: #B12D2B; -webkit-transform: translate3d(0,4px,0); transform: translate3d(0,4px,0); } .tabs-style-linemove nav a span { font-weight: 700; }', function(opts) {app.mixin(this, require('./'));
 });
-},{"./":16,"riot":13}],6:[function(require,module,exports){
+},{"./":17,"riot":14}],7:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('setting', '<h1>Setting</h1>', function(opts) {
 
 });
-},{"riot":13}],7:[function(require,module,exports){
+},{"riot":14}],8:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('todo', '<h3>{ title }</h3> <ul> <li each="{ items }"> <label class="{ completed: done }"> <input type="checkbox" __checked="{ done }" onclick="{ parent.toggle }"> { title } </label> </li> </ul> <form onsubmit="{ add }"> <input name="input" onkeyup="{ edit }"> <button __disabled="{ !text }">Add #{ items.length + 1 }</button> </form>', 'todo , [riot-tag="todo"] { display: block; max-width: 400px; margin: 5% auto; font-family: \'myriad pro\', sans-serif; font-size: 20px; border: 0; } todo form input, [riot-tag="todo"] form input{ font-size: 100%; padding: .6em; border: 1px solid #ccc; border-radius: 3px; } todo button, [riot-tag="todo"] button{ background-color: #1FADC5; border: 1px solid rgba(0, 0, 0, .2); font-size: 100%; color: #fff; padding: .6em 1.2em; border-radius: 3em; cursor: pointer; margin: 0 .3em; outline: none; } todo button[disabled], [riot-tag="todo"] button[disabled]{ background-color: #ddd; color: #aaa; } todo ul, [riot-tag="todo"] ul{ padding: 0; } todo li, [riot-tag="todo"] li{ list-style-type: none; padding: .2em 0; } todo .completed, [riot-tag="todo"] .completed{ text-decoration: line-through; color: #ccc; } todo label, [riot-tag="todo"] label{ cursor: pointer; }', function(opts) {app.mixin(this, require('./'));
 });
 
-},{"./":17,"riot":13}],8:[function(require,module,exports){
+},{"./":18,"riot":14}],9:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('todomvc', '<section id="todoapp"> <header id="header"> <h1>todos</h1> <input id="new-todo" autofocus="autofocus" autocomplete="off" placeholder="What needs to be done?" onkeyup="{add}"> </header> <section id="main" if="{todos.length}"> <input id="toggle-all" type="checkbox" __checked="{allDone}" onclick="{toggleAll}"> <ul id="todo-list"> <li each="{todos}" class="{completed: completed, editing: editing} todo"> <div class="view"> <input class="toggle" type="checkbox" __checked="{completed}" onclick="{parent.toggle}"> <label ondblclick="{parent.toEdit}">{title}</label> <button class="destroy" onclick="{parent.remove}"></button> </div> <input class="edit" onblur="{parent.edit}" onkeyup="{parent.edit}" value="{title}"> </li> </ul> </section> <footer id="footer" if="{todos.length}"> <span id="todo-count"> <strong>{remaining}</strong> {remaining > 1 ? \'items\' : \'item\'} left </span> <ul id="filters"> <li each="{v in links}"> <a class="{selected: parent.status == v.toLowerCase()}" href="#todomvc/{v.toLowerCase()}">{v}</a> </li> </ul> <button id="clear-completed" onclick="{sort}" style="float: left; padding: 0px 10px;" >{arrow ? arrow : \'↑\'}</button> <button id="clear-completed" onclick="{clear}" if="{store.data.length > remaining}">Clear completed</button> </footer> </section> <footer id="info"> <p>Double-click to edit a todo</p> <p>Written by <a href="http://github.com/cheft">Cheft</a> </p> <p>Part of <a href="http://todomvc.com">TodoMVC</a> </p> </footer>', 'todomvc , [riot-tag="todomvc"] { max-width: 550px; margin: 0 auto; line-height: 1.4em; color: #4d4d4d; min-width: 230px; max-width: 550px; margin: 0 auto; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; font-weight: 300; } todomvc button, [riot-tag="todomvc"] button{ margin: 0; padding: 0; border: 0; background: none; font-size: 100%; vertical-align: baseline; font-family: inherit; font-weight: inherit; color: inherit; -webkit-appearance: none; appearance: none; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; } todomvc button, [riot-tag="todomvc"] button,todomvc input[type="checkbox"], [riot-tag="todomvc"] input[type="checkbox"]{ outline: none; } todomvc .hidden, [riot-tag="todomvc"] .hidden{ display: none; } todomvc #todoapp, [riot-tag="todomvc"] #todoapp{ background: #fff; margin: 130px 0 40px 0; position: relative; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1); } todomvc #todoapp input::-webkit-input-placeholder, [riot-tag="todomvc"] #todoapp input::-webkit-input-placeholder{ font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp input::-moz-placeholder, [riot-tag="todomvc"] #todoapp input::-moz-placeholder{ font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp input::input-placeholder, [riot-tag="todomvc"] #todoapp input::input-placeholder{ font-style: italic; font-weight: 300; color: #e6e6e6; } todomvc #todoapp h1, [riot-tag="todomvc"] #todoapp h1{ position: absolute; top: -155px; width: 100%; font-size: 100px; font-weight: 100; text-align: center; color: rgba(175, 47, 47, 0.15); -webkit-text-rendering: optimizeLegibility; -moz-text-rendering: optimizeLegibility; text-rendering: optimizeLegibility; } todomvc #new-todo, [riot-tag="todomvc"] #new-todo,todomvc .edit, [riot-tag="todomvc"] .edit{ position: relative; margin: 0; width: 100%; font-size: 24px; font-family: inherit; font-weight: inherit; line-height: 1.4em; border: 0; outline: none; color: inherit; padding: 6px; border: 1px solid #999; box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2); box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; } todomvc #new-todo, [riot-tag="todomvc"] #new-todo{ padding: 16px 16px 16px 60px; border: none; background: rgba(0, 0, 0, 0.003); box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03); } todomvc #main, [riot-tag="todomvc"] #main{ position: relative; z-index: 2; border-top: 1px solid #e6e6e6; } todomvc label[for=\'toggle-all\'], [riot-tag="todomvc"] label[for=\'toggle-all\']{ display: none; } todomvc #toggle-all, [riot-tag="todomvc"] #toggle-all{ position: absolute; top: -55px; left: -12px; width: 60px; height: 34px; text-align: center; border: none; } todomvc #toggle-all:before, [riot-tag="todomvc"] #toggle-all:before{ content: \'❯\'; font-size: 22px; color: #e6e6e6; padding: 10px 27px 10px 27px; } todomvc #toggle-all:checked:before, [riot-tag="todomvc"] #toggle-all:checked:before{ color: #737373; } todomvc #todo-list, [riot-tag="todomvc"] #todo-list{ margin: 0; padding: 0; list-style: none; } todomvc #todo-list li, [riot-tag="todomvc"] #todo-list li{ position: relative; font-size: 24px; border-bottom: 1px solid #ededed; } todomvc #todo-list li:last-child, [riot-tag="todomvc"] #todo-list li:last-child{ border-bottom: none; } todomvc #todo-list li.editing, [riot-tag="todomvc"] #todo-list li.editing{ border-bottom: none; padding: 0; } todomvc #todo-list li.editing .edit, [riot-tag="todomvc"] #todo-list li.editing .edit{ display: block; width: 506px; padding: 13px 17px 12px 17px; margin: 0 0 0 43px; } todomvc #todo-list li.editing .view, [riot-tag="todomvc"] #todo-list li.editing .view{ display: none; } todomvc #todo-list li .toggle, [riot-tag="todomvc"] #todo-list li .toggle{ text-align: center; width: 40px; height: auto; position: absolute; top: 0; bottom: 0; margin: auto 0; border: none; -webkit-appearance: none; appearance: none; } todomvc #todo-list li .toggle:after, [riot-tag="todomvc"] #todo-list li .toggle:after{ content: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>\'); } todomvc #todo-list li .toggle:checked:after, [riot-tag="todomvc"] #todo-list li .toggle:checked:after{ content: url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>\'); } todomvc #todo-list li label, [riot-tag="todomvc"] #todo-list li label{ white-space: pre; word-break: break-word; padding: 15px 60px 15px 15px; margin-left: 45px; display: block; line-height: 1.2; transition: color 0.4s; } todomvc #todo-list li.completed label, [riot-tag="todomvc"] #todo-list li.completed label{ color: #d9d9d9; text-decoration: line-through; } todomvc #todo-list li .destroy, [riot-tag="todomvc"] #todo-list li .destroy{ display: none; position: absolute; top: 0; right: 10px; bottom: 0; width: 40px; height: 40px; margin: auto 0; font-size: 30px; color: #cc9a9a; margin-bottom: 11px; transition: color 0.2s ease-out; } todomvc #todo-list li .destroy:hover, [riot-tag="todomvc"] #todo-list li .destroy:hover{ color: #af5b5e; } todomvc #todo-list li .destroy:after, [riot-tag="todomvc"] #todo-list li .destroy:after{ content: \'×\'; } todomvc #todo-list li:hover .destroy, [riot-tag="todomvc"] #todo-list li:hover .destroy{ display: block; } todomvc #todo-list li .edit, [riot-tag="todomvc"] #todo-list li .edit{ display: none; } todomvc #todo-list li.editing:last-child, [riot-tag="todomvc"] #todo-list li.editing:last-child{ margin-bottom: -1px; } todomvc #footer, [riot-tag="todomvc"] #footer{ color: #777; padding: 10px 15px; height: 20px; text-align: center; border-top: 1px solid #e6e6e6; } todomvc #footer:before, [riot-tag="todomvc"] #footer:before{ content: \'\'; position: absolute; right: 0; bottom: 0; left: 0; height: 50px; overflow: hidden; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2); } todomvc #todo-count, [riot-tag="todomvc"] #todo-count{ float: left; text-align: left; } todomvc #todo-count strong, [riot-tag="todomvc"] #todo-count strong{ font-weight: 300; } todomvc #filters, [riot-tag="todomvc"] #filters{ margin: 0; padding: 0; list-style: none; position: absolute; right: 0; left: 0; } todomvc #filters li, [riot-tag="todomvc"] #filters li{ display: inline; } todomvc #filters li a, [riot-tag="todomvc"] #filters li a{ color: inherit; margin: 3px; padding: 3px 7px; text-decoration: none; border: 1px solid transparent; border-radius: 3px; } todomvc #filters li a.selected, [riot-tag="todomvc"] #filters li a.selected,todomvc #filters li a:hover, [riot-tag="todomvc"] #filters li a:hover{ border-color: rgba(175, 47, 47, 0.1); } todomvc #filters li a.selected, [riot-tag="todomvc"] #filters li a.selected{ border-color: rgba(175, 47, 47, 0.2); } todomvc #clear-completed, [riot-tag="todomvc"] #clear-completed,todomvc html #clear-completed:active, [riot-tag="todomvc"] html #clear-completed:active{ float: right; position: relative; line-height: 20px; text-decoration: none; cursor: pointer; position: relative; } todomvc #clear-completed:hover, [riot-tag="todomvc"] #clear-completed:hover{ text-decoration: underline; } todomvc #info, [riot-tag="todomvc"] #info{ margin: 65px auto 0; color: #bfbfbf; font-size: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); text-align: center; } todomvc #info p, [riot-tag="todomvc"] #info p{ line-height: 1; } todomvc #info a, [riot-tag="todomvc"] #info a{ color: inherit; text-decoration: none; font-weight: 400; } todomvc #info a:hover, [riot-tag="todomvc"] #info a:hover{ text-decoration: underline; } @media screen and (-webkit-min-device-pixel-ratio:0){ todomvc #toggle-all, [riot-tag="todomvc"] #toggle-all,todomvc #todo-list li .toggle, [riot-tag="todomvc"] #todo-list li .toggle{ background: none; } todomvc #todo-list li .toggle, [riot-tag="todomvc"] #todo-list li .toggle{ height: 40px; } todomvc #toggle-all, [riot-tag="todomvc"] #toggle-all{ -webkit-transform: rotate(90deg); transform: rotate(90deg); -webkit-appearance: none; appearance: none; } } @media (max-width: 430px){ todomvc #footer, [riot-tag="todomvc"] #footer{ height: 50px; } todomvc #filters, [riot-tag="todomvc"] #filters{ bottom: 10px; } } todomvc hr, [riot-tag="todomvc"] hr{ margin: 20px 0; border: 0; border-top: 1px dashed #c5c5c5; border-bottom: 1px dashed #f7f7f7; } todomvc .learn a, [riot-tag="todomvc"] .learn a{ font-weight: normal; text-decoration: none; color: #b83f45; } todomvc .learn a:hover, [riot-tag="todomvc"] .learn a:hover{ text-decoration: underline; color: #787e7e; } todomvc .learn h3, [riot-tag="todomvc"] .learn h3,todomvc .learn h4, [riot-tag="todomvc"] .learn h4,todomvc .learn h5, [riot-tag="todomvc"] .learn h5{ margin: 10px 0; font-weight: 500; line-height: 1.2; color: #000; } todomvc .learn h3, [riot-tag="todomvc"] .learn h3{ font-size: 24px; } todomvc .learn h4, [riot-tag="todomvc"] .learn h4{ font-size: 18px; } todomvc .learn h5, [riot-tag="todomvc"] .learn h5{ margin-bottom: 0; font-size: 14px; } todomvc .learn ul, [riot-tag="todomvc"] .learn ul{ padding: 0; margin: 0 0 30px 25px; } todomvc .learn li, [riot-tag="todomvc"] .learn li{ line-height: 20px; } todomvc .learn p, [riot-tag="todomvc"] .learn p{ font-size: 15px; font-weight: 300; line-height: 1.3; margin-top: 0; margin-bottom: 0; } todomvc #issue-count, [riot-tag="todomvc"] #issue-count{ display: none; } todomvc .quote, [riot-tag="todomvc"] .quote{ border: none; margin: 20px 0 60px 0; } todomvc .quote p, [riot-tag="todomvc"] .quote p{ font-style: italic; } todomvc .quote p:before, [riot-tag="todomvc"] .quote p:before{ content: \'“\'; font-size: 50px; opacity: .15; position: absolute; top: -20px; left: 3px; } todomvc .quote p:after, [riot-tag="todomvc"] .quote p:after{ content: \'”\'; font-size: 50px; opacity: .15; position: absolute; bottom: -42px; right: 3px; } todomvc .quote footer, [riot-tag="todomvc"] .quote footer{ position: absolute; bottom: -40px; right: 0; } todomvc .quote footer img, [riot-tag="todomvc"] .quote footer img{ border-radius: 3px; } todomvc .quote footer a, [riot-tag="todomvc"] .quote footer a{ margin-left: 5px; vertical-align: middle; } todomvc .speech-bubble, [riot-tag="todomvc"] .speech-bubble{ position: relative; padding: 10px; background: rgba(0, 0, 0, .04); border-radius: 5px; } todomvc .speech-bubble:after, [riot-tag="todomvc"] .speech-bubble:after{ content: \'\'; position: absolute; top: 100%; right: 30px; border: 13px solid transparent; border-top-color: rgba(0, 0, 0, .04); } todomvc .learn-bar > .learn, [riot-tag="todomvc"] .learn-bar > .learn{ position: absolute; width: 272px; top: 8px; left: -300px; padding: 10px; border-radius: 5px; background-color: rgba(255, 255, 255, .6); transition-property: left; transition-duration: 500ms; } @media (min-width: 899px){ todomvc .learn-bar, [riot-tag="todomvc"] .learn-bar{ width: auto; padding-left: 300px; } todomvc .learn-bar > .learn, [riot-tag="todomvc"] .learn-bar > .learn{ left: 8px; } }', function(opts) {app.mixin(this, require('./'));
 });
-},{"./":18,"riot":13}],9:[function(require,module,exports){
+},{"./":19,"riot":14}],10:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag('viewport', '<navigator></navigator> <div name="container"></div>', function(opts) {app.mixin(this, require('./'));
 });
 
-},{"./":19,"riot":13}],10:[function(require,module,exports){
+},{"./":20,"riot":14}],11:[function(require,module,exports){
 var c = require('cheftjs');
 var $ = window.$ = require('jquery');
 c.Adapter = {Promise: $.Deferred, ajax: $.ajax};
@@ -56,7 +61,7 @@ $(function() {
     app.start();
 });
 
-},{"./router":20,"cheftjs":11,"jquery":12}],11:[function(require,module,exports){
+},{"./router":21,"cheftjs":12,"jquery":13}],12:[function(require,module,exports){
 (function() {
   var slice = [].slice;
 
@@ -130,18 +135,18 @@ $(function() {
       application.prototype.mixin = function(tag, obj) {
         var fn2, init, opt;
         init = function() {};
-        if (obj.listeners) {
-          init = obj.listeners.init || function() {};
+        if (obj.on) {
+          init = obj.on.init || function() {};
           fn2 = function(item) {
-            return tag.on(item, obj.listeners[item]);
+            return tag.on(item, obj.on[item]);
           };
-          for (item in obj.listeners) {
+          for (item in obj.on) {
             fn2(item);
           }
         }
-        if (obj.actions) {
-          obj.actions.init = init;
-          tag.mixin(obj.actions);
+        if (obj["do"]) {
+          obj["do"].init = init;
+          tag.mixin(obj["do"]);
         }
         if (obj.store) {
           opt = {};
@@ -369,7 +374,7 @@ $(function() {
 
 }).call(this);
 
-},{"riot":13}],12:[function(require,module,exports){
+},{"riot":14}],13:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9581,7 +9586,7 @@ return jQuery;
 
 }));
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /* Riot v2.2.1, @license MIT, (c) 2015 Muut Inc. + contributors */
 
 ;(function(window) {
@@ -10903,14 +10908,14 @@ riot.mountTo = riot.mount
 
 })(typeof window != 'undefined' ? window : undefined);
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
-    listeners: {
+    on: {
         init: function() {
             this.list = ['广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西'];
         }
     },
-    actions: {
+    do: {
         open: function() {
             this.tags.p.show();
         },
@@ -10931,14 +10936,14 @@ module.exports = {
     }
 };
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = {
-    listeners: {
+    on: {
         init: function() {
             this.title = this.opts.title || '';
         }
     },
-    actions: {
+    do: {
         show: function() {
             this.dialog.className = 'c-dialog show';
             document.body.style.overflow = 'hidden';
@@ -10951,15 +10956,15 @@ module.exports = {
     }
 };
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = {
-    listeners: {
+    on: {
         changed: function(li) {
             document.querySelector('.tab-current').className = '';
             li.className = 'tab-current';
         }
     },
-    actions: {
+    do: {
         change: function(e) {
             var a = e.target;
             var li = e.target.parentNode;
@@ -10972,9 +10977,9 @@ module.exports = {
     }
 };
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = {
-    listeners: {
+    on: {
         init: function() {
             this.title = 'I want to behave!';
             this.items = [
@@ -10985,7 +10990,7 @@ module.exports = {
             this.disabled = true;
         }
     },
-    actions: {
+    do: {
         add: function() {
             if (this.text) {
                 this.items.push({
@@ -11004,10 +11009,10 @@ module.exports = {
     }
 };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = {
     store: 'todos',
-    listeners: {
+    on: {
         init: function() {
             this.status = 'all';
             this.links = ['All', 'Active', 'Completed'];
@@ -11052,7 +11057,7 @@ module.exports = {
             this.status = status;
         }
     },
-    actions: {
+    do: {
         add: function(e) {
             var value = e.target.value;
             if(e.which === 13 && value) {
@@ -11105,9 +11110,9 @@ module.exports = {
     }
 };
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = {
-    listeners: {
+    on: {
         show: function(tag) {
             this.container.setAttribute('riot-tag', tag);
             app.mount(tag);
@@ -11117,14 +11122,14 @@ module.exports = {
     }
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = {
     routes: {
         '': 'home',
         ':id': 'start',
         'todomvc/:status': 'todomvc'
     },
-    
+
     home: function() {
         app.container.trigger('show', 'todomvc');
     },
@@ -11137,4 +11142,4 @@ module.exports = {
     }
 };
 
-},{}]},{},[10,1,2,3,4,5,6,7,8,9]);
+},{}]},{},[11,1,2,3,4,5,6,7,8,9,10]);

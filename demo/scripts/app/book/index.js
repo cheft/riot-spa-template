@@ -1,10 +1,10 @@
 module.exports = {
-    listeners: {
+    on: {
         init: function() {
             this.list = ['广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西', '广东', '广西'];
         }
     },
-    actions: {
+    do: {
         open: function() {
             this.tags.p.show();
         },

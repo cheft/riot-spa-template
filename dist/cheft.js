@@ -71,18 +71,18 @@
       application.prototype.mixin = function(tag, obj) {
         var fn2, init, opt;
         init = function() {};
-        if (obj.listeners) {
-          init = obj.listeners.init || function() {};
+        if (obj.on) {
+          init = obj.on.init || function() {};
           fn2 = function(item) {
-            return tag.on(item, obj.listeners[item]);
+            return tag.on(item, obj.on[item]);
           };
-          for (item in obj.listeners) {
+          for (item in obj.on) {
             fn2(item);
           }
         }
-        if (obj.actions) {
-          obj.actions.init = init;
-          tag.mixin(obj.actions);
+        if (obj["do"]) {
+          obj["do"].init = init;
+          tag.mixin(obj["do"]);
         }
         if (obj.store) {
           opt = {};

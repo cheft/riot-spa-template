@@ -18,13 +18,13 @@ C.Application = class application
 
     mixin: (tag, obj) ->
         init = ->
-        if obj.listeners
-            init = obj.listeners.init || ->
-            for item of obj.listeners
-                do (item) -> tag.on item, obj.listeners[item]
-        if obj.actions
-            obj.actions.init = init
-            tag.mixin obj.actions
+        if obj.on
+            init = obj.on.init || ->
+            for item of obj.on
+                do (item) -> tag.on item, obj.on[item]
+        if obj.do
+            obj.do.init = init
+            tag.mixin obj.do
         if obj.store
             opt = {}
             if C.isString(obj.store)

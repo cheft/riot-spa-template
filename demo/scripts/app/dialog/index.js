@@ -1,10 +1,10 @@
 module.exports = {
-    listeners: {
+    on: {
         init: function() {
             this.title = this.opts.title || '';
         }
     },
-    actions: {
+    do: {
         show: function() {
             this.dialog.className = 'c-dialog show';
             document.body.style.overflow = 'hidden';

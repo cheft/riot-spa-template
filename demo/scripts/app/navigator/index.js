@@ -1,11 +1,11 @@
 module.exports = {
-    listeners: {
+    on: {
         changed: function(li) {
             document.querySelector('.tab-current').className = '';
             li.className = 'tab-current';
         }
     },
-    actions: {
+    do: {
         change: function(e) {
             var a = e.target;
             var li = e.target.parentNode;

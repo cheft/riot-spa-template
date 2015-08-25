@@ -9,7 +9,7 @@
     ||=====================||
     ||        Router       ||
     ||=====================||
-    Tag --> Actions --> Listeners
+    Tag   -->  do  -->   on
       \        |         /
        \     Store      /
         \______________/
@@ -38,10 +38,10 @@
         <button onclick={clickMe}>test</button>
     </test>
 
-## Actions
+## do
     
     module.exports = {
-        actions: {
+        do: {
             clickMe: function() {
                 this.result = 'click success!';
                 this.trigger('clicked');
@@ -71,10 +71,10 @@ or
 * post()
 * put()
 
-## Listeners
+## on
     
     module.exports = {
-        listeners: {
+        on: {
             init:    function() {}
             mount:   function() {}
             update:  function() {}

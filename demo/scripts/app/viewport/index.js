@@ -1,5 +1,5 @@
 module.exports = {
-    listeners: {
+    on: {
         show: function(tag) {
             this.container.setAttribute('riot-tag', tag);
             app.mount(tag);

@@ -1,6 +1,6 @@
 module.exports = {
     store: 'todos',
-    listeners: {
+    on: {
         init: function() {
             this.status = 'all';
             this.links = ['All', 'Active', 'Completed'];
@@ -45,7 +45,7 @@ module.exports = {
             this.status = status;
         }
     },
-    actions: {
+    do: {
         add: function(e) {
             var value = e.target.value;
             if(e.which === 13 && value) {

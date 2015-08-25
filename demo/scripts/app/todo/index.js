@@ -1,5 +1,5 @@
 module.exports = {
-    listeners: {
+    on: {
         init: function() {
             this.title = 'I want to behave!';
             this.items = [
@@ -10,7 +10,7 @@ module.exports = {
             this.disabled = true;
         }
     },
-    actions: {
+    do: {
         add: function() {
             if (this.text) {
                 this.items.push({
