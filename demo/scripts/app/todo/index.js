@@ -23,7 +23,6 @@ module.exports = {
             this.text = e.target.value;
         },
         toggle: function(e) {
-            console.log(this);
             var item = e.item;
             item.done = !item.done;
         }
