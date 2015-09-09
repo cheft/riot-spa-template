@@ -28,7 +28,7 @@ gulp.task('watch', function() {
 
     function rebundle() {
         var b = watchify(browserify(options)
-        .transform(riotify, { type: 'none', ext: 'html', parser: mixin}));
+        .transform(riotify, { type: 'none', ext: 'html'}));
         recurse('./scripts/app', './scripts', b);
         b.on('update', rebundle);
         b.bundle()
@@ -40,13 +40,6 @@ gulp.task('watch', function() {
     }
 });
 
-var mixin = function(js, options) {
-    if(!js) {
-        return "app.mixin(this, require('./'));";
-    }
-    return js;
-}
-
 var recurse = function(dir, root, b) {
     fs.readdirSync(dir).forEach(function(file) {
         var filename = path.join(dir, file), ext;
@@ -57,14 +50,14 @@ var recurse = function(dir, root, b) {
             if (ext === '.html') {
                 filename = path.relative(root, filename)
                 filename = path.join(path.dirname(filename), path.basename(filename, ext));
-                b.require('./' + filename.replace(/\\/g, '/'), {entry: true, expose: false });
+                b.require('./' + filename.replace(/\\/g, '/'), {entry: true, expose: false});
             }
         }
     })
 }
 
 gulp.task('browserify', function() {
-    var b = browserify(options).transform(riotify, { type: 'none', ext: 'html', compact: true, parser: mixin});
+    var b = browserify(options).transform(riotify, { type: 'none', ext: 'html', compact: true});
     recurse('./scripts/app', './scripts', b);
     b.bundle()
         .pipe(source('app.js'))

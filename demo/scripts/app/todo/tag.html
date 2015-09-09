@@ -1,10 +1,10 @@
 <todo>
-    <script></script>
+    <script>app.mixin(this, require('./'));</script>
     <h3>{ title }</h3>
     <ul>
         <li each={ items }>
             <label class={ completed: done }>
-                <input type="checkbox" checked={ done } onclick={ parent.toggle }> { title }
+                <input type="checkbox" checked={ done } onclick={ toggle }> { title }  ffss
             </label>
         </li>
     </ul>
